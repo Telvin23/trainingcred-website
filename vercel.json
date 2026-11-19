@@ -609,5 +609,11 @@
       "destination": "/categories/monitoring-evaluation-accountability-and-learning",
       "permanent": true
     }
+  ],
+  "crons": [
+    {
+      "path": "/api/cron/followups",
+      "schedule": "0 4 * * 1-5"
+    }
   ]
 }

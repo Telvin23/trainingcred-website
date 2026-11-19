@@ -25,6 +25,14 @@ and are stored in a Postgres database (Neon). Staff manage them at `/admin`.
 - `RESEND_API_KEY`   optional, email alert for every new request (resend.com)
 - `NOTIFY_EMAIL`     where alerts go (default info@trainingcred.com)
 - `NOTIFY_FROM`      sender, e.g. `Trainingcred Website <bookings@trainingcred.com>` (domain verified in Resend)
+- `CRON_SECRET`      any long random text; lets Vercel run the 7 am follow-up email (api/cron/followups.js)
+
+## Follow-up workflow
+Every request gets a reference (TC-YYMMDD-XXXXXX), a confirmation email to the person (when Resend is set),
+an alert email to staff, and a follow-up date (next working day). In /admin staff see "Follow up today", assign
+requests to themselves, move them through new > contacted > confirmed > invoiced > paid > attended (or cancelled/lost),
+send ready-made WhatsApp/email messages for each stage, log calls, and every change is kept in the history.
+At 7:00 am Nairobi time on weekdays staff get an email listing everything due that day.
 
 The `enquiries` table is created automatically on the first request.
 

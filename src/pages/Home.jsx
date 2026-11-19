@@ -179,7 +179,7 @@ export default function Home() {
         <div className="grid grid-cols-1 gap-3 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
           {CATEGORIES.map((c) => (
             <Link key={c.slug} to={`/categories/${c.slug}`} className="card card-hover group flex items-center gap-4 !rounded-2xl p-4 no-underline">
-              <span className="flex h-12 w-12 flex-none items-center justify-center rounded-2xl text-white shadow-lg" style={{ background: `linear-gradient(135deg, ${c.tint[0]}, ${c.tint[1]})` }}><Icon name={c.icon} size={21} /></span>
+              <span className="flex h-12 w-12 flex-none items-center justify-center rounded-2xl border border-line bg-surface text-brand transition group-hover:border-[#4FD1BE]/50 group-hover:bg-brand-soft"><Icon name={c.icon} size={21} /></span>
               <span className="min-w-0 flex-1"><span className="block text-[15px] font-bold leading-snug text-fg">{c.name}</span><span className="text-[13px] text-faint">{count(c.slug)} {count(c.slug) === 1 ? 'course' : 'courses'}</span></span>
               <ArrowUpRight size={18} className="flex-none text-faint transition group-hover:text-brand" aria-hidden="true" />
             </Link>

@@ -99,23 +99,23 @@ export function Header() {
     <>
       <a href="#main" className="sr-only focus:not-sr-only focus:fixed focus:left-3 focus:top-3 focus:z-[100] focus:rounded-full focus:bg-solid focus:px-4 focus:py-2">Skip to content</a>
       <header className="sticky top-0 z-50 px-3 pt-3 sm:px-4" onMouseLeave={() => setMenu(null)}>
-        <div className={`relative mx-auto flex max-w-[1280px] items-center gap-3 rounded-full py-2 pl-3 pr-2 transition-all duration-300 sm:pl-5 ${scrolled || menu ? 'glass-strong' : 'glass'}`}>
+        <div className={`relative mx-auto flex max-w-[1280px] items-center gap-3 rounded-full py-2 pl-3 pr-2 transition-all duration-300 sm:pl-5 ${scrolled || menu ? 'glass-strong !bg-solid/75' : 'glass'}`}>
           <Link to="/" className="no-underline" aria-label="Trainingcred home"><Wordmark /></Link>
-          <nav aria-label="Main" className="ml-4 hidden flex-1 items-center gap-0.5 lg:flex">
+          <nav aria-label="Main" className="ml-4 hidden flex-1 items-center gap-0.5 xl:flex">
             {tab('courses', 'Courses')}
             {tab('formats', 'Formats')}
             {tab('destinations', 'Destinations')}
             {plain('/for-teams', 'For Teams')}
             {plain('/advisory', 'Advisory')}
-            <span className="hidden xl:contents">{plain('/calendar', 'Calendar')}</span>
+            {plain('/calendar', 'Calendar')}
           </nav>
           <div className="ml-auto flex items-center gap-1.5">
             <Link to="/courses" aria-label="Search courses" className="flex h-11 w-11 items-center justify-center rounded-full text-fg transition hover:bg-surface-2"><Search size={19} aria-hidden="true" /></Link>
             <ThemeToggle className="hidden sm:flex" />
-            <Link to="/login" className="hidden rounded-full px-4 py-2.5 text-[14.5px] font-semibold text-fg no-underline transition hover:bg-surface-2 md:block">Log in</Link>
-            <Link to="/for-teams#quote" className="btn-amber btn-sm hidden 2xl:inline-flex">Team quote</Link>
+            <Link to="/login" className="hidden whitespace-nowrap rounded-full px-4 py-2.5 text-[14.5px] font-semibold text-fg no-underline transition hover:bg-surface-2 md:block">Log in</Link>
+            <Link to="/for-teams#quote" className="btn-amber btn-sm hidden min-[1700px]:inline-flex">Team quote</Link>
             <Link to="/courses" className="btn-primary btn-sm hidden md:inline-flex">Find a course</Link>
-            <button type="button" className="flex h-11 w-11 items-center justify-center rounded-full text-fg hover:bg-surface-2 lg:hidden" aria-label="Open menu" aria-expanded={drawer} onClick={() => setDrawer(true)}><Menu size={22} aria-hidden="true" /></button>
+            <button type="button" className="flex h-11 w-11 items-center justify-center rounded-full text-fg hover:bg-surface-2 xl:hidden" aria-label="Open menu" aria-expanded={drawer} onClick={() => setDrawer(true)}><Menu size={22} aria-hidden="true" /></button>
           </div>
 
           <Panel id="mega-courses" open={menu === 'courses'} wide>
@@ -125,7 +125,7 @@ export function Header() {
                 <div className="grid gap-1 sm:grid-cols-2">
                   {CATEGORIES.map((c) => (
                     <Link key={c.slug} to={`/categories/${c.slug}`} className="group flex items-center gap-3 rounded-2xl p-2.5 no-underline transition hover:bg-surface-2">
-                      <span className="flex h-9 w-9 flex-none items-center justify-center rounded-xl text-white" style={{ background: `linear-gradient(135deg, ${c.tint[0]}, ${c.tint[1]})` }}><Icon name={c.icon} size={17} /></span>
+                      <span className="flex h-9 w-9 flex-none items-center justify-center rounded-xl border border-line bg-surface text-brand"><Icon name={c.icon} size={17} /></span>
                       <span className="min-w-0 flex-1 text-[14.5px] font-semibold leading-snug text-fg">{c.name}</span>
                       <span className="text-xs font-semibold text-faint">{countCat(c.slug)}</span>
                     </Link>
@@ -168,7 +168,7 @@ export function Header() {
       </header>
 
       {drawer && (
-        <div className="fixed inset-0 z-[60] lg:hidden" role="dialog" aria-modal="true" aria-label="Menu">
+        <div className="fixed inset-0 z-[60] xl:hidden" role="dialog" aria-modal="true" aria-label="Menu">
           <button type="button" className="absolute inset-0 bg-black/50 backdrop-blur-sm" aria-label="Close menu" onClick={() => setDrawer(false)} />
           <div className="glass-strong absolute inset-y-2 right-2 flex w-[88%] max-w-sm flex-col overflow-y-auto rounded-3xl !bg-solid/95">
             <div className="flex items-center justify-between p-4">

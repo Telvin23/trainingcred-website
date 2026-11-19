@@ -28,6 +28,13 @@ export async function ensureSchema() {
       page TEXT, ip TEXT, user_agent TEXT, notes TEXT, updated_at TIMESTAMPTZ
     )`
     await q`CREATE INDEX IF NOT EXISTS enquiries_created_idx ON enquiries (created_at DESC)`
+    // follow-up fields (added in v4; safe to run every time)
+    await q`ALTER TABLE enquiries ADD COLUMN IF NOT EXISTS assigned_to TEXT`
+    await q`ALTER TABLE enquiries ADD COLUMN IF NOT EXISTS follow_up_on DATE`
+    await q`ALTER TABLE enquiries ADD COLUMN IF NOT EXISTS history JSONB NOT NULL DEFAULT '[]'::jsonb`
+    await q`ALTER TABLE enquiries ADD COLUMN IF NOT EXISTS ack_sent BOOLEAN NOT NULL DEFAULT false`
+    await q`CREATE INDEX IF NOT EXISTS enquiries_email_idx ON enquiries (lower(email))`
+    await q`CREATE INDEX IF NOT EXISTS enquiries_followup_idx ON enquiries (follow_up_on) WHERE status NOT IN ('paid', 'cancelled')`
   })().catch((e) => { ready = null; throw e })
   return ready
 }
