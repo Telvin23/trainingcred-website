@@ -1,0 +1,6 @@
+node_modules
+dist
+scripts/.prerender-tmp
+.env
+.env.local
+.vercel

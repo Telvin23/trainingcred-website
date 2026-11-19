@@ -1,0 +1,12 @@
+# Rebuilds the site every night so past course dates drop off.
+# Needs a repository secret VERCEL_DEPLOY_HOOK (Vercel > Project > Settings > Git > Deploy Hooks).
+name: Daily rebuild
+on:
+  schedule:
+    - cron: '7 0 * * *'   # 03:07 Nairobi time
+  workflow_dispatch:
+jobs:
+  rebuild:
+    runs-on: ubuntu-latest
+    steps:
+      - run: curl -fsS -X POST "${{ secrets.VERCEL_DEPLOY_HOOK }}"

@@ -1,0 +1,60 @@
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Open Sans", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --font-serif: "Libre Baskerville", Georgia, serif;
+  --color-teal: #0E6B5C;
+  --color-teal-dark: #0A5548;
+  --color-navy: #0B3557;
+  --color-deep: #082A44;
+  --color-mint: #E7F3EF;
+  --color-ink: #10212E;
+  --color-muted: #4A5A66;
+  --color-line: #DCE5EA;
+  --color-blue: #0B5A86;
+  --color-soft: #F6FAF9;
+  --color-haze: #DCE8F1;
+  --color-glow: #7FD3BF;
+}
+
+@layer base {
+  html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
+  body { @apply bg-white text-ink font-sans antialiased; }
+  a { @apply text-blue; }
+  a:hover { color: #08405f; }
+  :focus-visible { outline: 3px solid #7FD3BF; outline-offset: 2px; border-radius: 4px; }
+}
+
+@utility wrap { margin-inline: auto; width: 100%; max-width: 1240px; padding-inline: 1rem; @media (min-width: 640px) { padding-inline: 1.5rem; } @media (min-width: 1800px) { max-width: 1480px; } }
+
+@utility btn { display: inline-flex; align-items: center; justify-content: center; gap: .5rem; border-radius: .75rem; padding: .75rem 1.25rem; font-weight: 700; text-decoration: none; min-height: 44px; transition: background-color .15s, color .15s, border-color .15s; cursor: pointer; }
+@utility btn-primary { @apply btn bg-teal text-white; &:hover { @apply bg-teal-dark text-white; } }
+@utility btn-navy { @apply btn bg-navy text-white; &:hover { @apply bg-deep text-white; } }
+@utility btn-outline { @apply btn border-2 border-teal bg-white text-teal; &:hover { @apply bg-mint text-teal; } }
+@utility btn-ghost { @apply btn border border-white/50 text-white; &:hover { @apply bg-white/10 text-white; } }
+@utility btn-white { @apply btn bg-white text-navy; &:hover { @apply bg-haze text-navy; } }
+
+@utility chip { @apply inline-flex items-center rounded-full px-3 py-1.5 text-sm; }
+@utility card { @apply rounded-2xl border border-line bg-white; }
+@utility h2 { @apply text-[26px] font-extrabold tracking-tight text-ink sm:text-[30px]; }
+@utility eyebrow { @apply text-xs font-bold tracking-[1.2px] uppercase; }
+@utility field { @apply flex flex-col gap-1.5 text-sm font-semibold text-muted; }
+@utility input { @apply w-full rounded-xl border border-line bg-white px-3.5 py-3 text-base font-normal text-ink outline-none; &:focus { @apply border-teal ring-2 ring-teal/20; } }
+
+@layer components {
+details > summary { list-style: none; cursor: pointer; }
+details > summary::-webkit-details-marker { display: none; }
+details[open] .chev { transform: rotate(180deg); }
+
+@keyframes kenburns { from { transform: scale(1.08); } to { transform: scale(1); } }
+.slide-on { animation: kenburns 7s ease-out forwards; }
+@keyframes progress { from { transform: scaleX(0); } to { transform: scaleX(1); } }
+.progress { animation: progress linear forwards; transform-origin: left; }
+.paused .progress, .paused .slide-on { animation-play-state: paused; }
+@media (prefers-reduced-motion: reduce) {
+  .slide-on, .progress { animation: none !important; }
+  html { scroll-behavior: auto; }
+}
+.no-scrollbar { scrollbar-width: none; }
+.no-scrollbar::-webkit-scrollbar { display: none; }
+}
