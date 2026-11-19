@@ -2,12 +2,612 @@
   "cleanUrls": true,
   "trailingSlash": false,
   "headers": [
-    { "source": "/assets/(.*)", "headers": [{ "key": "Cache-Control", "value": "public, max-age=31536000, immutable" }] },
-    { "source": "/admin", "headers": [{ "key": "X-Robots-Tag", "value": "noindex, nofollow" }] },
-    { "source": "/(.*)", "headers": [
-      { "key": "X-Content-Type-Options", "value": "nosniff" },
-      { "key": "Referrer-Policy", "value": "strict-origin-when-cross-origin" },
-      { "key": "X-Frame-Options", "value": "SAMEORIGIN" }
-    ] }
+    {
+      "source": "/assets/(.*)",
+      "headers": [
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=31536000, immutable"
+        }
+      ]
+    },
+    {
+      "source": "/admin",
+      "headers": [
+        {
+          "key": "X-Robots-Tag",
+          "value": "noindex, nofollow"
+        }
+      ]
+    },
+    {
+      "source": "/(.*)",
+      "headers": [
+        {
+          "key": "X-Content-Type-Options",
+          "value": "nosniff"
+        },
+        {
+          "key": "Referrer-Policy",
+          "value": "strict-origin-when-cross-origin"
+        },
+        {
+          "key": "X-Frame-Options",
+          "value": "SAMEORIGIN"
+        }
+      ]
+    }
+  ],
+  "redirects": [
+    {
+      "source": "/:cc([a-z]{2})",
+      "destination": "/",
+      "permanent": true
+    },
+    {
+      "source": "/:cc([a-z]{2})/:path*",
+      "destination": "/:path*",
+      "permanent": true
+    },
+    {
+      "source": "/training-courses",
+      "destination": "/courses",
+      "permanent": true
+    },
+    {
+      "source": "/training-courses/:path*",
+      "destination": "/courses",
+      "permanent": true
+    },
+    {
+      "source": "/course-finder",
+      "destination": "/courses",
+      "permanent": true
+    },
+    {
+      "source": "/course-finder/:path*",
+      "destination": "/courses",
+      "permanent": true
+    },
+    {
+      "source": "/training-calendar",
+      "destination": "/calendar",
+      "permanent": true
+    },
+    {
+      "source": "/training-calendar/:path*",
+      "destination": "/calendar",
+      "permanent": true
+    },
+    {
+      "source": "/corporate-training",
+      "destination": "/for-teams",
+      "permanent": true
+    },
+    {
+      "source": "/corporate-training/:path*",
+      "destination": "/for-teams",
+      "permanent": true
+    },
+    {
+      "source": "/contact-us",
+      "destination": "/contact",
+      "permanent": true
+    },
+    {
+      "source": "/about-trainingcred",
+      "destination": "/about",
+      "permanent": true
+    },
+    {
+      "source": "/privacy-policy",
+      "destination": "/privacy",
+      "permanent": true
+    },
+    {
+      "source": "/latest-added-courses",
+      "destination": "/courses",
+      "permanent": true
+    },
+    {
+      "source": "/training-course/role-of-ipcc-in-climate-science-and-policy",
+      "destination": "/courses/role-of-ipcc-in-climate-science-and-policy",
+      "permanent": true
+    },
+    {
+      "source": "/course-schedules/role-of-ipcc-in-climate-science-and-policy/:city",
+      "destination": "/courses/role-of-ipcc-in-climate-science-and-policy",
+      "permanent": true
+    },
+    {
+      "source": "/training-course/renewable-energy-solutions-training",
+      "destination": "/courses/renewable-energy-solutions-training",
+      "permanent": true
+    },
+    {
+      "source": "/course-schedules/renewable-energy-solutions-training/:city",
+      "destination": "/courses/renewable-energy-solutions-training",
+      "permanent": true
+    },
+    {
+      "source": "/training-course/environmental-recovery-and-ecosystem-restoration-training",
+      "destination": "/courses/environmental-recovery-and-ecosystem-restoration-training",
+      "permanent": true
+    },
+    {
+      "source": "/course-schedules/environmental-recovery-and-ecosystem-restoration-training/:city",
+      "destination": "/courses/environmental-recovery-and-ecosystem-restoration-training",
+      "permanent": true
+    },
+    {
+      "source": "/training-course/financial-analysis-modelling-and-forecasting-training",
+      "destination": "/courses/financial-analysis-modelling-and-forecasting-training",
+      "permanent": true
+    },
+    {
+      "source": "/course-schedules/financial-analysis-modelling-and-forecasting-training/:city",
+      "destination": "/courses/financial-analysis-modelling-and-forecasting-training",
+      "permanent": true
+    },
+    {
+      "source": "/training-course/investment-analysis-financial-modelling-training",
+      "destination": "/courses/investment-analysis-financial-modelling-training",
+      "permanent": true
+    },
+    {
+      "source": "/course-schedules/investment-analysis-financial-modelling-training/:city",
+      "destination": "/courses/investment-analysis-financial-modelling-training",
+      "permanent": true
+    },
+    {
+      "source": "/training-course/advanced-financial-management-for-world-bank-funded-projects-training",
+      "destination": "/courses/advanced-financial-management-for-world-bank-funded-projects-training",
+      "permanent": true
+    },
+    {
+      "source": "/course-schedules/advanced-financial-management-for-world-bank-funded-projects-training/:city",
+      "destination": "/courses/advanced-financial-management-for-world-bank-funded-projects-training",
+      "permanent": true
+    },
+    {
+      "source": "/training-course/international-banking-and-finance",
+      "destination": "/courses/international-banking-and-finance",
+      "permanent": true
+    },
+    {
+      "source": "/course-schedules/international-banking-and-finance/:city",
+      "destination": "/courses/international-banking-and-finance",
+      "permanent": true
+    },
+    {
+      "source": "/training-course/islamic-banking-and-finance-training",
+      "destination": "/courses/islamic-banking-and-finance-training",
+      "permanent": true
+    },
+    {
+      "source": "/course-schedules/islamic-banking-and-finance-training/:city",
+      "destination": "/courses/islamic-banking-and-finance-training",
+      "permanent": true
+    },
+    {
+      "source": "/training-course/digital-payments-wallets-and-merchant-operations",
+      "destination": "/courses/digital-payments-wallets-and-merchant-operations",
+      "permanent": true
+    },
+    {
+      "source": "/course-schedules/digital-payments-wallets-and-merchant-operations/:city",
+      "destination": "/courses/digital-payments-wallets-and-merchant-operations",
+      "permanent": true
+    },
+    {
+      "source": "/training-course/first-response-and-medical-assistance-in-crises-training",
+      "destination": "/courses/first-response-and-medical-assistance-in-crises-training",
+      "permanent": true
+    },
+    {
+      "source": "/course-schedules/first-response-and-medical-assistance-in-crises-training/:city",
+      "destination": "/courses/first-response-and-medical-assistance-in-crises-training",
+      "permanent": true
+    },
+    {
+      "source": "/training-course/cctv-surveillance-and-access-control-systems-management-training",
+      "destination": "/courses/cctv-surveillance-and-access-control-systems-management-training",
+      "permanent": true
+    },
+    {
+      "source": "/course-schedules/cctv-surveillance-and-access-control-systems-management-training/:city",
+      "destination": "/courses/cctv-surveillance-and-access-control-systems-management-training",
+      "permanent": true
+    },
+    {
+      "source": "/training-course/mental-health-and-wellbeing-training",
+      "destination": "/courses/mental-health-and-wellbeing-training",
+      "permanent": true
+    },
+    {
+      "source": "/course-schedules/mental-health-and-wellbeing-training/:city",
+      "destination": "/courses/mental-health-and-wellbeing-training",
+      "permanent": true
+    },
+    {
+      "source": "/training-course/disaster-relief-and-emergency-response-training",
+      "destination": "/courses/disaster-relief-and-emergency-response-training",
+      "permanent": true
+    },
+    {
+      "source": "/course-schedules/disaster-relief-and-emergency-response-training/:city",
+      "destination": "/courses/disaster-relief-and-emergency-response-training",
+      "permanent": true
+    },
+    {
+      "source": "/training-course/agricultural-extension-services-training",
+      "destination": "/courses/agricultural-extension-services-training",
+      "permanent": true
+    },
+    {
+      "source": "/course-schedules/agricultural-extension-services-training/:city",
+      "destination": "/courses/agricultural-extension-services-training",
+      "permanent": true
+    },
+    {
+      "source": "/training-course/rural-finance-and-credit-for-agriculture-for-ngos-training",
+      "destination": "/courses/rural-finance-and-credit-for-agriculture-for-ngos-training",
+      "permanent": true
+    },
+    {
+      "source": "/course-schedules/rural-finance-and-credit-for-agriculture-for-ngos-training/:city",
+      "destination": "/courses/rural-finance-and-credit-for-agriculture-for-ngos-training",
+      "permanent": true
+    },
+    {
+      "source": "/training-course/real-estate-development-investment-management-training",
+      "destination": "/courses/real-estate-development-investment-management-training",
+      "permanent": true
+    },
+    {
+      "source": "/course-schedules/real-estate-development-investment-management-training/:city",
+      "destination": "/courses/real-estate-development-investment-management-training",
+      "permanent": true
+    },
+    {
+      "source": "/training-course/integrating-smart-home-solutions-training",
+      "destination": "/courses/integrating-smart-home-solutions-training",
+      "permanent": true
+    },
+    {
+      "source": "/course-schedules/integrating-smart-home-solutions-training/:city",
+      "destination": "/courses/integrating-smart-home-solutions-training",
+      "permanent": true
+    },
+    {
+      "source": "/training-course/dhis2-health-information-system-management-training",
+      "destination": "/courses/dhis2-health-information-system-management-training",
+      "permanent": true
+    },
+    {
+      "source": "/course-schedules/dhis2-health-information-system-management-training/:city",
+      "destination": "/courses/dhis2-health-information-system-management-training",
+      "permanent": true
+    },
+    {
+      "source": "/training-course/procurement-and-supply-chain-management-training",
+      "destination": "/courses/procurement-and-supply-chain-management-training",
+      "permanent": true
+    },
+    {
+      "source": "/course-schedules/procurement-and-supply-chain-management-training/:city",
+      "destination": "/courses/procurement-and-supply-chain-management-training",
+      "permanent": true
+    },
+    {
+      "source": "/training-course/sustainable-procurement-and-iso-20400-training",
+      "destination": "/courses/sustainable-procurement-and-iso-20400-training",
+      "permanent": true
+    },
+    {
+      "source": "/course-schedules/sustainable-procurement-and-iso-20400-training/:city",
+      "destination": "/courses/sustainable-procurement-and-iso-20400-training",
+      "permanent": true
+    },
+    {
+      "source": "/training-course/strategic-sourcing-and-category-management-training",
+      "destination": "/courses/strategic-sourcing-and-category-management-training",
+      "permanent": true
+    },
+    {
+      "source": "/course-schedules/strategic-sourcing-and-category-management-training/:city",
+      "destination": "/courses/strategic-sourcing-and-category-management-training",
+      "permanent": true
+    },
+    {
+      "source": "/training-course/transport-and-logistics-management-training",
+      "destination": "/courses/transport-and-logistics-management-training",
+      "permanent": true
+    },
+    {
+      "source": "/course-schedules/transport-and-logistics-management-training/:city",
+      "destination": "/courses/transport-and-logistics-management-training",
+      "permanent": true
+    },
+    {
+      "source": "/training-course/fleet-management-transportation-and-distribution-training",
+      "destination": "/courses/fleet-management-transportation-and-distribution-training",
+      "permanent": true
+    },
+    {
+      "source": "/course-schedules/fleet-management-transportation-and-distribution-training/:city",
+      "destination": "/courses/fleet-management-transportation-and-distribution-training",
+      "permanent": true
+    },
+    {
+      "source": "/training-course/monitoring-and-evaluation-of-projects",
+      "destination": "/courses/monitoring-and-evaluation-of-projects",
+      "permanent": true
+    },
+    {
+      "source": "/course-schedules/monitoring-and-evaluation-of-projects/:city",
+      "destination": "/courses/monitoring-and-evaluation-of-projects",
+      "permanent": true
+    },
+    {
+      "source": "/training-course/human-centered-knowledge-design-training",
+      "destination": "/courses/human-centered-knowledge-design-training",
+      "permanent": true
+    },
+    {
+      "source": "/course-schedules/human-centered-knowledge-design-training/:city",
+      "destination": "/courses/human-centered-knowledge-design-training",
+      "permanent": true
+    },
+    {
+      "source": "/training-course/grant-management-and-donor-compliance",
+      "destination": "/courses/grant-management-and-donor-compliance",
+      "permanent": true
+    },
+    {
+      "source": "/course-schedules/grant-management-and-donor-compliance/:city",
+      "destination": "/courses/grant-management-and-donor-compliance",
+      "permanent": true
+    },
+    {
+      "source": "/training-course/project-management-for-development-programmes",
+      "destination": "/courses/project-management-for-development-programmes",
+      "permanent": true
+    },
+    {
+      "source": "/course-schedules/project-management-for-development-programmes/:city",
+      "destination": "/courses/project-management-for-development-programmes",
+      "permanent": true
+    },
+    {
+      "source": "/training-course/visionary-leadership-for-executives-training",
+      "destination": "/courses/visionary-leadership-for-executives-training",
+      "permanent": true
+    },
+    {
+      "source": "/course-schedules/visionary-leadership-for-executives-training/:city",
+      "destination": "/courses/visionary-leadership-for-executives-training",
+      "permanent": true
+    },
+    {
+      "source": "/training-course/leading-regional-operations-and-cross-border-teams-in-east-and-sub-saharan-africa",
+      "destination": "/courses/leading-regional-operations-and-cross-border-teams-in-east-and-sub-saharan-africa",
+      "permanent": true
+    },
+    {
+      "source": "/course-schedules/leading-regional-operations-and-cross-border-teams-in-east-and-sub-saharan-africa/:city",
+      "destination": "/courses/leading-regional-operations-and-cross-border-teams-in-east-and-sub-saharan-africa",
+      "permanent": true
+    },
+    {
+      "source": "/training-course/building-a-positive-organizational-culture",
+      "destination": "/courses/building-a-positive-organizational-culture",
+      "permanent": true
+    },
+    {
+      "source": "/course-schedules/building-a-positive-organizational-culture/:city",
+      "destination": "/courses/building-a-positive-organizational-culture",
+      "permanent": true
+    },
+    {
+      "source": "/training-course/corporate-social-responsibility-csr-training",
+      "destination": "/courses/corporate-social-responsibility-csr-training",
+      "permanent": true
+    },
+    {
+      "source": "/course-schedules/corporate-social-responsibility-csr-training/:city",
+      "destination": "/courses/corporate-social-responsibility-csr-training",
+      "permanent": true
+    },
+    {
+      "source": "/training-course/communication-and-presentation-skills-training",
+      "destination": "/courses/communication-and-presentation-skills-training",
+      "permanent": true
+    },
+    {
+      "source": "/course-schedules/communication-and-presentation-skills-training/:city",
+      "destination": "/courses/communication-and-presentation-skills-training",
+      "permanent": true
+    },
+    {
+      "source": "/training-course/goal-setting-training",
+      "destination": "/courses/goal-setting-training",
+      "permanent": true
+    },
+    {
+      "source": "/course-schedules/goal-setting-training/:city",
+      "destination": "/courses/goal-setting-training",
+      "permanent": true
+    },
+    {
+      "source": "/training-course/developing-and-retaining-top-talent",
+      "destination": "/courses/developing-and-retaining-top-talent",
+      "permanent": true
+    },
+    {
+      "source": "/course-schedules/developing-and-retaining-top-talent/:city",
+      "destination": "/courses/developing-and-retaining-top-talent",
+      "permanent": true
+    },
+    {
+      "source": "/training-course/commercial-law-training",
+      "destination": "/courses/commercial-law-training",
+      "permanent": true
+    },
+    {
+      "source": "/course-schedules/commercial-law-training/:city",
+      "destination": "/courses/commercial-law-training",
+      "permanent": true
+    },
+    {
+      "source": "/training-course/corporate-governance-and-board-competence-training",
+      "destination": "/courses/corporate-governance-and-board-competence-training",
+      "permanent": true
+    },
+    {
+      "source": "/course-schedules/corporate-governance-and-board-competence-training/:city",
+      "destination": "/courses/corporate-governance-and-board-competence-training",
+      "permanent": true
+    },
+    {
+      "source": "/training-course/intensive-communications-and-pr-for-public-sector-training",
+      "destination": "/courses/intensive-communications-and-pr-for-public-sector-training",
+      "permanent": true
+    },
+    {
+      "source": "/course-schedules/intensive-communications-and-pr-for-public-sector-training/:city",
+      "destination": "/courses/intensive-communications-and-pr-for-public-sector-training",
+      "permanent": true
+    },
+    {
+      "source": "/training-course/ai-powered-knowledge-discovery-systems-training",
+      "destination": "/courses/ai-powered-knowledge-discovery-systems-training",
+      "permanent": true
+    },
+    {
+      "source": "/course-schedules/ai-powered-knowledge-discovery-systems-training/:city",
+      "destination": "/courses/ai-powered-knowledge-discovery-systems-training",
+      "permanent": true
+    },
+    {
+      "source": "/training-course/blockchain-technology-and-cryptocurrencies-workshop",
+      "destination": "/courses/blockchain-technology-and-cryptocurrencies-workshop",
+      "permanent": true
+    },
+    {
+      "source": "/course-schedules/blockchain-technology-and-cryptocurrencies-workshop/:city",
+      "destination": "/courses/blockchain-technology-and-cryptocurrencies-workshop",
+      "permanent": true
+    },
+    {
+      "source": "/training-course/oracle-erp-cloud-training-and-certification",
+      "destination": "/courses/oracle-erp-cloud-training-and-certification",
+      "permanent": true
+    },
+    {
+      "source": "/course-schedules/oracle-erp-cloud-training-and-certification/:city",
+      "destination": "/courses/oracle-erp-cloud-training-and-certification",
+      "permanent": true
+    },
+    {
+      "source": "/training-course/productivity-software-microsoft-office-suite-training",
+      "destination": "/courses/productivity-software-microsoft-office-suite-training",
+      "permanent": true
+    },
+    {
+      "source": "/course-schedules/productivity-software-microsoft-office-suite-training/:city",
+      "destination": "/courses/productivity-software-microsoft-office-suite-training",
+      "permanent": true
+    },
+    {
+      "source": "/training-course/data-protection-and-privacy-compliance",
+      "destination": "/courses/data-protection-and-privacy-compliance",
+      "permanent": true
+    },
+    {
+      "source": "/course-schedules/data-protection-and-privacy-compliance/:city",
+      "destination": "/courses/data-protection-and-privacy-compliance",
+      "permanent": true
+    },
+    {
+      "source": "/training-course/online-travel-agencies-and-distribution-systems-training",
+      "destination": "/courses/online-travel-agencies-and-distribution-systems-training",
+      "permanent": true
+    },
+    {
+      "source": "/course-schedules/online-travel-agencies-and-distribution-systems-training/:city",
+      "destination": "/courses/online-travel-agencies-and-distribution-systems-training",
+      "permanent": true
+    },
+    {
+      "source": "/training-course/housekeeping-management-and-best-practices-training",
+      "destination": "/courses/housekeeping-management-and-best-practices-training",
+      "permanent": true
+    },
+    {
+      "source": "/course-schedules/housekeeping-management-and-best-practices-training/:city",
+      "destination": "/courses/housekeeping-management-and-best-practices-training",
+      "permanent": true
+    },
+    {
+      "source": "/training-course/front-office-management-and-customer-service-training",
+      "destination": "/courses/front-office-management-and-customer-service-training",
+      "permanent": true
+    },
+    {
+      "source": "/course-schedules/front-office-management-and-customer-service-training/:city",
+      "destination": "/courses/front-office-management-and-customer-service-training",
+      "permanent": true
+    },
+    {
+      "source": "/training-course/corporate-travel-management-training",
+      "destination": "/courses/corporate-travel-management-training",
+      "permanent": true
+    },
+    {
+      "source": "/course-schedules/corporate-travel-management-training/:city",
+      "destination": "/courses/corporate-travel-management-training",
+      "permanent": true
+    },
+    {
+      "source": "/training-course/customer-experience-training",
+      "destination": "/courses/customer-experience-training",
+      "permanent": true
+    },
+    {
+      "source": "/course-schedules/customer-experience-training/:city",
+      "destination": "/courses/customer-experience-training",
+      "permanent": true
+    },
+    {
+      "source": "/training-course/closing-the-deal-proven-sales-closing-techniques-training",
+      "destination": "/courses/closing-the-deal-proven-sales-closing-techniques-training",
+      "permanent": true
+    },
+    {
+      "source": "/course-schedules/closing-the-deal-proven-sales-closing-techniques-training/:city",
+      "destination": "/courses/closing-the-deal-proven-sales-closing-techniques-training",
+      "permanent": true
+    },
+    {
+      "source": "/training-course/:slug",
+      "destination": "/courses",
+      "permanent": true
+    },
+    {
+      "source": "/course-schedules/:slug/:city*",
+      "destination": "/courses",
+      "permanent": true
+    },
+    {
+      "source": "/energy-water-climate-environment/courses",
+      "destination": "/categories/energy-water-climate-environment",
+      "permanent": true
+    },
+    {
+      "source": "/monitoring-evaluation-accountability-and-learning/courses",
+      "destination": "/categories/monitoring-evaluation-accountability-and-learning",
+      "permanent": true
+    }
   ]
 }

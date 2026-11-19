@@ -32,7 +32,7 @@ export function City() {
   return (
     <>
       <Seo title={`Training Courses in ${city.name}, ${city.country}`} path={`/cities/${slug}`} description={`Upcoming 5 and 10-day classroom training courses in ${city.name}, ${city.country}: dates, fees and how to book. Also available live online.`} jsonLd={crumbsLd(crumbs)} />
-      <PageHero crumbs={crumbs} eyebrow="Training destination" title={`Training courses in ${city.name}`} intro={`Classroom courses in ${city.name}, ${city.country}, with practitioner trainers in a professional venue. [Venue name and area - confirm.]`} />
+      <PageHero crumbs={crumbs} eyebrow="Training destination" title={`Training courses in ${city.name}`} intro={`5 and 10-day classroom courses in ${city.name}, ${city.country}, led by practitioner trainers in a professional conference venue. Joining instructions with the exact venue and hotel options follow your booking.`} />
       <section><div className="wrap py-10"><CourseListing fixed={{ where: slug }} /></div></section>
     </>
   )

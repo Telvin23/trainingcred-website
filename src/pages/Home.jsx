@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
-import { Search, ArrowRight, ArrowUpRight, Quote, MessageCircle, Phone, Sparkles, MapPin, CalendarDays, Users, Briefcase, Award, BadgeCheck } from 'lucide-react'
+import { Search, ArrowRight, ArrowUpRight, Quote, MessageCircle, Phone, Sparkles, MapPin, CalendarDays, Users, Briefcase, Award, BadgeCheck, ShieldCheck, Landmark, HeartHandshake, Globe2, Banknote, HeartPulse, Zap, Sprout, Hotel, Building2, GraduationCap } from 'lucide-react'
 import { Seo, orgLd, faqLd } from '../lib/seo.jsx'
 import { SITE, HERO_SLIDES, FORMATS, STEPS, WHY, GENERAL_FAQS, ADVISORY, waLink } from '../data/site.js'
 import { CATEGORIES, CITIES } from '../data/catalog.js'
@@ -9,7 +9,8 @@ import { allSessions, monthKey, monthLabel } from '../lib/util.js'
 import { HeroSlider, CourseGrid, FaqList, Icon, Stat, SessionRow } from '../components/Bits.jsx'
 import { SectionHead, FORMAT_ICON, formatLink } from '../components/Layout.jsx'
 
-const CHIPS = [['Climate & IPCC', 'climate'], ['Procurement', 'procurement'], ['IFRS', 'ifrs'], ['Leadership', 'leadership'], ['M&E', 'evaluation'], ['AI at work', 'ai']]
+const SECTORS = [[Landmark, 'Government & public sector'], [HeartHandshake, 'NGOs & humanitarian'], [Globe2, 'Development partners'], [Banknote, 'Banks & financial institutions'], [HeartPulse, 'Health programmes'], [Zap, 'Energy & utilities'], [Sprout, 'Agriculture & food'], [Hotel, 'Hotels & tourism'], [Building2, 'Private companies'], [GraduationCap, 'Universities & research']]
+const CHIPS = [['Climate & IPCC', 'climate'], ['Procurement', 'procurement'], ['Financial modelling', 'modelling'], ['Leadership', 'leadership'], ['MEAL', 'evaluation'], ['DHIS2', 'dhis2']]
 const CITY_TABS = [['all', 'All'], ['online', 'Online'], ['nairobi', 'Nairobi'], ['kigali', 'Kigali'], ['dubai', 'Dubai'], ['mombasa', 'Mombasa'], ['zanzibar', 'Zanzibar']]
 
 export default function Home() {
@@ -98,7 +99,7 @@ export default function Home() {
                 <Stat n={SITE.stats.categories} label="categories" />
                 <Stat n={SITE.stats.topics} label="topics" />
                 <Stat n={SITE.stats.cities} label="cities" />
-                <Stat n="5/10" label="day formats" />
+                <Stat n="CPD" label="accredited" />
               </div>
               <div className="flex flex-wrap items-center justify-between gap-3">
                 {controls}
@@ -109,12 +110,12 @@ export default function Home() {
         )}
       </HeroSlider>
 
-      {/* 2. TRUST: who already trains with us */}
-      <section aria-label="Organisations we have trained" className="overflow-hidden py-6">
-        <p className="mb-4 text-center text-xs font-bold uppercase tracking-[.14em] text-faint">Trusted by teams across government, NGOs and business</p>
+      {/* 2. WHO WE TRAIN */}
+      <section aria-label="Sectors we train" className="overflow-hidden py-6">
+        <p className="mb-4 text-center text-xs font-bold uppercase tracking-[.14em] text-faint">Training for teams across government, development and business</p>
         <div className="relative [mask-image:linear-gradient(90deg,transparent,#000_12%,#000_88%,transparent)]">
-          <div className="marquee flex w-max gap-4">
-            {[...Array(16)].map((_, n) => <span key={n} className="glass rounded-2xl px-6 py-3 text-sm font-semibold text-faint">[Client logo]</span>)}
+          <div className="marquee flex w-max gap-3">
+            {[...SECTORS, ...SECTORS].map(([I, l], n) => <span key={n} className="glass flex items-center gap-2.5 whitespace-nowrap rounded-full px-5 py-2.5 text-sm font-semibold text-muted"><I size={16} className="text-brand" aria-hidden="true" />{l}</span>)}
           </div>
         </div>
       </section>
@@ -241,20 +242,29 @@ export default function Home() {
         </div>
       </section>
 
-      {/* 8. PROOF */}
+      {/* 8. TRUST: accreditation + mission + approach */}
       <section className="wrap py-16">
-        <SectionHead eyebrow="Participants" title="What people say after the course" />
-        <div className="grid gap-5 md:grid-cols-3">
-          {[1, 2, 3].map((n) => (
-            <figure key={n} className="card m-0 flex flex-col gap-5 p-7">
-              <Quote size={28} className="text-accent" aria-hidden="true" />
-              <blockquote className="m-0 text-[16px] leading-relaxed">[A real quote from a past participant about what changed in their work after the course.]</blockquote>
-              <figcaption className="mt-auto flex items-center gap-3 border-t border-line pt-4 text-sm">
-                <span className="h-10 w-10 rounded-full bg-gradient-to-br from-[#10A08D] to-[#0B3557]" aria-hidden="true" />
-                <span><strong className="block">[Name]</strong><span className="text-faint">[Role, Organisation]</span></span>
-              </figcaption>
-            </figure>
-          ))}
+        <div className="grid gap-5 lg:grid-cols-[1fr_1.4fr]">
+          <div className="card relative flex flex-col gap-4 overflow-hidden p-7 sm:p-9">
+            <div className="pointer-events-none absolute -left-16 -top-16 h-56 w-56 rounded-full bg-amber/20 blur-3xl" aria-hidden="true" />
+            <span className="flex h-14 w-14 items-center justify-center rounded-2xl bg-accent-soft text-accent"><ShieldCheck size={28} aria-hidden="true" /></span>
+            <div className="eyebrow">Accredited</div>
+            <h2 className="m-0 text-[28px] font-extrabold leading-tight">CPD-accredited training</h2>
+            <p className="m-0 text-muted">Trainingcred Institute is a member of {SITE.cpd.body}, provider no. {SITE.cpd.provider}. Every participant who completes a course receives a certificate recording the CPD hours attended.</p>
+            <Link to="/about" className="btn-glass mt-auto self-start">About Trainingcred<ArrowRight size={17} aria-hidden="true" /></Link>
+          </div>
+          <div className="card flex flex-col gap-6 p-7 sm:p-9">
+            <Quote size={30} className="text-brand" aria-hidden="true" />
+            <blockquote className="m-0 text-[22px] font-bold leading-snug sm:text-[26px]">Our mission is {SITE.mission.charAt(0).toLowerCase() + SITE.mission.slice(1)}</blockquote>
+            <div className="grid gap-3 sm:grid-cols-3">
+              {[['Assess', 'We start from the skills gap and the work your people actually do.'], ['Engage', 'Practitioner trainers, real cases and hands-on exercises.'], ['Empower', 'Tools, templates and action plans to use straight away.']].map(([t, d], n) => (
+                <div key={t} className="rounded-2xl bg-surface p-4">
+                  <div className="flex items-center gap-2"><span className="text-xs font-extrabold text-accent">0{n + 1}</span><span className="text-lg font-extrabold">{t}</span></div>
+                  <p className="m-0 mt-1.5 text-[14px] leading-relaxed text-muted">{d}</p>
+                </div>
+              ))}
+            </div>
+          </div>
         </div>
       </section>
 

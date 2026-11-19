@@ -12,7 +12,9 @@ and are stored in a Postgres database (Neon). Staff manage them at `/admin`.
 ## Where things live
 - `src/data/site.js`     phone, email, socials, hero photos, FAQs, advisory services, placeholders in [brackets]
 - `src/data/catalog.js`  focus areas and training cities
-- `src/data/courses.js`  SAMPLE courses, dates and fees (replace with the real catalogue, same shape)
+- `src/data/courses.js`  45 courses (real Trainingcred titles and URL slugs), dates and fees
+- `scripts/make-redirects.mjs`  rebuilds the 301 redirects in vercel.json from old trainingcred.com links (run after adding courses)
+- `src/components/LogoCube.jsx`  the optical-illusion cube logo (also public/favicon.svg, logo.svg, logo-512.png)
 - `src/pages/`           pages; `src/components/` header, footer, slideshow, course cards, forms
 - `api/enquiry.js`       saves bookings / quotes / brochure / contact / advisory requests, emails staff (optional)
 - `api/admin/enquiries.js`  list + update status/notes for /admin
@@ -26,7 +28,7 @@ and are stored in a Postgres database (Neon). Staff manage them at `/admin`.
 
 The `enquiries` table is created automatically on the first request.
 
-## Before launch
-Replace everything in [brackets]: client logos, testimonials, participant count, office address,
-payment terms, cancellation policy, daily hours, venue names. Have the privacy notice and terms reviewed.
-Use photos you have the rights to (some of the current hero photos come from other events).
+## Before launch, confirm with Trainingcred
+Classroom fees other than live online (KSh 80,000/160,000) and Cairo/Dubai (USD 4,200); the payment,
+transfer and cancellation terms; what the fee includes; daily hours (8:30-4:30); office hours; data retention
+periods in the privacy notice. Use photos you have the rights to (some hero photos come from other events).

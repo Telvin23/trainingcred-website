@@ -147,6 +147,10 @@
     .slide-on, .progress, .marquee, .rise { animation: none !important; }
     html { scroll-behavior: auto; }
   }
+  .logo-cube .logo-cube-inner { transform-origin: 32px 32px; animation: cubeflip 9s cubic-bezier(.6, 0, .2, 1) infinite; }
+  @keyframes cubeflip { 0%, 40% { transform: rotate(0deg); } 50%, 90% { transform: rotate(180deg); } 100% { transform: rotate(360deg); } }
+  .group\/logo:hover .logo-cube .logo-cube-inner, .logo-cube:hover .logo-cube-inner { animation-duration: 2.4s; }
+  @media (prefers-reduced-motion: reduce) { .logo-cube .logo-cube-inner { animation: none; } }
   .no-scrollbar { scrollbar-width: none; }
   .no-scrollbar::-webkit-scrollbar { display: none; }
 }

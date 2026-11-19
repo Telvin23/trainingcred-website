@@ -129,7 +129,7 @@ export default function Course() {
                 <div className="card p-6"><h3 className="m-0 mb-4 text-lg font-extrabold">Who should attend</h3>
                   <div className="flex flex-wrap gap-2">{course.audience.map((a) => <span key={a} className="chip bg-surface-2 text-fg">{a}</span>)}</div></div>
                 <dl className="card m-0 grid grid-cols-2 gap-4 p-6 text-[14.5px]">
-                  {[[Globe, 'Language', 'English'], [CalendarDays, 'Daily hours', '[9:00 - 16:00 EAT]'], [Users, 'Class size', '[Max 20]'], [Award, 'Certificate', 'On completion']].map(([I, k, v]) => (
+                  {[[Globe, 'Language', 'English'], [CalendarDays, 'Daily hours', SITE.trainingHours], [Users, 'Class size', 'Small groups'], [Award, 'Certificate', 'On completion']].map(([I, k, v]) => (
                     <div key={k} className="flex gap-2.5"><I size={18} className="mt-0.5 flex-none text-brand" aria-hidden="true" /><div><dt className="text-[12.5px] text-faint">{k}</dt><dd className="m-0 font-bold">{v}</dd></div></div>
                   ))}
                 </dl>

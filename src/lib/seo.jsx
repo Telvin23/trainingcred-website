@@ -68,7 +68,8 @@ export const orgLd = () => ({
   logo: SITE.url + '/favicon.svg',
   email: SITE.email,
   telephone: SITE.phone,
-  address: { '@type': 'PostalAddress', addressLocality: 'Nairobi', addressCountry: 'KE' },
+  address: { '@type': 'PostalAddress', streetAddress: 'Delta Riverside Office Park, Block 2, 3rd Floor, Riverside Drive', postOfficeBoxNumber: '63481-00619', addressLocality: 'Nairobi', addressCountry: 'KE' },
+  hasCredential: { '@type': 'EducationalOccupationalCredential', name: 'CPD Certification Service member, provider no. 20263' },
   sameAs: Object.values(SITE.socials),
 })
 

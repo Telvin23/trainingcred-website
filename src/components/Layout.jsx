@@ -5,6 +5,7 @@ import { SITE, FORMATS, waLink } from '../data/site.js'
 import { CATEGORIES, CITIES } from '../data/catalog.js'
 import { COURSES } from '../data/courses.js'
 import { Icon } from './Bits.jsx'
+import LogoCube from './LogoCube.jsx'
 
 export const FORMAT_ICON = { classroom: Building2, online: Monitor, masterclass: Mic, webinar: Video, 'in-house': Users, pathways: Route }
 export const formatLink = (slug) => (slug === 'in-house' || slug === 'pathways' ? '/for-teams' : `/courses?format=${slug}`)
@@ -19,7 +20,7 @@ const Social = {
 export function SocialIcons({ className = '' }) {
   return (
     <div className={`flex items-center gap-2 ${className}`}>
-      {Object.entries(Social).map(([k, p]) => (
+      {Object.entries(Social).filter(([k]) => SITE.socials[k]).map(([k, p]) => (
         <a key={k} href={SITE.socials[k]} aria-label={k === 'x' ? 'X' : k[0].toUpperCase() + k.slice(1)} target="_blank" rel="noopener noreferrer"
           className="glass flex h-10 w-10 items-center justify-center rounded-full text-muted transition hover:text-fg">
           <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" aria-hidden="true">{p}</svg>
@@ -31,10 +32,8 @@ export function SocialIcons({ className = '' }) {
 
 export function Wordmark({ small, light }) {
   return (
-    <span className={`flex items-center gap-2.5 ${light ? 'text-white' : 'text-fg'}`}>
-      <span className="relative flex h-9 w-9 flex-none items-center justify-center rounded-xl bg-gradient-to-br from-[#10A08D] to-[#0B3557] font-serif text-lg font-bold text-white shadow-[0_8px_20px_-8px_rgba(16,160,141,.9)]" aria-hidden="true">
-        T<span className="absolute right-1 top-1 h-1.5 w-1.5 rounded-full bg-amber" />
-      </span>
+    <span className={`group/logo flex items-center gap-2.5 ${light ? 'text-white' : 'text-fg'}`}>
+      <LogoCube size={small ? 38 : 46} className="flex-none drop-shadow-[0_8px_18px_rgba(16,160,141,.45)]" />
       <span className="flex flex-col leading-[1.05]">
         <span className={`font-serif font-bold ${small ? 'text-[19px]' : 'text-[21px]'}`}>Training<span className="font-normal">cred</span></span>
         <span className="hidden font-serif text-[10px] italic opacity-70 sm:block">{SITE.tagline}</span>

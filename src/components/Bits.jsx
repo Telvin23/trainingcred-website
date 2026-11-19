@@ -1,10 +1,10 @@
 import { useEffect, useRef, useState } from 'react'
 import { Link } from 'react-router-dom'
-import { Landmark, Banknote, ShieldCheck, Leaf, Sprout, Truck, KanbanSquare, BarChart3, Compass, Users, Scale, HeartPulse, Cpu, BookOpen, Plus, MapPin, Clock, Check, Pause, Play, ChevronLeft, ChevronRight, Monitor, Building2, ArrowUpRight, CalendarDays } from 'lucide-react'
+import { Landmark, Banknote, ShieldCheck, Leaf, Sprout, Truck, KanbanSquare, BarChart3, Compass, Users, Scale, HeartPulse, Cpu, BookOpen, Building, Plane, TrendingUp, Plus, MapPin, Clock, Check, Pause, Play, ChevronLeft, ChevronRight, Monitor, Building2, ArrowUpRight, CalendarDays } from 'lucide-react'
 import { categoryBySlug } from '../data/catalog.js'
 import { dayNum, monShort, money, nextSession, where, fromFee, dateRange } from '../lib/util.js'
 
-const ICONS = { Landmark, Banknote, ShieldCheck, Leaf, Sprout, Truck, KanbanSquare, BarChart3, Compass, Users, Scale, HeartPulse, Cpu }
+const ICONS = { Landmark, Banknote, ShieldCheck, Leaf, Sprout, Truck, KanbanSquare, BarChart3, Compass, Users, Scale, HeartPulse, Cpu, Building, Plane, TrendingUp }
 export function Icon({ name, ...p }) {
   const C = ICONS[name] || BookOpen
   return <C aria-hidden="true" {...p} />

@@ -72,7 +72,7 @@ export default function Book() {
               <div className="flex justify-between border-t border-line pt-3 text-[14.5px]"><span>Fee per participant</span><strong>{fee ? money(fee) : '-'}</strong></div>
               <div className="flex justify-between text-[14.5px]"><span>Participants</span><strong>{people}</strong></div>
               <div className="flex justify-between border-t border-line pt-3 text-lg"><span className="font-bold">Total</span><strong className="text-brand">{total ? money(total) : '-'}</strong></div>
-              <p className="m-0 text-[13px] leading-relaxed text-muted">No payment now. We confirm your seat by email and send an invoice. [Confirm payment terms.]</p>
+              <p className="m-0 text-[13px] leading-relaxed text-muted">No payment now. We confirm your seat by email and send a proforma invoice. Pay by bank transfer, M-Pesa or card before the course starts.</p>
               <Link to={`/courses/${course.slug}`} className="text-sm font-semibold">Back to course details</Link>
             </div>
           </aside>
