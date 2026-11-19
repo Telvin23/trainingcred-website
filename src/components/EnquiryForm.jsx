@@ -6,10 +6,10 @@ const COUNTRIES = ['Kenya', 'Uganda', 'Tanzania', 'Rwanda', 'Ethiopia', 'Nigeria
 
 // type: booking | team | contact | brochure | advisory
 // extra: fixed values sent with the form (course, session...)
-export default function EnquiryForm({ type, extra = {}, fields = [], submitLabel = 'Send', summary, dark = false }) {
+export default function EnquiryForm({ type, extra = {}, fields = [], submitLabel = 'Send', summary, compact = false }) {
   const [state, setState] = useState({ status: 'idle' })
   const show = (f) => fields.includes(f)
-  const label = `field ${dark ? '!text-haze' : ''}`
+  const label = 'field'
 
   async function onSubmit(e) {
     e.preventDefault()
@@ -35,8 +35,8 @@ export default function EnquiryForm({ type, extra = {}, fields = [], submitLabel
 
   if (state.status === 'done') {
     return (
-      <div className={`flex flex-col gap-3 rounded-2xl p-6 ${dark ? 'bg-white/10 text-white' : 'bg-mint text-ink'}`} role="status">
-        <CheckCircle2 size={34} className="text-teal" aria-hidden="true" />
+      <div className="flex flex-col gap-3 rounded-2xl bg-brand-soft p-6 text-fg" role="status">
+        <CheckCircle2 size={34} className="text-brand" aria-hidden="true" />
         <h3 className="m-0 text-xl font-extrabold">Thank you, we have received it.</h3>
         <p className="m-0 leading-relaxed">Your reference is <strong>{state.ref}</strong>. A course advisor will contact you within one working day. For anything urgent, WhatsApp us on {SITE.phone}.</p>
       </div>
@@ -45,7 +45,7 @@ export default function EnquiryForm({ type, extra = {}, fields = [], submitLabel
 
   return (
     <form onSubmit={onSubmit} className="flex flex-col gap-4" noValidate={false}>
-      <div className="grid gap-4 sm:grid-cols-2">
+      <div className={`grid gap-4 ${compact ? '' : 'sm:grid-cols-2'}`}>
         <label className={label}>Full name<input className="input" name="name" required autoComplete="name" maxLength={120} /></label>
         <label className={label}>Work email<input className="input" name="email" type="email" required autoComplete="email" maxLength={160} /></label>
         <label className={label}>Phone or WhatsApp<input className="input" name="phone" type="tel" required autoComplete="tel" maxLength={40} placeholder="+254 7.." /></label>
@@ -64,8 +64,8 @@ export default function EnquiryForm({ type, extra = {}, fields = [], submitLabel
           <legend className={`${label} mb-1.5`}>Who is paying?</legend>
           <div className="flex flex-wrap gap-2">
             {['My organisation', 'Myself', 'A sponsor or donor'].map((p, n) => (
-              <label key={p} className={`flex min-h-11 cursor-pointer items-center gap-2 rounded-xl border px-3.5 text-[15px] ${dark ? 'border-white/30' : 'border-line'} has-[:checked]:border-teal has-[:checked]:bg-mint has-[:checked]:text-ink`}>
-                <input type="radio" name="payer" value={p} defaultChecked={n === 0} className="accent-teal" />{p}
+              <label key={p} className="glass flex min-h-11 cursor-pointer items-center gap-2 rounded-full px-4 text-[15px] has-[:checked]:border-[#4FD1BE] has-[:checked]:bg-brand-soft">
+                <input type="radio" name="payer" value={p} defaultChecked={n === 0} className="accent-[#0E8F7E]" />{p}
               </label>
             ))}
           </div>
@@ -74,13 +74,13 @@ export default function EnquiryForm({ type, extra = {}, fields = [], submitLabel
       {show('message') && <label className={label}>Message (optional)<textarea className="input min-h-28" name="message" maxLength={2000} /></label>}
       <input type="text" name="website" tabIndex={-1} autoComplete="off" className="hidden" aria-hidden="true" />
       {state.status === 'error' && (
-        <div className="flex gap-3 rounded-xl border border-amber-300 bg-amber-50 p-4 text-[14.5px] text-ink" role="alert">
-          <AlertTriangle size={20} className="flex-none text-amber-600" aria-hidden="true" />
+        <div className="flex gap-3 rounded-2xl border border-amber/40 bg-accent-soft p-4 text-[14.5px] text-fg" role="alert">
+          <AlertTriangle size={20} className="flex-none text-accent" aria-hidden="true" />
           <span>We could not send this right now. Please <a href={state.wa} target="_blank" rel="noopener noreferrer" className="font-bold">send it on WhatsApp</a> or email <a href={`mailto:${SITE.email}`} className="font-bold">{SITE.email}</a>.</span>
         </div>
       )}
-      <p className={`m-0 text-[13px] ${dark ? 'text-haze' : 'text-muted'}`}>We use your details only to respond to this request. See our <a href="/privacy" className={dark ? 'text-white' : ''}>privacy notice</a>.</p>
-      <button type="submit" className="btn-primary self-start" disabled={state.status === 'sending'}>{state.status === 'sending' ? 'Sending...' : submitLabel}</button>
+      <p className="m-0 text-[13px] text-faint">We use your details only to respond to this request. See our <a href="/privacy">privacy notice</a>.</p>
+      <button type="submit" className={`btn-primary ${compact ? 'w-full' : 'self-start'}`} disabled={state.status === 'sending'}>{state.status === 'sending' ? 'Sending...' : submitLabel}</button>
     </form>
   )
 }

@@ -21,6 +21,7 @@ export function allRoutes() {
     // not in sitemap
     ...COURSES.map((c) => ({ path: `/book/${c.slug}`, noSitemap: true })),
     { path: '/admin', noSitemap: true },
+    { path: '/login', noSitemap: true },
     { path: '/404', noSitemap: true },
   ]
 }

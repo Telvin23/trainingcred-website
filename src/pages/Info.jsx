@@ -17,22 +17,22 @@ export function ForTeams() {
         jsonLd={crumbsLd([{ name: 'Home', path: '/' }, { name: 'For Teams', path: '/for-teams' }])} />
       <PageHero crumbs={[{ name: 'Home', path: '/' }, { name: 'For Teams', path: '/for-teams' }]} eyebrow="For organisations" title="Training built around your team"
         intro="Any course can run in-house on your dates, in your city or online, adapted to your sector and goals. Five or more people from one organisation also get group rates on public dates.">
-        <a href="#quote" className="btn-white mt-2 self-start">Request a team quote</a>
+        <a href="#quote" className="btn-amber mt-2 self-start">Request a team quote</a>
       </PageHero>
-      <section className="bg-white">
+      <section>
         <div className="wrap grid gap-4 py-12 sm:grid-cols-2 lg:grid-cols-4">
           {[[Building2, 'In-house courses', 'Any course, delivered privately at your premises, a venue of your choice or online.'], [Route, 'Learning pathways', 'A sequence of courses that builds one capability over several months.'], [Users, 'Group bookings', 'Five or more people on public dates, with one invoice and group rates.'], [Target, 'Tailored content', 'Your cases, your policies and your systems built into the exercises.']].map(([I, t, d]) => (
-            <div key={t} className="card p-5"><I size={26} className="text-teal" aria-hidden="true" /><h2 className="m-0 mt-3 text-[17px] font-extrabold">{t}</h2><p className="m-0 mt-1.5 text-[14.5px] leading-relaxed text-muted">{d}</p></div>
+            <div key={t} className="card p-5"><I size={26} className="text-brand" aria-hidden="true" /><h2 className="m-0 mt-3 text-[17px] font-extrabold">{t}</h2><p className="m-0 mt-1.5 text-[14.5px] leading-relaxed text-muted">{d}</p></div>
           ))}
         </div>
       </section>
-      <section className="bg-soft">
+      <section>
         <div className="wrap grid gap-10 py-12 lg:grid-cols-[1fr_1.2fr]">
           <div>
             <h2 className="h2 m-0">How a team programme works</h2>
             <ol className="m-0 mt-5 flex list-none flex-col gap-4 p-0">
               {['Tell us the topic, team size, dates and location.', 'We propose an outline, trainer and fee within one working day.', 'We adapt the content after a short call with your team lead.', 'We deliver, assess participants and send a short training report.'].map((t, n) => (
-                <li key={t} className="flex gap-3.5"><span className="flex h-9 w-9 flex-none items-center justify-center rounded-full bg-teal font-extrabold text-white">{n + 1}</span><span className="pt-1.5 text-[15.5px]">{t}</span></li>
+                <li key={t} className="flex gap-3.5"><span className="flex h-9 w-9 flex-none items-center justify-center rounded-full bg-primary font-extrabold text-white">{n + 1}</span><span className="pt-1.5 text-[15.5px]">{t}</span></li>
               ))}
             </ol>
           </div>
@@ -54,17 +54,17 @@ export function Advisory() {
       <Seo title="Advisory Services" path="/advisory" description="Advisory services for consequential decisions: strategy, monitoring and evaluation, financial management, procurement, HR and climate." />
       <PageHero crumbs={[{ name: 'Home', path: '/' }, { name: 'Advisory', path: '/advisory' }]} eyebrow="Advisory" title="Advisory services for consequential decisions"
         intro="Practical support from practitioners for the decisions that shape your organisation, from strategy and evaluation to systems and policies." />
-      <section className="bg-white">
+      <section>
         <div className="wrap grid gap-4 py-12 sm:grid-cols-2 lg:grid-cols-3">
           {ADVISORY.map((a) => (
-            <div key={a.title} className="card p-5"><ClipboardList size={24} className="text-teal" aria-hidden="true" /><h2 className="m-0 mt-3 text-[17px] font-extrabold">{a.title}</h2><p className="m-0 mt-1.5 text-[14.5px] leading-relaxed text-muted">{a.text}</p></div>
+            <div key={a.title} className="card p-5"><ClipboardList size={24} className="text-brand" aria-hidden="true" /><h2 className="m-0 mt-3 text-[17px] font-extrabold">{a.title}</h2><p className="m-0 mt-1.5 text-[14.5px] leading-relaxed text-muted">{a.text}</p></div>
           ))}
         </div>
       </section>
-      <section className="bg-soft">
+      <section>
         <div className="wrap grid gap-10 py-12 lg:grid-cols-[1fr_1.2fr]">
           <div><h2 className="h2 m-0">Talk to an advisor</h2><p className="mt-3 text-[16px] leading-relaxed text-muted">Tell us what you are working on. We will reply with how we would approach it, the team and an indicative budget.</p>
-            <a href={waLink('Hello Trainingcred, I would like to discuss an advisory assignment.')} target="_blank" rel="noopener noreferrer" className="btn-outline mt-2"><MessageCircle size={18} aria-hidden="true" />WhatsApp us</a></div>
+            <a href={waLink('Hello Trainingcred, I would like to discuss an advisory assignment.')} target="_blank" rel="noopener noreferrer" className="btn-glass mt-2"><MessageCircle size={18} aria-hidden="true" />WhatsApp us</a></div>
           <div className="card p-5 sm:p-7"><EnquiryForm type="advisory" fields={['organisation', 'jobTitle', 'country', 'topic', 'message']} submitLabel="Send request" summary="I would like to discuss an advisory assignment." /></div>
         </div>
       </section>
@@ -77,7 +77,7 @@ export function About() {
     <>
       <Seo title="About Trainingcred" path="/about" description="Trainingcred Institute delivers practical professional development courses, in-house programmes and advisory across Africa and the Middle East." jsonLd={orgLd()} />
       <PageHero crumbs={[{ name: 'Home', path: '/' }, { name: 'About', path: '/about' }]} title="About Trainingcred" intro="Skills for the modern workforce: practical courses that change how people work on Monday morning." />
-      <section className="bg-white">
+      <section>
         <div className="wrap grid gap-10 py-12 lg:grid-cols-2">
           <div className="text-[16px] leading-[1.75]">
             <p className="mt-0">Trainingcred Institute runs short professional courses for organisations across Africa and beyond: governments, NGOs and development partners, banks, and private companies. [Founding year, story and mission - confirm.]</p>
@@ -87,9 +87,9 @@ export function About() {
           <img src="/images/hero/hall.jpg" alt="Participants in a Trainingcred lecture hall" className="w-full rounded-3xl object-cover" loading="lazy" width="1200" height="675" />
         </div>
       </section>
-      <section className="bg-soft">
+      <section>
         <div className="wrap grid gap-4 py-12 sm:grid-cols-2 lg:grid-cols-4">
-          {WHY.map((w) => <div key={w.title} className="card p-5"><Presentation size={24} className="text-teal" aria-hidden="true" /><h2 className="m-0 mt-3 text-[17px] font-extrabold">{w.title}</h2><p className="m-0 mt-1.5 text-[14.5px] leading-relaxed text-muted">{w.text}</p></div>)}
+          {WHY.map((w) => <div key={w.title} className="card p-5"><Presentation size={24} className="text-brand" aria-hidden="true" /><h2 className="m-0 mt-3 text-[17px] font-extrabold">{w.title}</h2><p className="m-0 mt-1.5 text-[14.5px] leading-relaxed text-muted">{w.text}</p></div>)}
         </div>
       </section>
     </>
@@ -101,11 +101,11 @@ export function Contact() {
     <>
       <Seo title="Contact Us" path="/contact" description={`Call or WhatsApp ${SITE.phone}, email ${SITE.email}, or send us a message. We reply within one working day.`} jsonLd={orgLd()} />
       <PageHero crumbs={[{ name: 'Home', path: '/' }, { name: 'Contact', path: '/contact' }]} title="Contact us" intro="Questions about a course, dates, fees or a team programme? We reply within one working day." />
-      <section className="bg-soft">
+      <section>
         <div className="wrap grid gap-8 py-12 lg:grid-cols-[1fr_1.4fr]">
           <div className="flex flex-col gap-3">
             {[[MessageCircle, 'WhatsApp', SITE.phone, waLink()], [Phone, 'Call', SITE.phone, SITE.phoneHref], [Mail, 'Email', SITE.email, `mailto:${SITE.email}`], [MapPin, 'Office', SITE.address], [Clock, 'Hours', SITE.hours]].map(([I, k, v, href]) => (
-              <div key={k} className="card flex gap-4 p-4"><span className="flex h-11 w-11 flex-none items-center justify-center rounded-xl bg-mint text-teal"><I size={20} aria-hidden="true" /></span>
+              <div key={k} className="card flex gap-4 p-4"><span className="flex h-11 w-11 flex-none items-center justify-center rounded-xl bg-brand-soft text-brand"><I size={20} aria-hidden="true" /></span>
                 <div><div className="text-[13px] text-muted">{k}</div>{href ? <a href={href} className="font-bold" {...(href.startsWith('http') ? { target: '_blank', rel: 'noopener noreferrer' } : {})}>{v}</a> : <div className="font-bold">{v}</div>}</div></div>
             ))}
           </div>
@@ -127,7 +127,7 @@ export function Faq() {
     <>
       <Seo title="Frequently Asked Questions" path="/faq" description="Answers about fees, certificates, payment, venues, live online courses and in-house training." jsonLd={faqLd(all)} />
       <PageHero crumbs={[{ name: 'Home', path: '/' }, { name: 'FAQ', path: '/faq' }]} title="Frequently asked questions" />
-      <section className="bg-white"><div className="wrap py-12"><div className="mx-auto max-w-[900px]"><FaqList faqs={all} /><p className="mt-6 text-muted">Still have a question? <Link to="/contact">Contact us</Link>.</p></div></div></section>
+      <section><div className="wrap py-12"><div className="mx-auto max-w-[900px]"><FaqList faqs={all} /><p className="mt-6 text-muted">Still have a question? <Link to="/contact">Contact us</Link>.</p></div></div></section>
     </>
   )
 }
@@ -138,9 +138,9 @@ export function Legal({ kind }) {
     <>
       <Seo title={privacy ? 'Privacy Notice' : 'Terms and Conditions'} path={privacy ? '/privacy' : '/terms'} description={privacy ? 'How Trainingcred collects and uses personal data.' : 'Terms for booking Trainingcred courses.'} />
       <PageHero crumbs={[{ name: 'Home', path: '/' }, { name: privacy ? 'Privacy' : 'Terms', path: privacy ? '/privacy' : '/terms' }]} title={privacy ? 'Privacy notice' : 'Terms and conditions'} />
-      <section className="bg-white">
+      <section>
         <div className="wrap py-12"><div className="mx-auto max-w-[820px] text-[16px] leading-[1.75]">
-          <p className="rounded-xl bg-amber-50 p-4 text-[14.5px]">Draft for review: have this text checked and completed by Trainingcred before the site goes live.</p>
+          <p className="rounded-xl bg-accent-soft p-4 text-[14.5px]">Draft for review: have this text checked and completed by Trainingcred before the site goes live.</p>
           {privacy ? (<>
             <h2 className="text-xl font-extrabold">What we collect</h2><p>When you reserve a seat, request a quote or contact us, we collect your name, email, phone number, organisation, job title, country and the details of your request.</p>
             <h2 className="text-xl font-extrabold">How we use it</h2><p>Only to respond to your request, manage your booking and invoice, and send joining instructions. We do not sell your data. We send course updates only if you ask for them.</p>
