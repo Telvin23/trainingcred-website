@@ -21,10 +21,10 @@ export function CourseCover({ category, image, className = '', children, big }) 
   if (image) {
     return (
       <div className={`relative overflow-hidden bg-[#071627] ${className}`}>
-        <img src={image} alt="" loading="lazy" decoding="async" className={`absolute inset-0 h-full w-full object-cover transition duration-700 group-hover:scale-105 ${big ? 'scale-105 blur-[1px]' : ''}`} />
+        <img src={image} alt="" loading={big ? 'eager' : 'lazy'} decoding="async" className={`absolute w-full object-cover transition duration-700 group-hover:scale-105 ${big ? 'inset-x-0 top-0 h-48 sm:h-64 lg:inset-0 lg:h-full lg:scale-105 lg:blur-[1px]' : 'inset-0 h-full'}`} />
         {/* brand tint + darkening so white text and chips stay readable on any photo */}
         <div className="absolute inset-0 mix-blend-multiply" style={{ background: `linear-gradient(135deg, ${a}66, ${b}40)` }} aria-hidden="true" />
-        <div className={`absolute inset-0 ${big ? 'bg-[linear-gradient(95deg,rgba(5,15,28,.94)_0%,rgba(5,15,28,.78)_50%,rgba(5,15,28,.35)_100%)]' : 'bg-gradient-to-t from-black/70 via-black/15 to-black/30'}`} aria-hidden="true" />
+        <div className={`absolute inset-0 ${big ? 'bg-[linear-gradient(180deg,rgba(7,22,39,.15)_0px,rgba(7,22,39,.35)_110px,#071627_200px)] sm:bg-[linear-gradient(180deg,rgba(7,22,39,.15)_0px,rgba(7,22,39,.35)_150px,#071627_260px)] lg:bg-[linear-gradient(95deg,rgba(5,15,28,.94)_0%,rgba(5,15,28,.78)_50%,rgba(5,15,28,.35)_100%)]' : 'bg-gradient-to-t from-black/70 via-black/15 to-black/30'}`} aria-hidden="true" />
         {children}
       </div>
     )
@@ -145,6 +145,24 @@ export function HeroSlider({ slides, interval = 6000, children }) {
     </div>
   )
 
+  // Phones and tablets: the whole photo in a landscape frame, so people can see what it shows
+  const frame = (
+    <div className="glass-photo relative aspect-[16/10] w-full overflow-hidden rounded-[24px] lg:hidden">
+      {slides.map((s, n) => (
+        <img key={s.src} src={s.src} alt={s.caption} className={`absolute inset-0 h-full w-full object-cover transition-opacity duration-700 ${n === i ? 'opacity-100' : 'opacity-0'}`} loading={n === 0 ? 'eager' : 'lazy'} />
+      ))}
+      <div className="absolute inset-x-0 bottom-0 flex items-center justify-between gap-2 bg-gradient-to-t from-black/75 to-transparent p-2.5 pt-8">
+        <span className="truncate pl-1.5 text-[12.5px] font-semibold text-white" aria-live="polite">{slides[i].caption}</span>
+        <div className="flex flex-none items-center gap-0.5 rounded-full bg-black/40 p-0.5 text-white backdrop-blur">
+          <button type="button" onClick={() => go(i - 1)} aria-label="Previous photo" className="flex h-9 w-9 items-center justify-center rounded-full"><ChevronLeft size={17} aria-hidden="true" /></button>
+          <span className="text-[11.5px] font-semibold tabular-nums">{i + 1}/{slides.length}</span>
+          <button type="button" onClick={() => setPlaying(!playing)} aria-label={playing ? 'Pause slideshow' : 'Play slideshow'} className="flex h-9 w-9 items-center justify-center rounded-full">{playing ? <Pause size={15} aria-hidden="true" /> : <Play size={15} aria-hidden="true" />}</button>
+          <button type="button" onClick={() => go(i + 1)} aria-label="Next photo" className="flex h-9 w-9 items-center justify-center rounded-full"><ChevronRight size={17} aria-hidden="true" /></button>
+        </div>
+      </div>
+    </div>
+  )
+
   return (
     <section aria-roledescription="carousel" aria-label="Featured photos"
       className={`relative -mt-[76px] overflow-hidden pt-[76px] text-white ${paused ? 'paused' : ''}`}
@@ -152,16 +170,18 @@ export function HeroSlider({ slides, interval = 6000, children }) {
       onTouchStart={(e) => { touch.current = e.touches[0].clientX }}
       onTouchEnd={(e) => { if (touch.current == null) return; const d = e.changedTouches[0].clientX - touch.current; if (Math.abs(d) > 50) go(i + (d < 0 ? 1 : -1)); touch.current = null }}>
       <div className="absolute inset-0" aria-hidden="true">
+        <div className="absolute inset-0 scale-110 opacity-50 blur-2xl lg:scale-100 lg:opacity-100 lg:blur-none">
         {slides.map((s, n) => (
           <div key={s.src} className={`absolute inset-0 transition-opacity duration-[1200ms] ${n === i ? 'opacity-100' : 'opacity-0'}`}>
             <img src={s.src} alt="" className={`h-full w-full object-cover ${n === i ? 'slide-on' : ''}`} loading={n === 0 ? 'eager' : 'lazy'} fetchPriority={n === 0 ? 'high' : 'auto'} />
           </div>
         ))}
+        </div>
         <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(5,15,28,.78)_0%,rgba(5,15,28,.55)_40%,rgba(5,15,28,.9)_100%)] lg:bg-[linear-gradient(95deg,rgba(5,15,28,.94)_0%,rgba(5,15,28,.72)_48%,rgba(5,15,28,.35)_100%)]" />
         <div className="absolute inset-0 bg-[radial-gradient(700px_400px_at_15%_30%,rgba(14,143,126,.35),transparent_70%)]" />
         <div className="absolute inset-x-0 bottom-0 h-40 bg-gradient-to-b from-transparent to-bg" />
       </div>
-      <div className="relative">{children({ controls, caption: slides[i].caption })}</div>
+      <div className="relative">{children({ controls, caption: slides[i].caption, frame })}</div>
     </section>
   )
 }

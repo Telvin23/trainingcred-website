@@ -67,7 +67,7 @@ export default function Course() {
       {/* HERO: identity of the course + key facts, grouped */}
       <section className="wrap pt-6 sm:pt-10">
         <CourseCover category={course.category} image={course.image} big className="rounded-[36px] text-white">
-          <div className="relative grid gap-8 p-6 sm:p-10 lg:grid-cols-[1.5fr_1fr] lg:p-12">
+          <div className={`relative grid gap-8 p-6 sm:p-10 lg:grid-cols-[1.5fr_1fr] lg:p-12 ${course.image ? 'pt-44 sm:pt-56' : ''}`}>
             <div className="rise flex flex-col gap-5">
               <div className="[&_a]:!text-white/70 [&_span]:!text-white/80 [&_nav]:!text-white/60"><Crumbs items={crumbs} /></div>
               <Link to={`/categories/${cat.slug}`} className="pill-label glass-photo self-start text-white no-underline hover:text-white">{cat.name}</Link>

@@ -46,7 +46,7 @@ export default function Home() {
 
       {/* 1. HERO: one message, one action (search), proof underneath */}
       <HeroSlider slides={HERO_SLIDES}>
-        {({ controls, caption }) => (
+        {({ controls, caption, frame }) => (
           <div className="wrap grid grid-cols-1 gap-10 pb-16 pt-12 sm:pt-16 lg:grid-cols-[1.35fr_1fr] lg:items-center lg:gap-12 lg:pb-24 lg:pt-24">
             <div className="rise flex min-w-0 flex-col gap-6">
               <span className="pill-label glass-photo self-start text-white"><Sparkles size={13} className="text-amber" aria-hidden="true" />{SITE.tagline}</span>
@@ -54,6 +54,7 @@ export default function Home() {
                 What does your team need to <span className="text-gradient">get better at?</span>
               </h1>
               <p className="m-0 max-w-[600px] text-[17px] leading-relaxed text-white/80 sm:text-[19px]">Practical 5 and 10-day courses in {SITE.stats.cities} cities, live online, or in-house for your team.</p>
+              {frame}
 
               <form role="search" onSubmit={onSearch} className="glass-photo flex max-w-[720px] flex-col gap-1.5 rounded-[26px] p-2 md:flex-row md:items-stretch md:rounded-full">
                 <label className="flex flex-1 items-center gap-3 rounded-full px-4 py-2.5 md:min-w-0">
@@ -101,7 +102,7 @@ export default function Home() {
                 <Stat n={SITE.stats.cities} label="cities" />
                 <Stat n="CPD" label="accredited" />
               </div>
-              <div className="flex flex-wrap items-center justify-between gap-3">
+              <div className="hidden flex-wrap items-center justify-between gap-3 lg:flex">
                 {controls}
                 <span className="text-[13px] text-white/70" aria-live="polite">{caption}</span>
               </div>
