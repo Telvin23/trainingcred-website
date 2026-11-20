@@ -21,7 +21,7 @@ export default function Course() {
   const course = courseBySlug(slug)
   const [filter, setFilter] = useState('all')
   const [all, setAll] = useState(false)
-  const [mode, setMode] = useState('online')
+  const [mode, setMode] = useState(() => (course && upcoming(course)[0]?.format) || 'online') // open on the format of the very next date
   if (!course) return <NotFound />
   const cat = categoryBySlug(course.category)
   const sessions = upcoming(course)
@@ -66,7 +66,7 @@ export default function Course() {
 
       {/* HERO: identity of the course + key facts, grouped */}
       <section className="wrap pt-6 sm:pt-10">
-        <CourseCover category={course.category} big className="rounded-[36px] text-white">
+        <CourseCover category={course.category} image={course.image} big className="rounded-[36px] text-white">
           <div className="relative grid gap-8 p-6 sm:p-10 lg:grid-cols-[1.5fr_1fr] lg:p-12">
             <div className="rise flex flex-col gap-5">
               <div className="[&_a]:!text-white/70 [&_span]:!text-white/80 [&_nav]:!text-white/60"><Crumbs items={crumbs} /></div>

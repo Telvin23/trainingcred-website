@@ -7,7 +7,8 @@
     "dev": "vite",
     "build": "vite build",
     "postbuild": "node scripts/prerender.mjs",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "photos": "node scripts/list-photos.mjs"
   },
   "dependencies": {
     "@neondatabase/serverless": "^1.2.1",
@@ -22,5 +23,7 @@
     "tailwindcss": "^4.3.3",
     "vite": "^8.3.0"
   },
-  "engines": { "node": ">=20" }
+  "engines": {
+    "node": ">=20"
+  }
 }

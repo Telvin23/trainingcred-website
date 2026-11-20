@@ -15,9 +15,20 @@ export function CheckItem({ children }) {
 }
 
 // Generated cover art per focus area: no mismatched stock photos.
-export function CourseCover({ category, className = '', children, big }) {
+export function CourseCover({ category, image, className = '', children, big }) {
   const cat = categoryBySlug(category)
   const [a, b] = cat?.tint || ['#0B5A86', '#0E8F7E']
+  if (image) {
+    return (
+      <div className={`relative overflow-hidden bg-[#071627] ${className}`}>
+        <img src={image} alt="" loading="lazy" decoding="async" className={`absolute inset-0 h-full w-full object-cover transition duration-700 group-hover:scale-105 ${big ? 'scale-105 blur-[1px]' : ''}`} />
+        {/* brand tint + darkening so white text and chips stay readable on any photo */}
+        <div className="absolute inset-0 mix-blend-multiply" style={{ background: `linear-gradient(135deg, ${a}66, ${b}40)` }} aria-hidden="true" />
+        <div className={`absolute inset-0 ${big ? 'bg-[linear-gradient(95deg,rgba(5,15,28,.94)_0%,rgba(5,15,28,.78)_50%,rgba(5,15,28,.35)_100%)]' : 'bg-gradient-to-t from-black/70 via-black/15 to-black/30'}`} aria-hidden="true" />
+        {children}
+      </div>
+    )
+  }
   return (
     <div className={`relative overflow-hidden ${className}`} style={{ background: `radial-gradient(120% 90% at 0% 0%, ${a} 0%, transparent 60%), radial-gradient(100% 100% at 100% 100%, ${b} 0%, transparent 65%), #071627` }}>
       <svg className="absolute inset-0 h-full w-full opacity-[.16]" aria-hidden="true"><defs><pattern id={`p-${category}`} width="22" height="22" patternUnits="userSpaceOnUse"><circle cx="2" cy="2" r="1.2" fill="#fff" /></pattern></defs><rect width="100%" height="100%" fill={`url(#p-${category})`} /></svg>
@@ -33,7 +44,7 @@ export function CourseCard({ course, session }) {
   const cat = categoryBySlug(course.category)
   return (
     <article className="card card-hover group relative flex h-full flex-col overflow-hidden">
-      <CourseCover category={course.category} className="h-40">
+      <CourseCover category={course.category} image={course.image} className="h-44">
         <div className="absolute inset-x-3 top-3 flex items-start justify-between gap-2">
           <span className="chip glass-photo !py-1 text-xs text-white">{cat?.name.split(',')[0].split(' & ')[0]}</span>
           {s && <span className="chip glass-photo !py-1 text-xs text-white">{s.format === 'online' ? <Monitor size={13} aria-hidden="true" /> : <Building2 size={13} aria-hidden="true" />}{s.format === 'online' ? 'Live online' : 'Classroom'}</span>}

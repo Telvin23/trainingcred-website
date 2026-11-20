@@ -5,6 +5,15 @@
 // USD 4,200 come from the live site; other classroom fees are estimates to confirm (see FEES below).
 import { cityBySlug } from './catalog.js'
 
+// Course photos: drop a file named <course-slug>.jpg (or .png/.webp) into src/assets/courses/
+// and it is used automatically on that course's cards and page. Courses without a photo keep the
+// generated cover art for their focus area.
+const PHOTOS = import.meta.glob('../assets/courses/*.{jpg,jpeg,png,webp}', { eager: true, query: '?url', import: 'default' })
+const photoFor = (slug) => {
+  for (const [path, url] of Object.entries(PHOTOS)) if (path.split('/').pop().replace(/\.[a-z]+$/, '') === slug) return url
+  return null
+}
+
 const C = (slug, title, category, summary, outcomes, audience, modules, opts = {}) => ({
   slug, title, category, summary, outcomes, audience,
   modules: modules.map(([t, d]) => ({ title: t, text: d })),
@@ -382,5 +391,5 @@ function sessionsFor(course, idx) {
   })
 }
 
-export const COURSES = RAW.map((c, i) => ({ ...c, sessions: sessionsFor(c, i) }))
+export const COURSES = RAW.map((c, i) => ({ ...c, image: photoFor(c.slug), sessions: sessionsFor(c, i) }))
 export const courseBySlug = (s) => COURSES.find((c) => c.slug === s)
