@@ -4,6 +4,7 @@
 // of the live site (5 or 10 days, Monday start). Fees: live online KSh 80,000 / 160,000 and Cairo/Dubai
 // USD 4,200 come from the live site; other classroom fees are estimates to confirm (see FEES below).
 import { cityBySlug } from './catalog.js'
+import WESKILL from './weskill-courses.json'
 
 // Course photos: drop a file named <course-slug>.jpg (or .png/.webp) into src/assets/courses/
 // and it is used automatically on that course's cards and page. Courses without a photo keep the
@@ -391,5 +392,7 @@ function sessionsFor(course, idx) {
   })
 }
 
-export const COURSES = RAW.map((c, i) => ({ ...c, image: photoFor(c.slug), sessions: sessionsFor(c, i) }))
+// Courses merged from WeSkill Training Institute (weskill-courses.json). Fees and dates follow the Trainingcred rules above.
+const ALL = [...RAW, ...WESKILL.map((w) => C(w.slug, w.title, w.category, w.summary, w.outcomes, w.audience, w.modules, { cities: w.cities }))]
+export const COURSES = ALL.map((c, i) => ({ ...c, image: photoFor(c.slug), sessions: sessionsFor(c, i) }))
 export const courseBySlug = (s) => COURSES.find((c) => c.slug === s)
