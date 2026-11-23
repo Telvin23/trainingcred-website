@@ -4,3 +4,5 @@ scripts/.prerender-tmp
 .env
 .env.local
 .vercel
+
+*.zip
