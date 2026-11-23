@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react'
 import { Link, NavLink, useLocation } from 'react-router-dom'
-import { ChevronDown, Menu, X, Search, MessageCircle, ChevronRight, Sun, Moon, ArrowRight, LogIn, Building2, Monitor, Mic, Video, Users, Route } from 'lucide-react'
+import { ChevronDown, Menu, X, Search, MessageCircle, ChevronRight, Sun, Moon, ArrowRight, Building2, Monitor, Mic, Video, Users, Route } from 'lucide-react'
 import { SITE, FORMATS, waLink } from '../data/site.js'
 import { CATEGORIES, CITIES } from '../data/catalog.js'
 import { COURSES } from '../data/courses.js'
@@ -112,7 +112,6 @@ export function Header() {
           <div className="ml-auto flex items-center gap-1.5">
             <Link to="/courses" aria-label="Search courses" className="flex h-11 w-11 items-center justify-center rounded-full text-fg transition hover:bg-surface-2"><Search size={19} aria-hidden="true" /></Link>
             <ThemeToggle className="hidden sm:flex" />
-            <Link to="/login" className="hidden whitespace-nowrap rounded-full px-4 py-2.5 text-[14.5px] font-semibold text-fg no-underline transition hover:bg-surface-2 md:block">Log in</Link>
             <Link to="/for-teams#quote" className="btn-amber btn-sm hidden min-[1700px]:inline-flex">Team quote</Link>
             <Link to="/courses" className="btn-primary btn-sm hidden md:inline-flex">Find a course</Link>
             <button type="button" className="flex h-11 w-11 items-center justify-center rounded-full text-fg hover:bg-surface-2 xl:hidden" aria-label="Open menu" aria-expanded={drawer} onClick={() => setDrawer(true)}><Menu size={22} aria-hidden="true" /></button>
@@ -188,7 +187,6 @@ export function Header() {
             </nav>
             <div className="mt-auto flex flex-col gap-2 p-4">
               <div className="flex items-center justify-between rounded-2xl bg-surface px-4 py-2"><span className="text-sm font-semibold">Appearance</span><ThemeToggle /></div>
-              <Link to="/login" className="btn-glass"><LogIn size={18} aria-hidden="true" />Log in</Link>
               <Link to="/for-teams#quote" className="btn-amber">Request a team quote</Link>
             </div>
           </div>
@@ -226,7 +224,7 @@ export function Footer() {
           {[
             ['Focus areas', CATEGORIES.slice(0, 6).map((c) => [`/categories/${c.slug}`, c.name]).concat([['/courses', 'All courses']])],
             ['Destinations', CITIES.slice(0, 7).map((c) => [`/cities/${c.slug}`, `${c.name}, ${c.country}`]).concat([['/destinations', 'All destinations']])],
-            ['Company', [['/about', 'About us'], ['/for-teams', 'For Teams'], ['/advisory', 'Advisory'], ['/calendar', 'Calendar'], ['/faq', 'FAQ'], ['/contact', 'Contact'], ['/login', 'Log in']]],
+            ['Company', [['/about', 'About us'], ['/for-teams', 'For Teams'], ['/advisory', 'Advisory'], ['/calendar', 'Calendar'], ['/faq', 'FAQ'], ['/contact', 'Contact']]],
           ].map(([h, links]) => (
             <div key={h}>
               <h3 className="m-0 mb-4 text-xs font-bold uppercase tracking-[.14em] text-faint">{h}</h3>

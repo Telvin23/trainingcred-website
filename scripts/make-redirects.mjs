@@ -15,6 +15,7 @@ const out = [
   r('/corporate-training', '/for-teams'), r('/corporate-training/:path*', '/for-teams'),
   r('/contact-us', '/contact'), r('/about-trainingcred', '/about'), r('/privacy-policy', '/privacy'),
   r('/latest-added-courses', '/courses'),
+  { source: '/login', destination: '/', permanent: false }, // login page removed 2026-11-23 (temporary, in case accounts come back)
 ]
 for (const c of COURSES) {
   out.push(r(`/training-course/${c.slug}`, `/courses/${c.slug}`))

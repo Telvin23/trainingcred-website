@@ -8,7 +8,6 @@ import Book from './pages/Book.jsx'
 import { Category, City, Destinations, Calendar } from './pages/Listings.jsx'
 import { ForTeams, Advisory, About, Contact, Faq, Legal } from './pages/Info.jsx'
 import Admin from './pages/Admin.jsx'
-import Login from './pages/Login.jsx'
 import NotFound from './pages/NotFound.jsx'
 
 function ScrollToTop() {
@@ -45,7 +44,6 @@ export default function App() {
           <Route path="/privacy" element={<Legal kind="privacy" />} />
           <Route path="/terms" element={<Legal kind="terms" />} />
           <Route path="/admin" element={<Admin />} />
-          <Route path="/login" element={<Login />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
       </main>

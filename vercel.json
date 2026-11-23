@@ -2,7 +2,21 @@
   "cleanUrls": true,
   "trailingSlash": false,
   "headers": [
-    { "source": "/(.*)", "has": [{ "type": "host", "value": ".*\\.vercel\\.app" }], "headers": [{ "key": "X-Robots-Tag", "value": "noindex, nofollow" }] },
+    {
+      "source": "/(.*)",
+      "has": [
+        {
+          "type": "host",
+          "value": ".*\\.vercel\\.app"
+        }
+      ],
+      "headers": [
+        {
+          "key": "X-Robots-Tag",
+          "value": "noindex, nofollow"
+        }
+      ]
+    },
     {
       "source": "/assets/(.*)",
       "headers": [
@@ -40,6 +54,11 @@
     }
   ],
   "redirects": [
+    {
+      "source": "/login",
+      "destination": "/",
+      "permanent": false
+    },
     {
       "source": "/:cc([a-z]{2})",
       "destination": "/",
@@ -618,4 +637,3 @@
     }
   ]
 }
-
