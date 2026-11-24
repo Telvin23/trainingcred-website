@@ -1,8 +1,8 @@
 // Home page - design D "Combined" (approved 2026-11-23). Styles: src/styles/home.css.
 // Course dates, prices and counts come from the course data, so they stay current at every build.
 import { useEffect, useMemo, useRef, useState } from 'react'
-import { Link } from 'react-router-dom'
-import { ChevronLeft, ChevronRight, BarChart3, Package, LineChart, Monitor, Star, Award, Pause, Play, MapPin } from 'lucide-react'
+import { Link, useNavigate } from 'react-router-dom'
+import { ChevronLeft, ChevronRight, BarChart3, Package, LineChart, Monitor, Star, Award, Pause, Play, MapPin, Search, Check } from 'lucide-react'
 import { Seo, orgLd } from '../lib/seo.jsx'
 import { SITE } from '../data/site.js'
 import { CATEGORIES, CITIES, cityBySlug } from '../data/catalog.js'
@@ -111,6 +111,7 @@ function HeroMountain() {
           </div>
         )
       })}
+      <svg className="h-ridge" viewBox="0 0 400 220" preserveAspectRatio="none"><path fill="#2A1F2E" d="M0 220V120l40-30 30 18 45-60 30 26 38-52 22 18 30-36 38 50 30-14 40 46 37-20v160Z" /><path fill="#1A1A26" d="M0 220V160l50-26 40 16 50-42 40 28 50-30 50 34 40-12 80 40v52Z" /></svg>
       <svg className="h-trees" viewBox="0 0 1440 360" preserveAspectRatio="xMidYMax slice" style={{ transform: par(32) }}><path fill="#061017" d={TREES_PATH} /></svg>
       <div className="h-scrim" />
     </div>
@@ -240,6 +241,12 @@ export default function Home() {
     el.style.setProperty('--mx', (((e.clientX - r.left) / r.width) * 2 - 1).toFixed(3))
     el.style.setProperty('--my', (((e.clientY - r.top) / r.height) * 2 - 1).toFixed(3))
   }
+  const nav = useNavigate()
+  const onHeroSearch = (e) => {
+    e.preventDefault()
+    const q = new FormData(e.currentTarget).get('q')?.toString().trim()
+    nav('/courses' + (q ? `?q=${encodeURIComponent(q)}` : ''))
+  }
   const onHeroLeave = () => { const el = heroRef.current; if (el) { el.style.setProperty('--mx', '0'); el.style.setProperty('--my', '0') } }
 
   return (
@@ -251,32 +258,44 @@ export default function Home() {
       <section className="h-hero" ref={heroRef} onMouseMove={onHeroMove} onMouseLeave={onHeroLeave}>
         <HeroMountain />
         <div className="h-wrap h-hero-inner">
-          <div className="h-hero-row" style={{ marginTop: 96 }}>
-            <div style={{ maxWidth: 640 }}>
+          <div className="h-hero-row">
+            <div className="h-hero-copy">
               <p className="h-kicker">{COURSES.length} courses · {CITIES.length} cities · live online</p>
               <h1>Every career has a summit. Train for yours.</h1>
-              <p className="h-hero-sub">Finance, procurement, MEAL, ICT, leadership and 11 more focus areas: five- and ten-day courses in {CITIES.length} cities, or live online.</p>
-              <p style={{ margin: '26px 0 10px', fontSize: 13, color: '#CBD5E1' }}>Popular right now</p>
-              <div className="h-chips">
-                {CHIPS.map(([l, s]) => <Link key={s} to={`/courses/${s}`} className="h-chip">{l}</Link>)}
-              </div>
+              <p className="h-hero-sub">Practical 5 and 10-day courses in {CITIES.length} cities, or live online from anywhere.</p>
+              <form className="h-hsearch" role="search" onSubmit={onHeroSearch}>
+                <label className="sr-only" htmlFor="hero-q">What do you want to learn?</label>
+                <Search size={19} className="h-hsearch-icon" aria-hidden="true" />
+                <input id="hero-q" name="q" type="search" placeholder="What do you want to learn?" autoComplete="off" />
+                <button type="submit">Find a course</button>
+              </form>
+              <p className="h-popular">Popular: {CHIPS.slice(0, 3).map(([l, s], i) => <span key={s}>{i > 0 && <span aria-hidden="true"> · </span>}<Link to={`/courses/${s}`}>{l}</Link></span>)}</p>
+              <ul className="h-trust">
+                <li><Check size={15} aria-hidden="true" />Certificate on completion</li>
+                <li><Check size={15} aria-hidden="true" />Classroom or live online</li>
+                <li><Check size={15} aria-hidden="true" />New intakes every Monday</li>
+              </ul>
             </div>
             <div className="h-cal">
-              <p style={{ margin: '0 0 14px', fontSize: 12, letterSpacing: '.18em', textTransform: 'uppercase', color: '#F59E0B' }}>Next on the calendar</p>
-              {CALENDAR.map((it) => {
-                const x = sessionOf(it.slug, it.format, it.city)
-                if (!x) return null
-                return (
-                  <Link key={it.slug} to={`/courses/${it.slug}`} className="h-cal-row">
-                    <span className="h-date">{monShort(x.s.start)}<br /><b>{dayNum(x.s.start)}</b></span>
-                    <span>
-                      <span style={{ display: 'block', color: '#fff', fontWeight: 600, fontSize: 14, lineHeight: 1.35 }}>{it.label}</span>
-                      <span style={{ display: 'block', color: '#94A3B8', fontSize: 12 }}>{whereText(x.s)} · from {money(x.s.fee5)}</span>
-                    </span>
-                  </Link>
-                )
-              })}
-              <Link to="/calendar" style={{ display: 'inline-block', marginTop: 12, fontSize: 14, fontWeight: 700, color: '#F59E0B', textDecoration: 'none' }}>Full calendar &rarr;</Link>
+              <div className="h-cal-head">
+                <p>Coming up</p>
+                <Link to="/calendar">Full calendar &rarr;</Link>
+              </div>
+              <div className="h-cal-list">
+                {CALENDAR.map((it) => {
+                  const x = sessionOf(it.slug, it.format, it.city)
+                  if (!x) return null
+                  return (
+                    <Link key={it.slug} to={`/courses/${it.slug}`} className="h-cal-row">
+                      <span className="h-date">{monShort(x.s.start)}<br /><b>{dayNum(x.s.start)}</b></span>
+                      <span className="h-cal-text">
+                        <span className="h-cal-t">{it.label}</span>
+                        <span className="h-cal-m">{whereText(x.s)} · from {money(x.s.fee5)}</span>
+                      </span>
+                    </Link>
+                  )
+                })}
+              </div>
             </div>
           </div>
         </div>
