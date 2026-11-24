@@ -20,17 +20,17 @@ export function CourseCover({ category, image, className = '', children, big }) 
   const [a, b] = cat?.tint || ['#0B5A86', '#0E8F7E']
   if (image) {
     return (
-      <div className={`relative overflow-hidden bg-[#071627] ${className}`}>
+      <div className={`relative overflow-hidden bg-[#0F172A] ${className}`}>
         <img src={image} alt="" loading={big ? 'eager' : 'lazy'} decoding="async" className={`absolute w-full object-cover transition duration-700 group-hover:scale-105 ${big ? 'inset-x-0 top-0 h-48 sm:h-64 lg:inset-0 lg:h-full lg:scale-105 lg:blur-[1px]' : 'inset-0 h-full'}`} />
         {/* brand tint + darkening so white text and chips stay readable on any photo */}
         <div className="absolute inset-0 mix-blend-multiply" style={{ background: `linear-gradient(135deg, ${a}66, ${b}40)` }} aria-hidden="true" />
-        <div className={`absolute inset-0 ${big ? 'bg-[linear-gradient(180deg,rgba(7,22,39,.15)_0px,rgba(7,22,39,.35)_110px,#071627_200px)] sm:bg-[linear-gradient(180deg,rgba(7,22,39,.15)_0px,rgba(7,22,39,.35)_150px,#071627_260px)] lg:bg-[linear-gradient(95deg,rgba(5,15,28,.94)_0%,rgba(5,15,28,.78)_50%,rgba(5,15,28,.35)_100%)]' : 'bg-gradient-to-t from-black/70 via-black/15 to-black/30'}`} aria-hidden="true" />
+        <div className={`absolute inset-0 ${big ? 'bg-[linear-gradient(180deg,rgba(15,23,42,.15)_0px,rgba(15,23,42,.35)_110px,#0F172A_200px)] sm:bg-[linear-gradient(180deg,rgba(15,23,42,.15)_0px,rgba(15,23,42,.35)_150px,#0F172A_260px)] lg:bg-[linear-gradient(95deg,rgba(15,23,42,.94)_0%,rgba(15,23,42,.78)_50%,rgba(15,23,42,.35)_100%)]' : 'bg-gradient-to-t from-black/70 via-black/15 to-black/30'}`} aria-hidden="true" />
         {children}
       </div>
     )
   }
   return (
-    <div className={`relative overflow-hidden ${className}`} style={{ background: `radial-gradient(120% 90% at 0% 0%, ${a} 0%, transparent 60%), radial-gradient(100% 100% at 100% 100%, ${b} 0%, transparent 65%), #071627` }}>
+    <div className={`relative overflow-hidden ${className}`} style={{ background: `radial-gradient(120% 90% at 0% 0%, ${a} 0%, transparent 60%), radial-gradient(100% 100% at 100% 100%, ${b} 0%, transparent 65%), #0F172A` }}>
       <svg className="absolute inset-0 h-full w-full opacity-[.16]" aria-hidden="true"><defs><pattern id={`p-${category}`} width="22" height="22" patternUnits="userSpaceOnUse"><circle cx="2" cy="2" r="1.2" fill="#fff" /></pattern></defs><rect width="100%" height="100%" fill={`url(#p-${category})`} /></svg>
       <div className="absolute -bottom-6 -right-4 text-white/15" aria-hidden="true"><Icon name={cat?.icon} size={big ? 220 : 130} strokeWidth={1.2} /></div>
       <div className="absolute inset-0 bg-gradient-to-t from-black/35 to-transparent" aria-hidden="true" />
@@ -42,33 +42,39 @@ export function CourseCover({ category, image, className = '', children, big }) 
 export function CourseCard({ course, session }) {
   const s = session || nextSession(course)
   const cat = categoryBySlug(course.category)
+  const online = s?.format === 'online'
   return (
-    <article className="card card-hover group relative flex h-full flex-col overflow-hidden">
-      <CourseCover category={course.category} image={course.image} className="h-44">
-        <div className="absolute inset-x-3 top-3 flex items-start justify-between gap-2">
-          <span className="chip glass-photo !py-1 text-xs text-white">{cat?.name.split(',')[0].split(' & ')[0]}</span>
-          {s && <span className="chip glass-photo !py-1 text-xs text-white">{s.format === 'online' ? <Monitor size={13} aria-hidden="true" /> : <Building2 size={13} aria-hidden="true" />}{s.format === 'online' ? 'Live online' : 'Classroom'}</span>}
-        </div>
+    <article className="group relative flex h-full flex-col overflow-hidden rounded-2xl border border-line bg-surface shadow-[var(--glass-shadow)] transition duration-300 hover:-translate-y-1 hover:border-[#F59E0B]/45 hover:shadow-[0_24px_48px_-24px_rgba(245,158,11,.35)]">
+      <div className="relative aspect-[16/10] overflow-hidden bg-surface-2">
+        {course.image
+          ? <img src={course.image} alt="" loading="lazy" decoding="async" className="absolute inset-0 h-full w-full object-cover transition duration-700 group-hover:scale-105" />
+          : <div className="absolute inset-0"><CourseCover category={course.category} className="h-full" /></div>}
+        <div className="absolute inset-0 bg-gradient-to-t from-[#0F172A]/55 via-transparent to-transparent" aria-hidden="true" />
+        <span className="absolute left-3 top-3 max-w-[70%] truncate rounded-full bg-[#0F172A]/80 px-3 py-1 text-[12px] font-semibold text-white backdrop-blur">{cat?.name.split(',')[0].split(' & ')[0]}</span>
         {s && (
-          <div className="glass-photo absolute bottom-3 left-3 flex items-center gap-2 rounded-2xl px-3 py-1.5 text-white" aria-hidden="true">
-            <span className="text-[11px] font-extrabold tracking-wider text-amber">{monShort(s.start)}</span><span className="text-lg font-extrabold leading-none">{dayNum(s.start)}</span>
-          </div>
+          <span className="absolute bottom-3 right-3 flex flex-col items-center rounded-xl bg-[#F59E0B] px-2.5 py-1 leading-none text-[#111827] shadow-lg" aria-hidden="true">
+            <span className="text-[10px] font-extrabold tracking-wider">{monShort(s.start)}</span><span className="text-[18px] font-extrabold">{dayNum(s.start)}</span>
+          </span>
         )}
-      </CourseCover>
+      </div>
       <div className="flex flex-1 flex-col gap-3 p-5">
-        <h3 className="m-0 text-[17px] font-bold leading-snug">
+        <div className="flex flex-wrap items-center gap-2 text-[12px] font-semibold">
+          {s && <span className="inline-flex items-center gap-1.5 rounded-full bg-brand-soft px-2.5 py-1 text-brand">{online ? <Monitor size={13} aria-hidden="true" /> : <Building2 size={13} aria-hidden="true" />}{online ? 'Live online' : 'Classroom'}</span>}
+          <span className="inline-flex items-center gap-1.5 rounded-full border border-line px-2.5 py-1 text-muted"><Clock size={13} aria-hidden="true" />{course.durations.join(' or ')} days</span>
+        </div>
+        <h3 className="m-0 line-clamp-2 text-[17px] font-extrabold leading-snug">
           <Link to={`/courses/${course.slug}`} className="text-fg no-underline after:absolute after:inset-0 group-hover:text-brand">{course.title}</Link>
         </h3>
         <p className="m-0 line-clamp-2 text-[14px] leading-relaxed text-muted">{course.summary}</p>
         {s && (
           <div className="flex flex-wrap gap-x-4 gap-y-1 text-[13px] text-faint">
             <span className="flex items-center gap-1.5"><MapPin size={14} aria-hidden="true" />{where(s)}</span>
-            <span className="flex items-center gap-1.5"><Clock size={14} aria-hidden="true" />{course.durations.join(' or ')} days</span>
+            <span className="flex items-center gap-1.5"><CalendarDays size={14} aria-hidden="true" />{dateRange(s.start, s.end5)}</span>
           </div>
         )}
-        <div className="mt-auto flex items-end justify-between gap-3 border-t border-line pt-4">
+        <div className="mt-auto flex items-center justify-between gap-3 border-t border-line pt-4">
           <div><div className="text-[11px] font-semibold uppercase tracking-wider text-faint">From</div><div className="text-[19px] font-extrabold text-accent">{money(s ? s.fee5 : fromFee(course))}</div></div>
-          <Link to={`/book/${course.slug}${s ? `?session=${encodeURIComponent(s.id)}` : ''}`} className="btn-primary btn-sm relative z-10">Reserve<ArrowUpRight size={16} aria-hidden="true" /></Link>
+          <Link to={`/book/${course.slug}${s ? `?session=${encodeURIComponent(s.id)}` : ''}`} className="relative z-10 inline-flex min-h-10 items-center gap-1.5 rounded-full border border-[#F59E0B]/60 px-4 text-[14px] font-bold text-brand no-underline transition hover:bg-[#F59E0B] hover:text-[#111827]">Reserve<ArrowUpRight size={16} aria-hidden="true" /></Link>
         </div>
       </div>
     </article>
@@ -177,7 +183,7 @@ export function HeroSlider({ slides, interval = 6000, children }) {
           </div>
         ))}
         </div>
-        <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(5,15,28,.78)_0%,rgba(5,15,28,.55)_40%,rgba(5,15,28,.9)_100%)] lg:bg-[linear-gradient(95deg,rgba(5,15,28,.94)_0%,rgba(5,15,28,.72)_48%,rgba(5,15,28,.35)_100%)]" />
+        <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(15,23,42,.78)_0%,rgba(15,23,42,.55)_40%,rgba(15,23,42,.9)_100%)] lg:bg-[linear-gradient(95deg,rgba(15,23,42,.94)_0%,rgba(15,23,42,.72)_48%,rgba(15,23,42,.35)_100%)]" />
         <div className="absolute inset-0 bg-[radial-gradient(700px_400px_at_15%_30%,rgba(14,143,126,.35),transparent_70%)]" />
         <div className="absolute inset-x-0 bottom-0 h-40 bg-gradient-to-b from-transparent to-bg" />
       </div>

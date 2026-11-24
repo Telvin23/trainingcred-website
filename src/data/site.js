@@ -2,31 +2,30 @@
 // CPD UK provider listing no. 20263 (address, mission, accreditation), LinkedIn/Facebook pages.
 // Items marked CONFIRM in comments are sensible defaults written for the draft; check with Trainingcred.
 export const SITE = {
-  name: 'Trainingcred',
-  legalName: 'Trainingcred Institute',
-  tagline: 'Skills for the Modern Workforce',
-  url: 'https://www.trainingcred.com',
+  name: 'WeSkill Training Institute',
+  shortName: 'WeSkill',
+  legalName: 'WeSkill Training Institute',
+  tagline: 'Empowering People, Advancing Careers',
+  url: 'https://weskilltraininginstitute.education',
   phone: '+254 759 509615',
   phoneHref: 'tel:+254759509615',
   whatsapp: '254759509615',
-  email: 'info@trainingcred.com',
-  address: 'Delta Riverside Office Park, Block 2, 3rd Floor, Riverside Drive, Nairobi, Kenya',
-  addressShort: 'Delta Riverside Office Park, Riverside Drive, Nairobi',
-  postal: 'P.O. Box 63481-00619, Muthaiga, Nairobi',
-  mapUrl: 'https://www.google.com/maps/search/?api=1&query=Delta+Riverside+Office+Park+Riverside+Drive+Nairobi',
+  email: 'Learn@weskilltraininginstitute.education',
+  address: 'Nairobi, Kenya',
+  addressShort: 'Nairobi, Kenya',
+  postal: '', // CONFIRM: WeSkill postal address
+  mapUrl: 'https://www.google.com/maps/search/?api=1&query=Nairobi+Kenya',
   hours: 'Monday - Friday, 8:00 am - 5:00 pm EAT', // CONFIRM
   trainingHours: '8:30 am - 4:30 pm', // CONFIRM
-  cpd: { body: 'The CPD Certification Service (UK)', provider: '20263' },
+  // CPD: 20263 is Trainingcred Institute's number, so it is hidden. Put WeSkill's own provider number here to show it again.
+  cpd: { body: 'The CPD Certification Service (UK)', provider: '' },
   mission: 'To enhance the impact, effectiveness, and efficiency of social and organizational interventions.',
   approach: ['Assess', 'Engage', 'Empower'],
   stats: { categories: 22, topics: 143, cities: 18 },
-  socials: {
-    facebook: 'https://www.facebook.com/trainingcred/',
-    linkedin: 'https://www.linkedin.com/company/trainingcred-institute/',
-  },
+  socials: {}, // CONFIRM: WeSkill social pages (Trainingcred's removed)
 }
 
-export const waLink = (text) => `https://wa.me/${SITE.whatsapp}?text=${encodeURIComponent(text || 'Hello Trainingcred, I would like to ask about a course.')}`
+export const waLink = (text) => `https://wa.me/${SITE.whatsapp}?text=${encodeURIComponent(text || 'Hello WeSkill, I would like to ask about a course.')}`
 
 export const HERO_SLIDES = [
   { src: '/images/hero/hero1.jpg', caption: 'Boardroom strategy session' },
@@ -57,12 +56,12 @@ export const WHY = [
   { title: 'Practical, not lecture-only', text: 'Case work and tools participants use back at their desks on Monday.' },
   { title: 'Practitioner trainers', text: 'Facilitators who have done the job they teach.' },
   { title: 'Flexible formats and cities', text: 'Classroom, live online or in-house, with dates every month.' },
-  { title: 'CPD-accredited certificates', text: 'Member of The CPD Certification Service (UK), provider no. 20263.' },
+  ...(SITE.cpd.provider ? [{ title: 'CPD-accredited certificates', text: `Member of ${SITE.cpd.body}, provider no. ${SITE.cpd.provider}.` }] : [{ title: 'Certificate of completion', text: 'Every participant who completes the course receives a certificate.' }]),
 ]
 
 export const GENERAL_FAQS = [
   { q: 'What does the fee include?', a: 'The fee is per participant and covers tuition, course materials, a CPD-accredited certificate of completion and, for classroom courses, the training venue with lunch and two tea breaks each day. Travel, accommodation and visas are paid by the participant.' },
-  { q: 'Is the certificate accredited?', a: 'Yes. Trainingcred Institute is a member of The CPD Certification Service (UK), provider number 20263. Participants who complete the course receive a certificate of completion with the CPD hours attended.' },
+  ...(SITE.cpd.provider ? [{ q: 'Is the certificate accredited?', a: `Yes. WeSkill Training Institute is a member of The CPD Certification Service (UK), provider number ${SITE.cpd.provider}. Participants who complete the course receive a certificate of completion with the CPD hours attended.` }] : []),
   { q: 'Can you run a course just for our team?', a: 'Yes. Any course can run in-house on your dates, at your premises, in a venue of your choice or online, and we adapt the content to your sector. Request a team quote and we reply within one working day.' },
   { q: 'How do I pay?', a: 'After you reserve, we send a proforma invoice. You can pay by bank transfer, M-Pesa or card. Payment is due before the course starts; organisations that need a purchase order or a letter of undertaking can ask us for terms.' },
   { q: 'Can I change my date or cancel?', a: 'You can move to another date or format, or send a colleague in your place, at no cost up to 7 days before the start. Cancellations made at least 14 days before the start are refunded less a 10% administration fee; after that the fee can be used for a later course within 12 months.' },

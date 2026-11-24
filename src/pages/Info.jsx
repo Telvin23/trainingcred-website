@@ -13,7 +13,7 @@ export function ForTeams() {
   useEffect(() => { setTopic(params.get('topic') || '') }, [params])
   return (
     <>
-      <Seo title="In-house Training and Learning Pathways for Teams" path="/for-teams" description="Run any Trainingcred course privately for your team, on your dates, in your city or online. Group rates, tailored content and learning pathways. Quote within one working day."
+      <Seo title="In-house Training and Learning Pathways for Teams" path="/for-teams" description="Run any WeSkill course privately for your team, on your dates, in your city or online. Group rates, tailored content and learning pathways. Quote within one working day."
         jsonLd={crumbsLd([{ name: 'Home', path: '/' }, { name: 'For Teams', path: '/for-teams' }])} />
       <PageHero crumbs={[{ name: 'Home', path: '/' }, { name: 'For Teams', path: '/for-teams' }]} eyebrow="For organisations" title="Training built around your team"
         intro="Any course can run in-house on your dates, in your city or online, adapted to your sector and goals. Five or more people from one organisation also get group rates on public dates.">
@@ -32,7 +32,7 @@ export function ForTeams() {
             <h2 className="h2 m-0">How a team programme works</h2>
             <ol className="m-0 mt-5 flex list-none flex-col gap-4 p-0">
               {['Tell us the topic, team size, dates and location.', 'We propose an outline, trainer and fee within one working day.', 'We adapt the content after a short call with your team lead.', 'We deliver, assess participants and send a short training report.'].map((t, n) => (
-                <li key={t} className="flex gap-3.5"><span className="flex h-9 w-9 flex-none items-center justify-center rounded-full bg-primary font-extrabold text-white">{n + 1}</span><span className="pt-1.5 text-[15.5px]">{t}</span></li>
+                <li key={t} className="flex gap-3.5"><span className="flex h-9 w-9 flex-none items-center justify-center rounded-full bg-primary font-extrabold text-[#111827]">{n + 1}</span><span className="pt-1.5 text-[15.5px]">{t}</span></li>
               ))}
             </ol>
           </div>
@@ -64,7 +64,7 @@ export function Advisory() {
       <section>
         <div className="wrap grid gap-10 py-12 lg:grid-cols-[1fr_1.2fr]">
           <div><h2 className="h2 m-0">Talk to an advisor</h2><p className="mt-3 text-[16px] leading-relaxed text-muted">Tell us what you are working on. We will reply with how we would approach it, the team and an indicative budget.</p>
-            <a href={waLink('Hello Trainingcred, I would like to discuss an advisory assignment.')} target="_blank" rel="noopener noreferrer" className="btn-glass mt-2"><MessageCircle size={18} aria-hidden="true" />WhatsApp us</a></div>
+            <a href={waLink('Hello WeSkill, I would like to discuss an advisory assignment.')} target="_blank" rel="noopener noreferrer" className="btn-glass mt-2"><MessageCircle size={18} aria-hidden="true" />WhatsApp us</a></div>
           <div className="card p-5 sm:p-7"><EnquiryForm type="advisory" fields={['organisation', 'jobTitle', 'country', 'topic', 'message']} submitLabel="Send request" summary="I would like to discuss an advisory assignment." /></div>
         </div>
       </section>
@@ -75,20 +75,22 @@ export function Advisory() {
 export function About() {
   return (
     <>
-      <Seo title="About Trainingcred" path="/about" description="Trainingcred Institute delivers practical professional development courses, in-house programmes and advisory across Africa and the Middle East." jsonLd={orgLd()} />
+      <Seo title="About WeSkill" path="/about" description="WeSkill Training Institute delivers practical professional development courses, in-house programmes and advisory across Africa and the Middle East." jsonLd={orgLd()} />
       <PageHero crumbs={[{ name: 'Home', path: '/' }, { name: 'About', path: '/about' }]} eyebrow={SITE.tagline} title="Skills that change how people work on Monday morning" intro="Research, training and consultancy for development organisations, government institutions and private corporations." />
       <section>
         <div className="wrap grid gap-10 py-12 lg:grid-cols-2">
           <div className="flex flex-col gap-4 text-[16px] leading-[1.75]">
-            <p className="m-0 text-lg font-semibold text-fg">Trainingcred Institute is a Nairobi-based provider of research, training and consultancy services for development organisations, government institutions and private corporations.</p>
+            <p className="m-0 text-lg font-semibold text-fg">WeSkill Training Institute is a Nairobi-based provider of research, training and consultancy services for development organisations, government institutions and private corporations.</p>
             <p className="m-0 text-muted">We run short professional courses of 5 and 10 days across {SITE.stats.categories} categories and {SITE.stats.topics} focused topics: classroom sessions in {SITE.stats.cities} cities across Africa and the Middle East, live online courses, and in-house programmes built around a single organisation. Every course is led by a practitioner trainer and built around exercises participants can use straight away.</p>
             <p className="m-0 text-muted">Our mission is {SITE.mission.charAt(0).toLowerCase() + SITE.mission.slice(1)} Our approach is simple: <strong className="text-fg">Assess, Engage, Empower.</strong></p>
+            {SITE.cpd.provider && (
             <div className="card flex items-center gap-4 !rounded-2xl p-4">
               <span className="flex h-12 w-12 flex-none items-center justify-center rounded-xl bg-accent-soft text-accent"><ShieldCheck size={24} aria-hidden="true" /></span>
               <span className="text-[15px]"><strong className="block text-fg">CPD accredited</strong><span className="text-muted">Member of {SITE.cpd.body}, provider no. {SITE.cpd.provider}.</span></span>
             </div>
+            )}
           </div>
-          <img src="/images/hero/hall.jpg" alt="Participants in a Trainingcred lecture hall" className="w-full rounded-3xl object-cover" loading="lazy" width="1200" height="675" />
+          <img src="/images/hero/hall.jpg" alt="Participants in a WeSkill lecture hall" className="w-full rounded-3xl object-cover" loading="lazy" width="1200" height="675" />
         </div>
       </section>
       <section>
@@ -113,11 +115,11 @@ export function Contact() {
       <Seo title="Contact Us" path="/contact" description={`Call or WhatsApp ${SITE.phone}, email ${SITE.email}, or send us a message. We reply within one working day.`} jsonLd={orgLd()} />
       <PageHero crumbs={[{ name: 'Home', path: '/' }, { name: 'Contact', path: '/contact' }]} title="Contact us" intro="Questions about a course, dates, fees or a team programme? We reply within one working day." />
       <section>
-        <div className="wrap grid gap-8 py-12 lg:grid-cols-[1fr_1.4fr]">
-          <div className="flex flex-col gap-3">
-            {[[MessageCircle, 'WhatsApp', SITE.phone, waLink()], [Phone, 'Call', SITE.phone, SITE.phoneHref], [Mail, 'Email', SITE.email, `mailto:${SITE.email}`], [MapPin, 'Office', SITE.address, SITE.mapUrl], [Mail, 'Postal address', SITE.postal], [Clock, 'Office hours', SITE.hours]].map(([I, k, v, href]) => (
+        <div className="wrap grid grid-cols-[minmax(0,1fr)] gap-8 py-12 lg:grid-cols-[1fr_1.4fr]">
+          <div className="flex min-w-0 flex-col gap-3">
+            {[[MessageCircle, 'WhatsApp', SITE.phone, waLink()], [Phone, 'Call', SITE.phone, SITE.phoneHref], [Mail, 'Email', SITE.email, `mailto:${SITE.email}`], [MapPin, 'Office', SITE.address, SITE.mapUrl], [Mail, 'Postal address', SITE.postal], [Clock, 'Office hours', SITE.hours]].filter(([, , v]) => v).map(([I, k, v, href]) => (
               <div key={k} className="card flex gap-4 p-4"><span className="flex h-11 w-11 flex-none items-center justify-center rounded-xl bg-brand-soft text-brand"><I size={20} aria-hidden="true" /></span>
-                <div><div className="text-[13px] text-muted">{k}</div>{href ? <a href={href} className="font-bold" {...(href.startsWith('http') ? { target: '_blank', rel: 'noopener noreferrer' } : {})}>{v}</a> : <div className="font-bold">{v}</div>}</div></div>
+                <div className="min-w-0 break-words [overflow-wrap:anywhere]"><div className="text-[13px] text-muted">{k}</div>{href ? <a href={href} className="font-bold" {...(href.startsWith('http') ? { target: '_blank', rel: 'noopener noreferrer' } : {})}>{v}</a> : <div className="font-bold">{v}</div>}</div></div>
             ))}
           </div>
           <div className="card p-5 sm:p-7"><h2 className="m-0 mb-5 text-[22px] font-extrabold">Send us a message</h2><EnquiryForm type="contact" fields={['organisation', 'topic', 'message']} submitLabel="Send message" summary="" /></div>
@@ -147,16 +149,16 @@ export function Legal({ kind }) {
   const privacy = kind === 'privacy'
   return (
     <>
-      <Seo title={privacy ? 'Privacy Notice' : 'Terms and Conditions'} path={privacy ? '/privacy' : '/terms'} description={privacy ? 'How Trainingcred collects and uses personal data.' : 'Terms for booking Trainingcred courses.'} />
+      <Seo title={privacy ? 'Privacy Notice' : 'Terms and Conditions'} path={privacy ? '/privacy' : '/terms'} description={privacy ? 'How WeSkill collects and uses personal data.' : 'Terms for booking WeSkill courses.'} />
       <PageHero crumbs={[{ name: 'Home', path: '/' }, { name: privacy ? 'Privacy' : 'Terms', path: privacy ? '/privacy' : '/terms' }]} title={privacy ? 'Privacy notice' : 'Terms and conditions'} />
       <section>
         <div className="wrap py-12"><div className="mx-auto max-w-[820px] text-[16px] leading-[1.75]">
           <p className="text-sm text-faint">Last updated: November 2026</p>
           {privacy ? (<>
-            <p>{SITE.legalName} ("Trainingcred", "we") of {SITE.address} is the data controller for personal data collected through this website.</p>
+            <p>{SITE.legalName} ("WeSkill", "we") of {SITE.address} is the data controller for personal data collected through this website.</p>
             <h2 className="text-xl font-extrabold">What we collect</h2><p>When you reserve a seat, request a quote or contact us, we collect your name, email, phone number, organisation, job title, country and the details of your request.</p>
             <h2 className="text-xl font-extrabold">How we use it</h2><p>Only to respond to your request, manage your booking and invoice, and send joining instructions. We do not sell your data. We send course updates only if you ask for them.</p>
-            <h2 className="text-xl font-extrabold">Where it is stored and for how long</h2><p>In a secure, access-controlled database used only by Trainingcred staff and the service providers who host it for us. We keep booking records for seven years for accounting and certificate verification, and enquiries that do not lead to a booking for two years.</p>
+            <h2 className="text-xl font-extrabold">Where it is stored and for how long</h2><p>In a secure, access-controlled database used only by WeSkill staff and the service providers who host it for us. We keep booking records for seven years for accounting and certificate verification, and enquiries that do not lead to a booking for two years.</p>
             <h2 className="text-xl font-extrabold">Your rights</h2><p>Under the Kenya Data Protection Act, 2019 you can ask to see, correct or delete your data, or object to how we use it. Email {SITE.email} and we will respond within 30 days.</p>
             <h2 className="text-xl font-extrabold">Cookies</h2><p>We use only the cookies and local storage needed for the site to work, such as remembering light or dark mode.</p>
           </>) : (<>
@@ -164,7 +166,7 @@ export function Legal({ kind }) {
             <h2 className="text-xl font-extrabold">Changes and cancellations</h2><p>You may send a colleague in your place or move to another date or format at no cost up to 7 days before the start. Cancellations received in writing at least 14 days before the start are refunded less a 10% administration fee. Later cancellations and no-shows are not refunded, but the fee can be used for another course within 12 months.</p>
             <h2 className="text-xl font-extrabold">Course changes</h2><p>We may change a trainer or venue where needed and will tell you in advance. If we cancel a course you can transfer or receive a full refund.</p>
             <h2 className="text-xl font-extrabold">Certificates</h2><p>CPD-accredited certificates of completion are issued to participants who attend at least 80% of the sessions.</p>
-            <h2 className="text-xl font-extrabold">Contact</h2><p>{SITE.legalName}, {SITE.address}. {SITE.postal}. Email {SITE.email}, phone {SITE.phone}.</p>
+            <h2 className="text-xl font-extrabold">Contact</h2><p>{SITE.legalName}, {SITE.address}.{SITE.postal ? ` ${SITE.postal}.` : ''} Email {SITE.email}, phone {SITE.phone}.</p>
           </>)}
         </div></div>
       </section>

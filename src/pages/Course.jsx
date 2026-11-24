@@ -182,7 +182,7 @@ export default function Course() {
             <EnquiryForm compact type="brochure" extra={{ courseSlug: course.slug, courseTitle: course.title }} fields={[]} submitLabel="Email me the PDF" summary={`Please send the brochure for ${course.title}.`} />
           </div>
           <div className="mt-4 flex gap-2">
-            <a href={waLink(`Hello Trainingcred, I have a question about "${course.title}".`)} target="_blank" rel="noopener noreferrer" className="btn-glass btn-sm flex-1"><MessageCircle size={16} aria-hidden="true" />Ask an advisor</a>
+            <a href={waLink(`Hello WeSkill, I have a question about "${course.title}".`)} target="_blank" rel="noopener noreferrer" className="btn-glass btn-sm flex-1"><MessageCircle size={16} aria-hidden="true" />Ask an advisor</a>
             <a href={SITE.phoneHref} className="btn-glass btn-sm" aria-label={`Call ${SITE.phone}`}><Phone size={16} aria-hidden="true" /></a>
           </div>
         </aside>

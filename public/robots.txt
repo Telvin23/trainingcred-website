@@ -3,4 +3,4 @@ Allow: /
 Disallow: /admin
 Disallow: /api/
 Disallow: /login
-Sitemap: https://www.trainingcred.com/sitemap.xml
+Sitemap: https://weskilltraininginstitute.education/sitemap.xml

@@ -19,7 +19,7 @@ export default async function handler(req, res) {
   const r = await fetch('https://api.resend.com/emails', {
     method: 'POST',
     headers: { Authorization: `Bearer ${process.env.RESEND_API_KEY}`, 'Content-Type': 'application/json' },
-    body: JSON.stringify({ from: process.env.NOTIFY_FROM || 'Trainingcred Website <onboarding@resend.dev>', to: (process.env.NOTIFY_EMAIL || 'info@trainingcred.com').split(',').map((s) => s.trim()), subject: `Follow up today: ${rows.length} request(s)`, html }),
+    body: JSON.stringify({ from: process.env.NOTIFY_FROM || 'WeSkill Website <onboarding@resend.dev>', to: (process.env.NOTIFY_EMAIL || 'Learn@weskilltraininginstitute.education').split(',').map((s) => s.trim()), subject: `Follow up today: ${rows.length} request(s)`, html }),
   })
   return send(res, r.ok ? 200 : 502, { ok: r.ok, due: rows.length })
 }

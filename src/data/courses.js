@@ -1,7 +1,7 @@
 // COURSE CATALOGUE
 // Course titles and URL slugs are taken from the current trainingcred.com (so old Google links can be
 // redirected to the same course). Outlines are written for this site; dates follow the monthly pattern
-// of the live site (5 or 10 days, Monday start). Fees: live online KSh 80,000 / 160,000 and Cairo/Dubai
+// of the live site (5 or 10 days, Monday start). Fees: live online KSh 70,000 / 140,000 and Cairo/Dubai
 // USD 4,200 come from the live site; other classroom fees are estimates to confirm (see FEES below).
 import { cityBySlug } from './catalog.js'
 import WESKILL from './weskill-courses.json'
@@ -352,8 +352,8 @@ const addDays = (d, n) => { const x = new Date(d); x.setUTCDate(x.getUTCDate() +
 
 // Fees per participant. online + premium(USD 4,200) seen on the live site; KE and INT classroom fees: CONFIRM
 const FEES = {
-  online: { 5: { currency: 'KES', amount: 80000 }, 10: { currency: 'KES', amount: 160000 } },
-  KE: { 5: { currency: 'KES', amount: 95000 }, 10: { currency: 'KES', amount: 190000 } },
+  online: { 5: { currency: 'KES', amount: 70000 }, 10: { currency: 'KES', amount: 140000 } },
+  KE: { 5: { currency: 'KES', amount: 85000 }, 10: { currency: 'KES', amount: 170000 } },
   INT: { 5: { currency: 'USD', amount: 2500 }, 10: { currency: 'USD', amount: 4500 } },
   premium: { 5: { currency: 'USD', amount: 4200 }, 10: { currency: 'USD', amount: 7800 } },
 }

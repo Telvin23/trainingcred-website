@@ -33,8 +33,8 @@ export default function Book() {
               <legend className="mb-3 text-lg font-extrabold">1. Choose a date</legend>
               <div className="flex max-h-[420px] flex-col gap-2 overflow-y-auto pr-1">
                 {sessions.map((x) => (
-                  <label key={x.id} className="flex min-h-14 cursor-pointer items-center gap-3 rounded-xl border border-line px-4 py-3 has-[:checked]:border-[#4FD1BE] has-[:checked]:bg-brand-soft">
-                    <input type="radio" name="session" value={x.id} checked={sid === x.id} onChange={() => setSid(x.id)} className="h-4 w-4 accent-[#0E8F7E]" />
+                  <label key={x.id} className="flex min-h-14 cursor-pointer items-center gap-3 rounded-xl border border-line px-4 py-3 has-[:checked]:border-[#F59E0B] has-[:checked]:bg-brand-soft">
+                    <input type="radio" name="session" value={x.id} checked={sid === x.id} onChange={() => setSid(x.id)} className="h-4 w-4 accent-[#F59E0B]" />
                     <span className="flex-1"><span className="block font-bold">{dateRange(x.start, x.end5)}</span><span className="text-sm text-muted">{where(x)}{x.format === 'classroom' ? ' · classroom' : ''}</span></span>
                     <span className="font-extrabold text-accent">{money(x.fee5)}</span>
                   </label>
@@ -47,8 +47,8 @@ export default function Book() {
                 <legend className="mb-3 text-lg font-extrabold">2. Duration</legend>
                 <div className="flex gap-2">
                   {course.durations.map((d) => (
-                    <label key={d} className="flex min-h-11 flex-1 cursor-pointer items-center justify-center gap-2 rounded-xl border border-line font-bold has-[:checked]:border-[#4FD1BE] has-[:checked]:bg-brand-soft">
-                      <input type="radio" name="days" checked={days === d} onChange={() => setDays(d)} className="accent-[#0E8F7E]" />{d} days
+                    <label key={d} className="flex min-h-11 flex-1 cursor-pointer items-center justify-center gap-2 rounded-xl border border-line font-bold has-[:checked]:border-[#F59E0B] has-[:checked]:bg-brand-soft">
+                      <input type="radio" name="days" checked={days === d} onChange={() => setDays(d)} className="accent-[#F59E0B]" />{d} days
                     </label>
                   ))}
                 </div>

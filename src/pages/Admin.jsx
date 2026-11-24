@@ -21,13 +21,13 @@ function template(r) {
   const first = String(r.name || '').split(' ')[0]
   const course = r.course_title || r.topic || 'your request'
   switch (r.status) {
-    case 'new': return `Hello ${first}, this is Trainingcred about ${course} (ref ${r.ref}). Thank you for your request. Is now a good time to confirm a few details?`
+    case 'new': return `Hello ${first}, this is WeSkill about ${course} (ref ${r.ref}). Thank you for your request. Is now a good time to confirm a few details?`
     case 'contacted': return `Hello ${first}, following up on ${course} (ref ${r.ref}). Shall I go ahead and confirm your seat${r.session_label ? ' for ' + r.session_label : ''}?`
     case 'confirmed': return `Hello ${first}, your seat on ${course}${r.session_label ? ' (' + r.session_label + ')' : ''} is confirmed. I am sending the proforma invoice and joining instructions by email. Ref ${r.ref}.`
     case 'invoiced': return `Hello ${first}, a reminder that the invoice for ${course} (ref ${r.ref}) is due before the start date. Payment: bank transfer, M-Pesa or card. Let me know if you need anything for approval.`
     case 'paid': return `Hello ${first}, thank you, we have received your payment for ${course} (ref ${r.ref}). See you at the training. Joining details are in your email.`
     case 'attended': return `Hello ${first}, thank you for attending ${course}. Your certificate is attached in your email. We would value a short review of the course.`
-    default: return `Hello ${first}, this is Trainingcred about ${course} (ref ${r.ref}).`
+    default: return `Hello ${first}, this is WeSkill about ${course} (ref ${r.ref}).`
   }
 }
 
@@ -78,7 +78,7 @@ export default function Admin() {
     const esc = (v) => `"${String(v ?? '').replace(/"/g, '""')}"`
     const a = document.createElement('a')
     a.href = URL.createObjectURL(new Blob([[cols.join(','), ...shown.map((r) => cols.map((c) => esc(r[c])).join(','))].join('\n')], { type: 'text/csv' }))
-    a.download = `trainingcred-enquiries-${today}.csv`
+    a.download = `weskill-enquiries-${today}.csv`
     a.click()
   }
 
@@ -115,7 +115,7 @@ export default function Admin() {
 
         <div className="mb-4 grid grid-cols-2 gap-2 sm:grid-cols-3 lg:grid-cols-6" role="tablist" aria-label="Views">
           {Object.entries(views).map(([k, [label]]) => (
-            <button key={k} type="button" role="tab" aria-selected={view === k} onClick={() => setView(k)} className={`card !rounded-2xl p-3 text-left transition ${view === k ? '!border-[#4FD1BE] bg-brand-soft' : ''}`}>
+            <button key={k} type="button" role="tab" aria-selected={view === k} onClick={() => setView(k)} className={`card !rounded-2xl p-3 text-left transition ${view === k ? '!border-[#F59E0B] bg-brand-soft' : ''}`}>
               <div className={`text-2xl font-extrabold ${k === 'due' && count('due') ? 'text-accent' : ''}`}>{count(k)}</div><div className="text-sm text-muted">{label}</div>
             </button>
           ))}
@@ -183,7 +183,7 @@ function Row({ r, open, toggle, save, me, due, today }) {
               <p className="m-0 text-[13.5px] text-muted">{msg}</p>
               <div className="mt-3 flex flex-wrap gap-2">
                 {wa && <a className="btn-primary btn-sm" target="_blank" rel="noopener noreferrer" href={`https://wa.me/${wa}?text=${encodeURIComponent(msg)}`} onClick={() => save(r.id, { log: 'WhatsApp message sent', ...(r.status === 'new' ? { status: 'contacted', follow_up_on: addDays(2) } : {}) })}><MessageCircle size={15} aria-hidden="true" />WhatsApp</a>}
-                {r.email && <a className="btn-glass btn-sm" href={`mailto:${r.email}?subject=${encodeURIComponent(`Trainingcred - ${r.course_title || 'your request'} (${r.ref})`)}&body=${encodeURIComponent(msg)}`} onClick={() => save(r.id, { log: 'Email sent', ...(r.status === 'new' ? { status: 'contacted', follow_up_on: addDays(2) } : {}) })}><Mail size={15} aria-hidden="true" />Email</a>}
+                {r.email && <a className="btn-glass btn-sm" href={`mailto:${r.email}?subject=${encodeURIComponent(`WeSkill - ${r.course_title || 'your request'} (${r.ref})`)}&body=${encodeURIComponent(msg)}`} onClick={() => save(r.id, { log: 'Email sent', ...(r.status === 'new' ? { status: 'contacted', follow_up_on: addDays(2) } : {}) })}><Mail size={15} aria-hidden="true" />Email</a>}
                 {r.phone && <a className="btn-glass btn-sm" href={`tel:${r.phone}`}><Phone size={15} aria-hidden="true" />Call</a>}
               </div>
             </div>

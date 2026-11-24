@@ -41,5 +41,18 @@ export const CITIES = [
   { slug: 'dubai', name: 'Dubai', country: 'UAE', region: 'INT' },
 ]
 
+// Destinations menu: region -> country -> cities (order follows CITIES)
+const regionOf = (country) => (['UAE'].includes(country) ? 'Middle East' : 'Africa')
+export const REGIONS = ['Africa', 'Middle East'].map((name) => {
+  const countries = []
+  for (const c of CITIES) {
+    if (regionOf(c.country) !== name) continue
+    let k = countries.find((x) => x.name === c.country)
+    if (!k) countries.push((k = { name: c.country, cities: [] }))
+    k.cities.push(c)
+  }
+  return { name, countries }
+})
+
 export const categoryBySlug = (s) => CATEGORIES.find((c) => c.slug === s)
 export const cityBySlug = (s) => CITIES.find((c) => c.slug === s)

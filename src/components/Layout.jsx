@@ -1,11 +1,11 @@
 import { useEffect, useState } from 'react'
 import { Link, NavLink, useLocation } from 'react-router-dom'
-import { ChevronDown, Menu, X, Search, MessageCircle, ChevronRight, Sun, Moon, ArrowRight, Building2, Monitor, Mic, Video, Users, Route } from 'lucide-react'
+import { ChevronDown, Menu, X, Search, MessageCircle, ChevronRight, Sun, Moon, ArrowRight, Building2, Monitor, Mic, Video, Users, Route, Globe2, Landmark, MapPin } from 'lucide-react'
 import { SITE, FORMATS, waLink } from '../data/site.js'
-import { CATEGORIES, CITIES } from '../data/catalog.js'
+import { CATEGORIES, CITIES, REGIONS } from '../data/catalog.js'
 import { COURSES } from '../data/courses.js'
 import { Icon } from './Bits.jsx'
-import LogoCube from './LogoCube.jsx'
+import LogoMark from './LogoMark.jsx'
 
 export const FORMAT_ICON = { classroom: Building2, online: Monitor, masterclass: Mic, webinar: Video, 'in-house': Users, pathways: Route }
 export const formatLink = (slug) => (slug === 'in-house' || slug === 'pathways' ? '/for-teams' : `/courses?format=${slug}`)
@@ -33,10 +33,10 @@ export function SocialIcons({ className = '' }) {
 export function Wordmark({ small, light }) {
   return (
     <span className={`group/logo flex items-center gap-2.5 ${light ? 'text-white' : 'text-fg'}`}>
-      <LogoCube size={small ? 38 : 46} className="flex-none drop-shadow-[0_8px_18px_rgba(16,160,141,.45)]" />
-      <span className="flex flex-col leading-[1.05]">
-        <span className={`font-serif font-bold ${small ? 'text-[19px]' : 'text-[21px]'}`}>Training<span className="font-normal">cred</span></span>
-        <span className="hidden font-serif text-[10px] italic opacity-70 sm:block">{SITE.tagline}</span>
+      <LogoMark size={small ? 38 : 44} className="h-9 w-9 flex-none sm:h-11 sm:w-11 drop-shadow-[0_8px_18px_rgba(245,158,11,.28)] transition-transform duration-300 group-hover/logo:-rotate-3" />
+      <span className="flex flex-col leading-[1.1]">
+        <span className={`whitespace-nowrap font-serif ${small ? 'text-[15px]' : 'text-[15px] min-[400px]:text-[17px] sm:text-[19px]'}`}><b className="font-bold">WeSkill</b> <span className="font-normal">Training Institute</span></span>
+        <span className="whitespace-nowrap text-[9.5px] font-medium italic opacity-75 min-[400px]:text-[10.5px] sm:text-[11px]">{SITE.tagline}</span>
       </span>
     </span>
   )
@@ -65,6 +65,47 @@ function Panel({ id, open, children, wide }) {
   return (
     <div id={id} hidden={!open} className={`absolute left-1/2 top-[calc(100%+10px)] z-40 -translate-x-1/2 ${wide ? 'w-[min(1100px,calc(100vw-2rem))]' : 'w-[min(760px,calc(100vw-2rem))]'}`}>
       <div className="glass-strong rise rounded-3xl p-6">{children}</div>
+    </div>
+  )
+}
+
+function DestinationsMenu() {
+  const [ri, setRi] = useState(0)
+  const [ki, setKi] = useState(0)
+  const region = REGIONS[ri]
+  const country = region.countries[Math.min(ki, region.countries.length - 1)]
+  const item = (on) => `flex w-full items-center gap-3 rounded-xl px-3 py-2.5 text-left text-[14.5px] font-semibold transition ${on ? 'bg-brand-soft text-brand shadow-[inset_3px_0_0_#F59E0B]' : 'text-fg hover:bg-surface-2'}`
+  return (
+    <div className="grid gap-5 md:grid-cols-[200px_220px_1fr]">
+      <div>
+        <div className="eyebrow mb-2 px-3">Regions</div>
+        {REGIONS.map((r, i) => {
+          const I = i === 0 ? Globe2 : Landmark
+          return <button key={r.name} type="button" aria-pressed={ri === i} onMouseEnter={() => { setRi(i); setKi(0) }} onClick={() => { setRi(i); setKi(0) }} className={item(ri === i)}><I size={17} aria-hidden="true" />{r.name}</button>
+        })}
+        <Link to="/courses?where=online" className="mt-3 flex items-center gap-3 rounded-xl px-3 py-2.5 text-[14.5px] font-semibold text-fg no-underline hover:bg-surface-2"><Monitor size={17} className="text-brand" aria-hidden="true" />Live online</Link>
+      </div>
+      <div className="md:border-l md:border-line md:pl-5">
+        <div className="eyebrow mb-2 px-3">{region.name} countries</div>
+        {region.countries.map((k, i) => (
+          <button key={k.name} type="button" aria-pressed={country === k} onMouseEnter={() => setKi(i)} onClick={() => setKi(i)} className={`${item(country === k)} justify-between`}>
+            {k.name}<span className="text-xs font-medium text-faint">{k.cities.length}</span>
+          </button>
+        ))}
+      </div>
+      <div className="md:border-l md:border-line md:pl-5">
+        <div className="eyebrow mb-2">Cities in {country.name}</div>
+        <div className="grid gap-2 sm:grid-cols-2">
+          {country.cities.map((c) => (
+            <Link key={c.slug} to={`/cities/${c.slug}`} className="group flex items-center gap-3 rounded-2xl border border-line bg-surface p-3 no-underline transition hover:border-[#F59E0B]/60">
+              <span className="flex h-9 w-9 flex-none items-center justify-center rounded-xl bg-brand-soft text-brand"><MapPin size={17} aria-hidden="true" /></span>
+              <span className="min-w-0 flex-1"><span className="block text-[14.5px] font-bold text-fg">{c.name}</span><span className="text-xs text-faint">{c.country}</span></span>
+              <ChevronRight size={16} className="flex-none text-faint transition group-hover:translate-x-0.5 group-hover:text-brand" aria-hidden="true" />
+            </Link>
+          ))}
+        </div>
+        <Link to="/destinations" className="mt-4 inline-flex items-center gap-1.5 text-[14px] font-bold text-brand no-underline">All destinations<ArrowRight size={15} aria-hidden="true" /></Link>
+      </div>
     </div>
   )
 }
@@ -98,9 +139,16 @@ export function Header() {
   return (
     <>
       <a href="#main" className="sr-only focus:not-sr-only focus:fixed focus:left-3 focus:top-3 focus:z-[100] focus:rounded-full focus:bg-solid focus:px-4 focus:py-2">Skip to content</a>
+      {/* utility bar (design D) */}
+      <div className="relative z-[51] bg-[#0B1120] text-[13px] text-[#CBD5E1]">
+        <div className="wrap flex flex-wrap justify-between gap-x-4 gap-y-1 py-2">
+          <span className="hidden sm:inline">{SITE.cpd.provider ? `CPD Certification Service provider no. ${SITE.cpd.provider}` : SITE.tagline}</span>
+          <span className="flex flex-wrap gap-x-5 gap-y-0.5"><a href={SITE.phoneHref} className="text-[#CBD5E1] no-underline hover:text-white">{SITE.phone}</a><a href={`mailto:${SITE.email}`} className="text-[#CBD5E1] no-underline hover:text-white">{SITE.email}</a></span>
+        </div>
+      </div>
       <header className="sticky top-0 z-50 px-3 pt-3 sm:px-4" onMouseLeave={() => setMenu(null)}>
         <div className={`relative mx-auto flex max-w-[1280px] items-center gap-3 rounded-full py-2 pl-3 pr-2 transition-all duration-300 sm:pl-5 ${scrolled || menu ? 'glass-strong !bg-solid/75' : 'glass'}`}>
-          <Link to="/" className="no-underline" aria-label="Trainingcred home"><Wordmark /></Link>
+          <Link to="/" className="no-underline" aria-label={`${SITE.name} home`}><Wordmark /></Link>
           <nav aria-label="Main" className="ml-4 hidden flex-1 items-center gap-0.5 xl:flex">
             {tab('courses', 'Courses')}
             {tab('formats', 'Formats')}
@@ -153,15 +201,8 @@ export function Header() {
               })}
             </div>
           </Panel>
-          <Panel id="mega-destinations" open={menu === 'destinations'}>
-            <div className="grid grid-cols-2 gap-1 sm:grid-cols-3">
-              {CITIES.map((c) => (
-                <Link key={c.slug} to={`/cities/${c.slug}`} className="rounded-xl px-3 py-2 no-underline transition hover:bg-surface-2">
-                  <span className="block text-[14.5px] font-semibold text-fg">{c.name}</span><span className="text-xs text-faint">{c.country}</span>
-                </Link>
-              ))}
-              <Link to="/courses?format=online" className="rounded-xl bg-brand-soft px-3 py-2 no-underline"><span className="block text-[14.5px] font-semibold text-fg">Live online</span><span className="text-xs text-brand">From anywhere</span></Link>
-            </div>
+          <Panel id="mega-destinations" open={menu === 'destinations'} wide>
+            <DestinationsMenu />
           </Panel>
         </div>
       </header>
@@ -182,7 +223,19 @@ export function Header() {
                 <div className="flex flex-col pt-2">{CATEGORIES.map((c) => <Link key={c.slug} to={`/categories/${c.slug}`} className="py-2 text-[15px] text-muted no-underline">{c.name}</Link>)}</div>
               </details>
               <details className="rounded-2xl px-3 py-3.5"><summary className="flex items-center justify-between text-base font-semibold">Destinations<ChevronDown size={18} className="text-faint" aria-hidden="true" /></summary>
-                <div className="grid grid-cols-2 pt-2">{CITIES.map((c) => <Link key={c.slug} to={`/cities/${c.slug}`} className="py-2 text-[15px] text-muted no-underline">{c.name}</Link>)}</div>
+                <div className="flex flex-col gap-1 pt-2">
+                  {REGIONS.map((r) => (
+                    <div key={r.name} className="pt-2">
+                      <div className="eyebrow mb-1">{r.name}</div>
+                      {r.countries.map((k) => (
+                        <details key={k.name} className="rounded-xl"><summary className="flex items-center justify-between py-2 text-[15px] font-semibold text-fg">{k.name}<span className="text-xs text-faint">{k.cities.length} {k.cities.length === 1 ? 'city' : 'cities'}</span></summary>
+                          <div className="flex flex-col pb-2 pl-3">{k.cities.map((c) => <Link key={c.slug} to={`/cities/${c.slug}`} className="py-1.5 text-[15px] text-muted no-underline">{c.name}</Link>)}</div>
+                        </details>
+                      ))}
+                    </div>
+                  ))}
+                  <Link to="/courses?where=online" className="py-2 text-[15px] font-semibold text-brand no-underline">Live online</Link>
+                </div>
               </details>
             </nav>
             <div className="mt-auto flex flex-col gap-2 p-4">
@@ -206,7 +259,7 @@ export function Footer() {
             <p className="lede m-0 mt-2">One short message a month with new courses, cities and early-booking offers.</p>
           </div>
           <div className="flex flex-col gap-2 sm:flex-row lg:justify-end">
-            <a href={waLink('Hello Trainingcred, please add me to your monthly course dates update.')} target="_blank" rel="noopener noreferrer" className="btn-primary"><MessageCircle size={18} aria-hidden="true" />Get dates on WhatsApp</a>
+            <a href={waLink('Hello WeSkill, please add me to your monthly course dates update.')} target="_blank" rel="noopener noreferrer" className="btn-primary"><MessageCircle size={18} aria-hidden="true" />Get dates on WhatsApp</a>
             <Link to="/calendar" className="btn-glass">See the calendar<ArrowRight size={17} aria-hidden="true" /></Link>
           </div>
         </div>

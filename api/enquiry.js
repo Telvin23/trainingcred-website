@@ -62,8 +62,8 @@ async function notify(r) {
     method: 'POST',
     headers: { Authorization: `Bearer ${key}`, 'Content-Type': 'application/json' },
     body: JSON.stringify({
-      from: process.env.NOTIFY_FROM || 'Trainingcred Website <onboarding@resend.dev>',
-      to: (process.env.NOTIFY_EMAIL || 'info@trainingcred.com').split(',').map((s) => s.trim()),
+      from: process.env.NOTIFY_FROM || 'WeSkill Website <onboarding@resend.dev>',
+      to: (process.env.NOTIFY_EMAIL || 'Learn@weskilltraininginstitute.education').split(',').map((s) => s.trim()),
       reply_to: r.email,
       subject: `${LABEL[r.type]}: ${r.name}${r.course_title ? ' - ' + r.course_title : ''} (${r.ref})`,
       html,
@@ -92,22 +92,22 @@ const NEXT = {
 async function acknowledge(r) {
   const key = process.env.RESEND_API_KEY
   if (!key) return
-  const wa = 'https://wa.me/254759509615?text=' + encodeURIComponent('Hello Trainingcred, my reference is ' + r.ref)
+  const wa = 'https://wa.me/254759509615?text=' + encodeURIComponent('Hello WeSkill, my reference is ' + r.ref)
   const html = `<div style="font-family:Arial,sans-serif;max-width:560px;color:#10212E">
     <h2 style="color:#0B6E61">Thank you, ${esc(r.name.split(' ')[0])}. We have received your request.</h2>
     <p>Your reference is <b>${r.ref}</b>.</p>
     ${r.course_title ? `<p><b>Course:</b> ${esc(r.course_title)}${r.session_label ? '<br><b>Date:</b> ' + esc(r.session_label) : ''}${r.participants ? '<br><b>Participants:</b> ' + r.participants : ''}${r.fee_total ? '<br><b>Total:</b> ' + esc(r.fee_total) : ''}</p>` : ''}
     <p><b>What happens next:</b> ${NEXT[r.type]}</p>
     <p>Questions? Reply to this email, call +254 759 509615 or <a href="${wa}">WhatsApp us</a>.</p>
-    <p style="color:#4A5A66;font-size:13px">Trainingcred Institute, Delta Riverside Office Park, Riverside Drive, Nairobi. CPD provider no. 20263.</p></div>`
+    <p style="color:#4A5A66;font-size:13px">WeSkill Training Institute, Nairobi, Kenya. CPD provider no. 20263.</p></div>`
   const res = await fetch('https://api.resend.com/emails', {
     method: 'POST',
     headers: { Authorization: `Bearer ${key}`, 'Content-Type': 'application/json' },
     body: JSON.stringify({
-      from: process.env.NOTIFY_FROM || 'Trainingcred <onboarding@resend.dev>',
+      from: process.env.NOTIFY_FROM || 'WeSkill <onboarding@resend.dev>',
       to: [r.email],
-      reply_to: (process.env.NOTIFY_EMAIL || 'info@trainingcred.com').split(',')[0].trim(),
-      subject: `We received your request (${r.ref}) - Trainingcred`,
+      reply_to: (process.env.NOTIFY_EMAIL || 'Learn@weskilltraininginstitute.education').split(',')[0].trim(),
+      subject: `We received your request (${r.ref}) - WeSkill`,
       html,
     }),
     signal: AbortSignal.timeout(8000),

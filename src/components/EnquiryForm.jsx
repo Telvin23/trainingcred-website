@@ -28,7 +28,7 @@ export default function EnquiryForm({ type, extra = {}, fields = [], submitLabel
       setState({ status: 'done', ref: out.ref })
       if (typeof window !== 'undefined' && window.gtag) window.gtag('event', 'generate_lead', { form_type: type })
     } catch (err) {
-      const text = `Hello Trainingcred. ${summary || ''}\nName: ${data.name || ''}\nOrganisation: ${data.organisation || ''}\nPhone: ${data.phone || ''}\nEmail: ${data.email || ''}\n${data.message || ''}`
+      const text = `Hello WeSkill. ${summary || ''}\nName: ${data.name || ''}\nOrganisation: ${data.organisation || ''}\nPhone: ${data.phone || ''}\nEmail: ${data.email || ''}\n${data.message || ''}`
       setState({ status: 'error', message: err.message, wa: waLink(text) })
     }
   }
@@ -64,8 +64,8 @@ export default function EnquiryForm({ type, extra = {}, fields = [], submitLabel
           <legend className={`${label} mb-1.5`}>Who is paying?</legend>
           <div className="flex flex-wrap gap-2">
             {['My organisation', 'Myself', 'A sponsor or donor'].map((p, n) => (
-              <label key={p} className="glass flex min-h-11 cursor-pointer items-center gap-2 rounded-full px-4 text-[15px] has-[:checked]:border-[#4FD1BE] has-[:checked]:bg-brand-soft">
-                <input type="radio" name="payer" value={p} defaultChecked={n === 0} className="accent-[#0E8F7E]" />{p}
+              <label key={p} className="glass flex min-h-11 cursor-pointer items-center gap-2 rounded-full px-4 text-[15px] has-[:checked]:border-[#F59E0B] has-[:checked]:bg-brand-soft">
+                <input type="radio" name="payer" value={p} defaultChecked={n === 0} className="accent-[#F59E0B]" />{p}
               </label>
             ))}
           </div>
