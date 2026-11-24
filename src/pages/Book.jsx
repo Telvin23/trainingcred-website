@@ -33,10 +33,10 @@ export default function Book() {
               <legend className="mb-3 text-lg font-extrabold">1. Choose a date</legend>
               <div className="flex max-h-[420px] flex-col gap-2 overflow-y-auto pr-1">
                 {sessions.map((x) => (
-                  <label key={x.id} className="flex min-h-14 cursor-pointer items-center gap-3 rounded-xl border border-line px-4 py-3 has-[:checked]:border-[#F59E0B] has-[:checked]:bg-brand-soft">
+                  <label key={x.id} className="flex min-h-14 shrink-0 cursor-pointer items-center gap-3 rounded-xl border border-line px-4 py-3 has-[:checked]:border-[#F59E0B] has-[:checked]:bg-brand-soft">
                     <input type="radio" name="session" value={x.id} checked={sid === x.id} onChange={() => setSid(x.id)} className="h-4 w-4 accent-[#F59E0B]" />
-                    <span className="flex-1"><span className="block font-bold">{dateRange(x.start, x.end5)}</span><span className="text-sm text-muted">{where(x)}{x.format === 'classroom' ? ' · classroom' : ''}</span></span>
-                    <span className="font-extrabold text-accent">{money(x.fee5)}</span>
+                    <span className="min-w-0 flex-1"><span className="block font-bold">{dateRange(x.start, x.end5)}</span><span className="text-sm text-muted">{where(x)}{x.format === 'classroom' ? ' · classroom' : ''}</span></span>
+                    <span className="flex-none whitespace-nowrap font-extrabold text-accent">{money(x.fee5)}</span>
                   </label>
                 ))}
                 {!sessions.length && <p className="m-0 text-muted">No dates scheduled. Send the form and we will propose dates.</p>}

@@ -150,6 +150,8 @@
     .slide-on, .progress, .marquee, .rise { animation: none !important; }
     html { scroll-behavior: auto; }
   }
+  /* a page with a fixed bottom bar on phones lifts the chat button above it */
+  @media (max-width: 1023px) { body.has-cta-bar .wa-fab { bottom: 84px !important; } body.has-cta-bar { padding-bottom: 76px; } }
   .no-scrollbar { scrollbar-width: none; }
   .no-scrollbar::-webkit-scrollbar { display: none; }
 }

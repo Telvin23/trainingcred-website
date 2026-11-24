@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import { Link, useParams } from 'react-router-dom'
 import { Download, MessageCircle, Clock, Award, Globe, CalendarDays, Monitor, Building2, Users, ArrowUpRight, Check, Phone } from 'lucide-react'
 import { Seo, crumbsLd, faqLd } from '../lib/seo.jsx'
@@ -22,6 +22,10 @@ export default function Course() {
   const [filter, setFilter] = useState('all')
   const [all, setAll] = useState(false)
   const [mode, setMode] = useState(() => (course && upcoming(course)[0]?.format) || 'online') // open on the format of the very next date
+  useEffect(() => {
+    document.body.classList.add('has-cta-bar')
+    return () => document.body.classList.remove('has-cta-bar')
+  }, [])
   if (!course) return <NotFound />
   const cat = categoryBySlug(course.category)
   const sessions = upcoming(course)
@@ -102,14 +106,16 @@ export default function Course() {
             <div className="flex flex-col gap-2.5">
               {shown.length === 0 && <p className="card m-0 p-6 text-muted">No dates for this format yet. <Link to="/contact">Request a date</Link>.</p>}
               {shown.map((s) => (
-                <div key={s.id} className="card card-hover flex flex-col gap-3 !rounded-2xl p-4 sm:flex-row sm:items-center sm:gap-5 sm:px-5">
-                  <span className={`flex h-11 w-11 flex-none items-center justify-center rounded-xl ${s.format === 'online' ? 'bg-brand-soft text-brand' : 'bg-accent-soft text-accent'}`}>{s.format === 'online' ? <Monitor size={19} aria-hidden="true" /> : <Building2 size={19} aria-hidden="true" />}</span>
-                  <div className="flex-1">
-                    <div className="text-[16px] font-extrabold">{dateRange(s.start, s.end5)}</div>
+                <div key={s.id} className="card card-hover flex flex-col gap-2.5 !rounded-2xl p-4 sm:flex-row sm:items-center sm:gap-5 sm:px-5">
+                  <span className={`hidden h-11 w-11 flex-none rounded-xl sm:items-center sm:justify-center ${s.format === 'online' ? 'bg-brand-soft text-brand' : 'bg-accent-soft text-accent'}`}>{s.format === 'online' ? <Monitor size={19} aria-hidden="true" /> : <Building2 size={19} aria-hidden="true" />}</span>
+                  <div className="min-w-0 flex-1">
+                    <div className="flex items-center gap-2 text-[16px] font-extrabold"><span className={`flex h-7 w-7 flex-none items-center justify-center rounded-lg sm:hidden ${s.format === 'online' ? 'bg-brand-soft text-brand' : 'bg-accent-soft text-accent'}`}>{s.format === 'online' ? <Monitor size={14} aria-hidden="true" /> : <Building2 size={14} aria-hidden="true" />}</span>{dateRange(s.start, s.end5)}</div>
                     <div className="text-[13.5px] text-muted">{where(s)} · Mon - Fri · or 10 days to {dateRange(s.start, s.end10).split(' - ')[1]}</div>
                   </div>
-                  <div className="sm:text-right"><div className="text-[18px] font-extrabold text-accent">{money(s.fee5)}</div><div className="text-[12px] text-faint">10 days {money(s.fee10)}</div></div>
-                  <Link to={`/book/${course.slug}?session=${encodeURIComponent(s.id)}`} className="btn-primary btn-sm">Reserve</Link>
+                  <div className="flex items-center justify-between gap-3 border-t border-line pt-2.5 sm:contents">
+                    <div className="sm:text-right"><div className="text-[18px] font-extrabold text-accent">{money(s.fee5)}</div><div className="text-[12px] text-faint">10 days {money(s.fee10)}</div></div>
+                    <Link to={`/book/${course.slug}?session=${encodeURIComponent(s.id)}`} className="btn-primary btn-sm">Reserve</Link>
+                  </div>
                 </div>
               ))}
             </div>
@@ -187,6 +193,18 @@ export default function Course() {
           </div>
         </aside>
       </div>
+
+      {next && (
+        <div className="fixed inset-x-0 bottom-0 z-40 border-t border-line bg-solid/95 px-4 py-3 backdrop-blur lg:hidden" style={{ paddingBottom: 'max(12px, env(safe-area-inset-bottom))' }}>
+          <div className="mx-auto flex max-w-[720px] items-center justify-between gap-3">
+            <div className="min-w-0">
+              <div className="truncate text-[12.5px] text-muted">Next: {dateRange(next.start, next.end5)} · {where(next)}</div>
+              <div className="text-[18px] font-extrabold leading-tight text-accent">{money(next.fee5)}</div>
+            </div>
+            <Link to={`/book/${course.slug}?session=${encodeURIComponent(next.id)}`} className="btn-primary btn-sm flex-none">Reserve a seat</Link>
+          </div>
+        </div>
+      )}
 
       <section className="wrap py-12">
         <SectionHead eyebrow="Keep exploring" title="Related courses" />

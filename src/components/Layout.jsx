@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react'
 import { Link, NavLink, useLocation } from 'react-router-dom'
-import { ChevronDown, Menu, X, Search, MessageCircle, ChevronRight, Sun, Moon, ArrowRight, Building2, Monitor, Mic, Video, Users, Route, Globe2, Landmark, MapPin } from 'lucide-react'
+import { ChevronDown, Menu, X, Search, MessageCircle, ChevronRight, Sun, Moon, ArrowRight, Building2, Monitor, Mic, Video, Users, Route, Globe2, Landmark, MapPin, Phone, Mail } from 'lucide-react'
 import { SITE, FORMATS, waLink } from '../data/site.js'
 import { CATEGORIES, CITIES, REGIONS } from '../data/catalog.js'
 import { COURSES } from '../data/courses.js'
@@ -141,9 +141,9 @@ export function Header() {
       <a href="#main" className="sr-only focus:not-sr-only focus:fixed focus:left-3 focus:top-3 focus:z-[100] focus:rounded-full focus:bg-solid focus:px-4 focus:py-2">Skip to content</a>
       {/* utility bar (design D) */}
       <div className="relative z-[51] bg-[#0B1120] text-[13px] text-[#CBD5E1]">
-        <div className="wrap flex flex-wrap justify-between gap-x-4 gap-y-1 py-2">
+        <div className="wrap flex flex-wrap items-center justify-between gap-x-4 gap-y-1 py-1 sm:py-1.5">
           <span className="hidden sm:inline">{SITE.cpd.provider ? `CPD Certification Service provider no. ${SITE.cpd.provider}` : SITE.tagline}</span>
-          <span className="flex flex-wrap gap-x-5 gap-y-0.5"><a href={SITE.phoneHref} className="text-[#CBD5E1] no-underline hover:text-white">{SITE.phone}</a><a href={`mailto:${SITE.email}`} className="text-[#CBD5E1] no-underline hover:text-white">{SITE.email}</a></span>
+          <span className="flex w-full items-center justify-between gap-x-5 sm:w-auto sm:justify-end"><a href={SITE.phoneHref} className="inline-flex min-h-8 items-center gap-1.5 text-[#CBD5E1] no-underline hover:text-white"><Phone size={13} aria-hidden="true" />{SITE.phone}</a><a href={`mailto:${SITE.email}`} className="inline-flex min-h-8 items-center gap-1.5 text-[#CBD5E1] no-underline hover:text-white"><Mail size={13} aria-hidden="true" /><span className="sm:hidden">Email us</span><span className="hidden sm:inline">{SITE.email}</span></a></span>
         </div>
       </div>
       <header className="sticky top-0 z-50 px-3 pt-3 sm:px-4" onMouseLeave={() => setMenu(null)}>
@@ -263,7 +263,7 @@ export function Footer() {
             <Link to="/calendar" className="btn-glass">See the calendar<ArrowRight size={17} aria-hidden="true" /></Link>
           </div>
         </div>
-        <div className="grid gap-10 p-6 sm:grid-cols-2 sm:p-10 lg:grid-cols-[1.3fr_1fr_1fr_1fr]">
+        <div className="grid gap-0 p-6 sm:grid-cols-2 sm:gap-10 sm:p-10 lg:grid-cols-[1.3fr_1fr_1fr_1fr]">
           <div className="flex flex-col gap-4 text-sm">
             <Wordmark />
             <p className="m-0 max-w-xs leading-relaxed text-muted">Short courses, in-house programmes and advisory for the modern workforce across Africa and the Middle East.</p>
@@ -280,16 +280,23 @@ export function Footer() {
             ['Company', [['/about', 'About us'], ['/for-teams', 'For Teams'], ['/advisory', 'Advisory'], ['/calendar', 'Calendar'], ['/faq', 'FAQ'], ['/contact', 'Contact']]],
           ].map(([h, links]) => (
             <div key={h}>
-              <h3 className="m-0 mb-4 text-xs font-bold uppercase tracking-[.14em] text-faint">{h}</h3>
-              <ul className="m-0 flex list-none flex-col gap-2.5 p-0 text-[14.5px]">
+              <h3 className="m-0 mb-4 hidden text-xs font-bold uppercase tracking-[.14em] text-faint sm:block">{h}</h3>
+              <ul className="m-0 hidden list-none flex-col gap-2.5 p-0 text-[14.5px] sm:flex">
                 {links.map(([to, l], n) => <li key={to + n}><Link to={to} className={`no-underline transition hover:text-fg ${n === links.length - 1 && h !== 'Company' ? 'font-semibold text-brand' : 'text-muted'}`}>{l}</Link></li>)}
               </ul>
+              {/* phones: each column folds into one tappable row */}
+              <details className="group border-t border-line sm:hidden">
+                <summary className="flex min-h-12 items-center justify-between text-xs font-bold uppercase tracking-[.14em] text-faint">{h}<ChevronDown size={18} className="transition group-open:rotate-180" aria-hidden="true" /></summary>
+                <ul className="m-0 flex list-none flex-col p-0 pb-3 text-[15px]">
+                  {links.map(([to, l], n) => <li key={to + n}><Link to={to} className={`flex min-h-11 items-center no-underline ${n === links.length - 1 && h !== 'Company' ? 'font-semibold text-brand' : 'text-muted'}`}>{l}</Link></li>)}
+                </ul>
+              </details>
             </div>
           ))}
         </div>
         <div className="flex flex-wrap items-center justify-between gap-3 border-t border-line px-6 py-5 text-[13px] text-faint sm:px-10">
           <span>&copy; {new Date().getFullYear()} {SITE.legalName}. All rights reserved.</span>
-          <span className="flex flex-wrap gap-5"><Link to="/terms" className="text-faint no-underline hover:text-fg">Terms</Link><Link to="/privacy" className="text-faint no-underline hover:text-fg">Privacy</Link><a href="/sitemap.xml" className="text-faint no-underline hover:text-fg">Sitemap</a></span>
+          <span className="flex flex-wrap gap-x-5"><Link to="/terms" className="inline-flex min-h-10 items-center text-faint no-underline hover:text-fg">Terms</Link><Link to="/privacy" className="inline-flex min-h-10 items-center text-faint no-underline hover:text-fg">Privacy</Link><a href="/sitemap.xml" className="inline-flex min-h-10 items-center text-faint no-underline hover:text-fg">Sitemap</a></span>
         </div>
       </div>
     </footer>
@@ -299,7 +306,7 @@ export function Footer() {
 export function WhatsAppFab() {
   return (
     <a href={waLink()} target="_blank" rel="noopener noreferrer" aria-label="Chat with us on WhatsApp"
-      className="btn-primary fixed bottom-4 right-4 z-40 !min-h-[52px] !px-4 shadow-[0_16px_40px_-10px_rgba(14,143,126,.9)] sm:bottom-6 sm:right-6 sm:!px-5">
+      className="wa-fab btn-primary fixed bottom-4 right-4 z-40 !min-h-[52px] !px-4 shadow-[0_16px_40px_-12px_rgba(245,158,11,.8)] transition-[bottom] sm:bottom-6 sm:right-6 sm:!px-5">
       <MessageCircle size={20} aria-hidden="true" /><span className="hidden sm:inline">Chat with us</span>
     </a>
   )
@@ -307,11 +314,13 @@ export function WhatsAppFab() {
 
 export function Crumbs({ items }) {
   return (
-    <nav aria-label="Breadcrumb" className="flex flex-wrap items-center gap-1.5 text-[13px] text-faint">
+    <nav aria-label="Breadcrumb" className="flex min-w-0 [contain:inline-size] items-center gap-1.5 overflow-hidden whitespace-nowrap text-[13px] text-faint">
       {items.map((it, i) => (
-        <span key={it.path} className="flex items-center gap-1.5">
-          {i > 0 && <ChevronRight size={13} aria-hidden="true" />}
-          {i < items.length - 1 ? <Link to={it.path} className="text-faint no-underline hover:text-fg">{it.name}</Link> : <span className="text-muted" aria-current="page">{it.name}</span>}
+        <span key={it.path} className={`flex min-w-0 items-center gap-1.5 ${i === items.length - 1 ? 'shrink' : 'shrink-0'}`}>
+          {i > 0 && <ChevronRight size={13} className="flex-none" aria-hidden="true" />}
+          {i < items.length - 1
+            ? <Link to={it.path} className="inline-flex min-h-8 max-w-[11rem] items-center truncate text-faint no-underline hover:text-fg sm:max-w-none">{it.name}</Link>
+            : <span className="truncate text-muted" aria-current="page">{it.name}</span>}
         </span>
       ))}
     </nav>
