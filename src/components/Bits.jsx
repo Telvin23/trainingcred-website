@@ -1,10 +1,10 @@
 import { useEffect, useRef, useState } from 'react'
 import { Link } from 'react-router-dom'
-import { Landmark, Banknote, ShieldCheck, Leaf, Sprout, Truck, KanbanSquare, BarChart3, Compass, Users, Scale, HeartPulse, Cpu, BookOpen, Building, Plane, TrendingUp, Plus, MapPin, Clock, Check, Pause, Play, ChevronLeft, ChevronRight, Monitor, Building2, ArrowUpRight, CalendarDays } from 'lucide-react'
+import { Landmark, Banknote, ShieldCheck, Leaf, Sprout, Truck, KanbanSquare, BarChart3, Compass, Users, Scale, HeartPulse, Cpu, BookOpen, Building, Plane, TrendingUp, Plus, MapPin, Clock, Check, Pause, Play, ChevronLeft, ChevronRight, Monitor, Building2, ArrowUpRight, CalendarDays, HeartHandshake, ShieldAlert, Archive } from 'lucide-react'
 import { categoryBySlug } from '../data/catalog.js'
 import { dayNum, monShort, money, nextSession, where, fromFee, dateRange } from '../lib/util.js'
 
-const ICONS = { Landmark, Banknote, ShieldCheck, Leaf, Sprout, Truck, KanbanSquare, BarChart3, Compass, Users, Scale, HeartPulse, Cpu, Building, Plane, TrendingUp }
+const ICONS = { HeartHandshake, ShieldAlert, Archive, Landmark, Banknote, ShieldCheck, Leaf, Sprout, Truck, KanbanSquare, BarChart3, Compass, Users, Scale, HeartPulse, Cpu, Building, Plane, TrendingUp }
 export function Icon({ name, ...p }) {
   const C = ICONS[name] || BookOpen
   return <C aria-hidden="true" {...p} />
@@ -65,7 +65,7 @@ export function CourseCard({ course, session }) {
         <h3 className="m-0 line-clamp-2 text-[17px] font-extrabold leading-snug">
           <Link to={`/courses/${course.slug}`} className="text-fg no-underline after:absolute after:inset-0 group-hover:text-brand">{course.title}</Link>
         </h3>
-        <p className="m-0 line-clamp-2 text-[14px] leading-relaxed text-muted">{course.summary}</p>
+        <p className="m-0 line-clamp-2 text-[14px] leading-relaxed text-muted">{course.summary || course.topic}</p>
         {s && (
           <div className="flex flex-wrap gap-x-4 gap-y-1 text-[13px] text-faint">
             <span className="flex items-center gap-1.5"><MapPin size={14} aria-hidden="true" />{where(s)}</span>

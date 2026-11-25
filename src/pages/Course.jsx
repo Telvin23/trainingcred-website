@@ -10,6 +10,7 @@ import { Crumbs, SectionHead } from '../components/Layout.jsx'
 import { CheckItem, CourseGrid, FaqList, CourseCover } from '../components/Bits.jsx'
 import EnquiryForm from '../components/EnquiryForm.jsx'
 import NotFound from './NotFound.jsx'
+import { useCourseDetail, detailScript } from '../lib/courseDetail.js'
 
 const COURSE_FAQS = [
   { q: 'What is the difference between the 5-day and 10-day options?', a: 'The 10-day option adds a second week of applied work: deeper case studies and a practical assignment you complete with trainer feedback.' },
@@ -18,7 +19,10 @@ const COURSE_FAQS = [
 
 export default function Course() {
   const { slug } = useParams()
-  const course = courseBySlug(slug)
+  const base = courseBySlug(slug)
+  const { course, detail, loading } = useCourseDetail(base)
+  const [hydrated, setHydrated] = useState(false)
+  useEffect(() => setHydrated(true), [])
   const [filter, setFilter] = useState('all')
   const [all, setAll] = useState(false)
   const [mode, setMode] = useState(() => (course && upcoming(course)[0]?.format) || 'online') // open on the format of the very next date
@@ -35,7 +39,7 @@ export default function Course() {
   const byMode = { online: nextSession(course, 'online'), classroom: nextSession(course, 'classroom') }
   const pick = byMode[mode] || next
   const classCities = new Set(sessions.filter((s) => s.city).map((s) => s.city))
-  const related = COURSES.filter((c) => c.category === course.category && c.slug !== course.slug).concat(COURSES.filter((c) => c.popular && c.category !== course.category && c.slug !== course.slug)).slice(0, 3)
+  const related = (course.topic ? COURSES.filter((c) => c.topic === course.topic && c.slug !== course.slug) : []).concat(COURSES.filter((c) => c.category === course.category && c.slug !== course.slug && c.topic !== course.topic)).concat(COURSES.filter((c) => c.popular && c.category !== course.category && c.slug !== course.slug)).slice(0, 3)
   const crumbs = [{ name: 'Home', path: '/' }, { name: 'Courses', path: '/courses' }, { name: cat.name, path: `/categories/${cat.slug}` }, { name: course.title, path: `/courses/${course.slug}` }]
   const path = `/courses/${course.slug}`
 
@@ -43,14 +47,14 @@ export default function Course() {
     '@context': 'https://schema.org',
     '@type': 'Course',
     name: course.title,
-    description: course.summary,
+    description: course.summary || detail?.lede || course.title,
     url: SITE.url + path,
     provider: { '@type': 'Organization', name: SITE.legalName, sameAs: SITE.url },
     inLanguage: 'en',
     educationalCredentialAwarded: 'Certificate of completion',
     teaches: course.outcomes,
     offers: next ? { '@type': 'Offer', category: 'Paid', price: next.fee5.amount, priceCurrency: next.fee5.currency, url: SITE.url + path } : undefined,
-    hasCourseInstance: sessions.slice(0, 12).map((s) => ({
+    hasCourseInstance: sessions.slice(0, 4).map((s) => ({
       '@type': 'CourseInstance',
       courseMode: s.format === 'online' ? 'Online' : 'Onsite',
       startDate: s.start,
@@ -65,8 +69,10 @@ export default function Course() {
 
   return (
     <>
-      <Seo title={course.title} path={path} description={`${course.summary} ${course.durations.join(' or ')} days, classroom in ${classCities.size} cities or live online${next ? `, next session ${dateRange(next.start, next.end5)}` : ''}.`}
+      <Seo title={course.title} path={path} description={`${course.summary || course.topic || ''} ${course.durations.join(' or ')} days, classroom in ${classCities.size} cities or live online${next ? `, next session ${dateRange(next.start, next.end5)}` : ''}.`}
         jsonLd={[courseLd, crumbsLd(crumbs), faqLd(COURSE_FAQS)]} />
+
+      {detail && <script type="application/json" id="course-detail" data-slug={course.slug} dangerouslySetInnerHTML={{ __html: detailScript(course.slug, detail) }} />}
 
       {/* HERO: identity of the course + key facts, grouped */}
       <section className="wrap pt-6 sm:pt-10">
@@ -76,9 +82,9 @@ export default function Course() {
               <div className="[&_a]:!text-white/70 [&_span]:!text-white/80 [&_nav]:!text-white/60"><Crumbs items={crumbs} /></div>
               <Link to={`/categories/${cat.slug}`} className="pill-label glass-photo self-start text-white no-underline hover:text-white">{cat.name}</Link>
               <h1 className="m-0 text-[32px] font-extrabold leading-[1.08] sm:text-[46px]">{course.title}</h1>
-              <p className="m-0 max-w-[640px] text-[17px] leading-relaxed text-white/80">{course.summary}</p>
+              <p className="m-0 max-w-[640px] text-[17px] leading-relaxed text-white/80">{course.summary || course.topic}</p>
               <dl className="m-0 mt-2 grid max-w-[640px] grid-cols-2 gap-3 sm:grid-cols-4">
-                {[[Clock, 'Duration', `${course.durations.join(' or ')} days`], [Building2, 'Classroom', `${classCities.size} cities`], [Monitor, 'Online', 'Live on Zoom'], [Award, 'Certificate', 'Included']].map(([I, k, v]) => (
+                {[[Clock, 'Duration', `${course.durations.join(' or ')} days`], [Building2, 'Classroom', `${classCities.size} ${classCities.size === 1 ? 'city' : 'cities'}`], [Monitor, 'Online', 'Live on Zoom'], [Award, 'Certificate', 'Included']].map(([I, k, v]) => (
                   <div key={k} className="glass-photo rounded-2xl p-3"><I size={17} className="text-amber" aria-hidden="true" /><dt className="mt-2 text-[11.5px] uppercase tracking-wider text-white/60">{k}</dt><dd className="m-0 text-[14.5px] font-bold">{v}</dd></div>
                 ))}
               </dl>
@@ -128,11 +134,21 @@ export default function Course() {
 
           <section id="overview" className="mt-16 scroll-mt-40">
             <h2 className="h2 m-0 !text-[28px]">Overview</h2>
-            <p className="mt-3 text-[16.5px] leading-[1.75] text-muted">{course.summary} The course is practical throughout: short inputs, worked examples, group exercises and tools participants take back to their work.</p>
+            {detail?.lede
+              ? <p className="mt-3 text-[16.5px] leading-[1.75] text-muted">{detail.lede}</p>
+              : <p className="mt-3 text-[16.5px] leading-[1.75] text-muted">{loading ? 'Loading the course outline...' : `${course.summary} The course is practical throughout: short inputs, worked examples, group exercises and tools participants take back to their work.`}</p>}
+            {detail && (detail.level || detail.hours) && (
+              <div className="mt-4 flex flex-wrap gap-2 text-[13px] font-semibold">
+                {detail.level && <span className="chip border border-line bg-surface text-fg">Level: {detail.level}</span>}
+                {detail.hours ? <span className="chip border border-line bg-surface text-fg">{detail.hours} learning hours</span> : null}
+                {(detail.topics || []).slice(0, 2).map((t) => <span key={t} className="chip border border-line bg-surface text-muted">{t}</span>)}
+              </div>
+            )}
             <div className="mt-6 grid gap-5 md:grid-cols-2">
               <div className="card p-6"><h3 className="m-0 mb-4 text-lg font-extrabold">You will be able to</h3><ul className="m-0 flex list-none flex-col gap-3 p-0">{course.outcomes.map((o) => <CheckItem key={o}>{o}</CheckItem>)}</ul></div>
               <div className="flex flex-col gap-5">
                 <div className="card p-6"><h3 className="m-0 mb-4 text-lg font-extrabold">Who should attend</h3>
+                  {detail?.audienceIntro && <p className="m-0 mb-3 text-[14.5px] leading-relaxed text-muted">{detail.audienceIntro}</p>}
                   <div className="flex flex-wrap gap-2">{course.audience.map((a) => <span key={a} className="chip bg-surface-2 text-fg">{a}</span>)}</div></div>
                 <dl className="card m-0 grid grid-cols-2 gap-4 p-6 text-[14.5px]">
                   {[[Globe, 'Language', 'English'], [CalendarDays, 'Daily hours', SITE.trainingHours], [Users, 'Class size', 'Small groups'], [Award, 'Certificate', 'On completion']].map(([I, k, v]) => (
@@ -149,11 +165,15 @@ export default function Course() {
               {course.modules.map((m, n) => (
                 <li key={m.title} className="card flex gap-4 !rounded-2xl p-5">
                   <span className="flex h-10 w-10 flex-none items-center justify-center rounded-xl bg-brand-soft text-sm font-extrabold text-brand">{String(n + 1).padStart(2, '0')}</span>
-                  <div><h3 className="m-0 text-[16px] font-bold">{m.title}</h3><p className="m-0 mt-1 text-[14.5px] leading-relaxed text-muted">{m.text}</p></div>
+                  <div className="self-center"><h3 className="m-0 text-[16px] font-bold">{m.title}</h3>{m.text && <p className="m-0 mt-1 text-[14.5px] leading-relaxed text-muted">{m.text}</p>}</div>
                 </li>
               ))}
             </ol>
           </section>
+
+          {detail?.prerequisites && (
+            <section className="mt-10 rounded-2xl border border-line bg-surface p-5"><h3 className="m-0 mb-2 text-[16px] font-extrabold">Before you join</h3><p className="m-0 text-[14.5px] leading-relaxed text-muted">{detail.prerequisites.replace(/^Prerequisites:\s*/i, '')}</p></section>
+          )}
 
           <section id="faqs" className="mt-16 scroll-mt-40"><h2 className="h2 m-0 mb-6 !text-[28px]">FAQs</h2><FaqList faqs={COURSE_FAQS} /></section>
         </div>
@@ -208,7 +228,10 @@ export default function Course() {
 
       <section className="wrap py-12">
         <SectionHead eyebrow="Keep exploring" title="Related courses" />
-        <CourseGrid courses={related} cols="sm:grid-cols-2 lg:grid-cols-3" />
+        {/* cards render in the browser (keeps 4,000+ prerendered pages small); the links are always there */}
+        {hydrated
+          ? <CourseGrid courses={related} cols="sm:grid-cols-2 lg:grid-cols-3" />
+          : <ul className="m-0 grid list-none gap-3 p-0 sm:grid-cols-3">{related.map((c) => <li key={c.slug}><Link to={`/courses/${c.slug}`} className="card block p-5 font-bold text-fg no-underline">{c.title}</Link></li>)}</ul>}
       </section>
     </>
   )

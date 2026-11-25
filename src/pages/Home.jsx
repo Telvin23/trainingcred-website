@@ -339,7 +339,7 @@ export default function Home() {
               <p>All {CATEGORIES.length} areas &middot; {COURSES.length} courses</p>
               <Link to="/courses" className="h-link">Search all &rarr;</Link>
             </div>
-            <ol className="h-split2-list">
+            <ol className="h-split2-list" style={{ '--rows': Math.ceil(CATEGORIES.length / 2) }}>
               {CATEGORIES.map((c, i) => {
                 const n = COURSES.filter((x) => x.category === c.slug).length
                 return (

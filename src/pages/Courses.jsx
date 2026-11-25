@@ -15,6 +15,12 @@ export function useHydrated() {
 }
 
 const norm = (s) => s.toLowerCase().normalize('NFKD')
+const HAY = new WeakMap()
+const hayOf = (c) => {
+  let h = HAY.get(c)
+  if (!h) { h = norm([c.title, c.summary, c.topic || '', categoryName(c.category), c.outcomes.join(' '), c.modules.map((m) => m.title).join(' ')].join(' ')); HAY.set(c, h) }
+  return h
+}
 const KEYS = ['q', 'category', 'where', 'format', 'month']
 const PAGE = 18
 const TOPICS = ['Leadership', 'Finance', 'Procurement', 'Project management', 'Monitoring', 'Data', 'Power BI', 'Excel', 'Python', 'AI', 'Communication', 'Governance', 'Supply chain', 'Risk', 'Customer', 'Strategy']
@@ -48,7 +54,7 @@ export function CourseListing({ fixed = {}, showFilters = true }) {
     for (const c of COURSES) {
       if (skip !== 'category' && flt.category && c.category !== flt.category) continue
       if (words.length) {
-        const hay = norm([c.title, c.summary, categoryName(c.category), c.outcomes.join(' '), c.modules.map((m) => m.title).join(' ')].join(' '))
+        const hay = hayOf(c)
         if (!words.every((w) => hay.includes(w))) continue
       }
       const wf = skip === 'where' ? '' : flt.where, ff = skip === 'format' ? '' : flt.format, mf = skip === 'month' ? '' : flt.month

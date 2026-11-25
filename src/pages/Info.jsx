@@ -173,3 +173,27 @@ export function Legal({ kind }) {
     </>
   )
 }
+
+export function PhotoCredits() {
+  const [rows, setRows] = useState(null)
+  useEffect(() => { fetch('/photo-credits.json').then((r) => r.json()).then(setRows).catch(() => setRows([])) }, [])
+  return (
+    <>
+      <Seo title="Photo credits" path="/photo-credits" description="Credits and licences for the photos used on this website." />
+      <PageHero crumbs={[{ name: 'Home', path: '/' }, { name: 'Photo credits', path: '/photo-credits' }]} title="Photo credits" intro="Many photos on this site are shared under Creative Commons licences or are in the public domain. Thank you to the photographers below." />
+      <section className="wrap pb-16">
+        {!rows ? <p className="text-muted">Loading...</p> : !rows.length ? <p className="text-muted">No credits listed yet.</p> : (
+          <ul className="m-0 grid list-none gap-2 p-0 md:grid-cols-2">
+            {rows.map((r, i) => (
+              <li key={i} className="rounded-xl border border-line bg-surface p-3 text-[13.5px] leading-relaxed">
+                <span className="block font-semibold text-fg">{r.used}</span>
+                <span className="text-muted">{r.attribution || `${r.creator || 'Unknown'} · ${r.license}`}</span>
+                {r.url && <a href={r.url} target="_blank" rel="noopener noreferrer nofollow" className="ml-1 text-brand">source</a>}
+              </li>
+            ))}
+          </ul>
+        )}
+      </section>
+    </>
+  )
+}

@@ -59,12 +59,13 @@ export function ThemeToggle({ className = '' }) {
   )
 }
 
-const countCat = (slug) => COURSES.filter((c) => c.category === slug).length
+const CAT_COUNT = COURSES.reduce((m, c) => { m[c.category] = (m[c.category] || 0) + 1; return m }, {})
+const countCat = (slug) => CAT_COUNT[slug] || 0
 
 function Panel({ id, open, children, wide }) {
   return (
     <div id={id} hidden={!open} className={`absolute left-1/2 top-[calc(100%+10px)] z-40 -translate-x-1/2 ${wide ? 'w-[min(1100px,calc(100vw-2rem))]' : 'w-[min(760px,calc(100vw-2rem))]'}`}>
-      <div className="glass-strong rise rounded-3xl p-6">{children}</div>
+      {open && <div className="glass-strong rise rounded-3xl p-6">{children}</div>}
     </div>
   )
 }
@@ -296,7 +297,7 @@ export function Footer() {
         </div>
         <div className="flex flex-wrap items-center justify-between gap-3 border-t border-line px-6 py-5 text-[13px] text-faint sm:px-10">
           <span>&copy; {new Date().getFullYear()} {SITE.legalName}. All rights reserved.</span>
-          <span className="flex flex-wrap gap-x-5"><Link to="/terms" className="inline-flex min-h-10 items-center text-faint no-underline hover:text-fg">Terms</Link><Link to="/privacy" className="inline-flex min-h-10 items-center text-faint no-underline hover:text-fg">Privacy</Link><a href="/sitemap.xml" className="inline-flex min-h-10 items-center text-faint no-underline hover:text-fg">Sitemap</a></span>
+          <span className="flex flex-wrap gap-x-5"><Link to="/terms" className="inline-flex min-h-10 items-center text-faint no-underline hover:text-fg">Terms</Link><Link to="/privacy" className="inline-flex min-h-10 items-center text-faint no-underline hover:text-fg">Privacy</Link><Link to="/photo-credits" className="inline-flex min-h-10 items-center text-faint no-underline hover:text-fg">Photo credits</Link><a href="/sitemap.xml" className="inline-flex min-h-10 items-center text-faint no-underline hover:text-fg">Sitemap</a></span>
         </div>
       </div>
     </footer>

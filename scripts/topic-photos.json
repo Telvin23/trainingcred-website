@@ -1,0 +1,1682 @@
+[
+ {
+  "slug": "ai-governance-responsible-ai-and-iso-42001",
+  "topic": "AI governance, responsible AI & ISO 42001",
+  "queries": [
+   "artificial intelligence",
+   "robot technology",
+   "computer circuit"
+  ]
+ },
+ {
+  "slug": "aml-cft-and-financial-crime-analytics",
+  "topic": "AML / CFT & financial crime analytics",
+  "queries": [
+   "money laundering",
+   "banknotes investigation",
+   "bank security"
+  ]
+ },
+ {
+  "slug": "adaptive-management-and-locally-led-meal",
+  "topic": "Adaptive management & locally led MEAL",
+  "queries": [
+   "community meeting africa",
+   "village meeting",
+   "field survey",
+   "community meeting",
+   "village group discussion",
+   "focus group"
+  ]
+ },
+ {
+  "slug": "administration-and-executive-support",
+  "topic": "Administration & Executive Support",
+  "queries": [
+   "office administration",
+   "office desk documents",
+   "secretary office"
+  ]
+ },
+ {
+  "slug": "advocacy-policy-influence-and-partnerships",
+  "topic": "Advocacy, policy influence & partnerships",
+  "queries": [
+   "handshake partnership",
+   "conference panel",
+   "policy meeting",
+   "panel discussion",
+   "conference speakers",
+   "meeting handshake"
+  ]
+ },
+ {
+  "slug": "agile-product-and-portfolio-management",
+  "topic": "Agile, product & portfolio management",
+  "queries": [
+   "kanban board",
+   "sticky notes planning",
+   "team standup meeting"
+  ]
+ },
+ {
+  "slug": "agri-finance-and-value-chain-lending",
+  "topic": "Agri-finance & value-chain lending",
+  "queries": [
+   "farmer market africa",
+   "farm produce market",
+   "coffee farmer"
+  ]
+ },
+ {
+  "slug": "agribusiness-value-chains-and-market-systems",
+  "topic": "Agribusiness, value chains & market systems",
+  "queries": [
+   "farm produce market",
+   "agriculture market",
+   "tea plantation"
+  ]
+ },
+ {
+  "slug": "agriculture-food-and-rural-development",
+  "topic": "Agriculture, Food & Rural Development",
+  "queries": [
+   "farmer field africa",
+   "maize field",
+   "agriculture field"
+  ]
+ },
+ {
+  "slug": "anti-bribery-ethics-and-conflict-of-interest",
+  "topic": "Anti-bribery, ethics & conflict of interest",
+  "queries": [
+   "handshake money",
+   "business ethics",
+   "signing contract"
+  ]
+ },
+ {
+  "slug": "applied-economics-and-policy-analysis",
+  "topic": "Applied economics & policy analysis",
+  "queries": [
+   "economics charts",
+   "stock market chart",
+   "city skyline business"
+  ]
+ },
+ {
+  "slug": "aquaculture-poultry-and-livestock-production",
+  "topic": "Aquaculture, poultry & livestock production",
+  "queries": [
+   "poultry farm",
+   "cattle farm",
+   "fish farming",
+   "chickens farm",
+   "cows farm",
+   "goats farm",
+   "fish pond"
+  ]
+ },
+ {
+  "slug": "arbitration-mediation-and-dispute-resolution",
+  "topic": "Arbitration, mediation & dispute resolution",
+  "queries": [
+   "courtroom",
+   "gavel justice",
+   "negotiation table"
+  ]
+ },
+ {
+  "slug": "asset-management-fixed-assets-iso-55001",
+  "topic": "Asset management (fixed assets, ISO 55001)",
+  "queries": [
+   "industrial plant",
+   "factory machinery",
+   "warehouse equipment"
+  ]
+ },
+ {
+  "slug": "audit-risk-compliance-and-financial-crime",
+  "topic": "Audit, Risk, Compliance & Financial Crime",
+  "queries": [
+   "audit documents",
+   "calculator accounting",
+   "financial report"
+  ]
+ },
+ {
+  "slug": "banking-supervision-and-regulatory-compliance",
+  "topic": "Banking supervision & regulatory compliance",
+  "queries": [
+   "bank building",
+   "central bank",
+   "banking hall"
+  ]
+ },
+ {
+  "slug": "banking-credit-and-financial-regulation",
+  "topic": "Banking, Credit & Financial Regulation",
+  "queries": [
+   "bank building",
+   "bank counter",
+   "banknotes",
+   "bank",
+   "atm",
+   "bank office",
+   "coins"
+  ]
+ },
+ {
+  "slug": "budgeting-fiscal-risk-and-outcome-based-budgeting",
+  "topic": "Budgeting, fiscal risk & outcome-based budgeting",
+  "queries": [
+   "budget calculator",
+   "accounting spreadsheet",
+   "financial planning"
+  ]
+ },
+ {
+  "slug": "building-energy-performance-and-decarbonisation",
+  "topic": "Building energy performance & decarbonisation",
+  "queries": [
+   "green building",
+   "solar panels roof",
+   "energy efficient building"
+  ]
+ },
+ {
+  "slug": "business-intelligence",
+  "topic": "Business Intelligence",
+  "queries": [
+   "data dashboard",
+   "business analytics",
+   "charts laptop"
+  ]
+ },
+ {
+  "slug": "business-continuity-and-operational-resilience",
+  "topic": "Business continuity & operational resilience",
+  "queries": [
+   "server room",
+   "control room",
+   "emergency operations"
+  ]
+ },
+ {
+  "slug": "cash-and-voucher-assistance",
+  "topic": "Cash & voucher assistance",
+  "queries": [
+   "humanitarian aid distribution",
+   "mobile money",
+   "aid distribution"
+  ]
+ },
+ {
+  "slug": "central-banking-and-monetary-operations",
+  "topic": "Central banking & monetary operations",
+  "queries": [
+   "central bank",
+   "currency coins",
+   "banknotes printing"
+  ]
+ },
+ {
+  "slug": "change-culture-and-organisational-development",
+  "topic": "Change, culture & organisational development",
+  "queries": [
+   "team workshop",
+   "office team collaboration",
+   "business team meeting"
+  ]
+ },
+ {
+  "slug": "chemical-handling-laboratory-and-process-safety",
+  "topic": "Chemical handling, laboratory & process safety",
+  "queries": [
+   "chemistry laboratory",
+   "laboratory safety",
+   "chemical plant"
+  ]
+ },
+ {
+  "slug": "climate-action-adaptation-and-carbon-accounting",
+  "topic": "Climate action, adaptation & carbon accounting",
+  "queries": [
+   "climate change",
+   "wind turbines",
+   "forest landscape",
+   "wind farm",
+   "solar power plant",
+   "drought",
+   "tree planting"
+  ]
+ },
+ {
+  "slug": "climate-related-and-psychosocial-workplace-risk",
+  "topic": "Climate-related and psychosocial workplace risk",
+  "queries": [
+   "heat wave work",
+   "workplace stress",
+   "construction workers heat"
+  ]
+ },
+ {
+  "slug": "climate-smart-agriculture-and-food-systems",
+  "topic": "Climate-smart agriculture & food systems",
+  "queries": [
+   "irrigation farm",
+   "greenhouse farming",
+   "farmer field"
+  ]
+ },
+ {
+  "slug": "cloud-devops-finops-and-platform-engineering",
+  "topic": "Cloud, DevOps, FinOps & platform engineering",
+  "queries": [
+   "cloud computing",
+   "data center",
+   "programmer code"
+  ]
+ },
+ {
+  "slug": "communication-marketing-customer-and-sales",
+  "topic": "Communication, Marketing, Customer & Sales",
+  "queries": [
+   "marketing team",
+   "business presentation",
+   "customer service"
+  ]
+ },
+ {
+  "slug": "communication-presentation-and-business-writing",
+  "topic": "Communication, presentation & business writing",
+  "queries": [
+   "business presentation",
+   "public speaking",
+   "writing notebook"
+  ]
+ },
+ {
+  "slug": "contract-management-and-administration-fidic",
+  "topic": "Contract management & administration (FIDIC)",
+  "queries": [
+   "construction site",
+   "signing contract",
+   "engineering contract",
+   "building construction",
+   "construction crane",
+   "engineers site"
+  ]
+ },
+ {
+  "slug": "corporate-governance-and-board-effectiveness",
+  "topic": "Corporate governance & board effectiveness",
+  "queries": [
+   "boardroom meeting",
+   "board meeting",
+   "executive meeting"
+  ]
+ },
+ {
+  "slug": "credit-risk-and-lending",
+  "topic": "Credit risk & lending",
+  "queries": [
+   "loan application",
+   "bank loan",
+   "credit card"
+  ]
+ },
+ {
+  "slug": "crisis-and-strategic-communication",
+  "topic": "Crisis & strategic communication",
+  "queries": [
+   "press conference",
+   "microphones press",
+   "news conference"
+  ]
+ },
+ {
+  "slug": "customer-service-and-experience",
+  "topic": "Customer service & experience",
+  "queries": [
+   "customer service",
+   "call center",
+   "reception desk",
+   "shop assistant",
+   "help desk",
+   "cashier",
+   "receptionist"
+  ]
+ },
+ {
+  "slug": "cybersecurity-and-information-security-iso-27001",
+  "topic": "Cybersecurity & information security (ISO 27001)",
+  "queries": [
+   "cyber security",
+   "padlock computer",
+   "hacker code"
+  ]
+ },
+ {
+  "slug": "dashboards-and-bi-power-bi-tableau",
+  "topic": "Dashboards & BI (Power BI, Tableau)",
+  "queries": [
+   "data dashboard",
+   "analytics dashboard",
+   "charts screen"
+  ]
+ },
+ {
+  "slug": "data-science",
+  "topic": "Data Science",
+  "queries": [
+   "data science",
+   "data visualization",
+   "programming laptop"
+  ]
+ },
+ {
+  "slug": "data-collection-survey-design-and-mobile-tools",
+  "topic": "Data collection, survey design & mobile tools",
+  "queries": [
+   "survey tablet",
+   "field interview",
+   "questionnaire"
+  ]
+ },
+ {
+  "slug": "data-engineering-databases-and-erp-data",
+  "topic": "Data engineering, databases & ERP data",
+  "queries": [
+   "database server",
+   "data center",
+   "server rack"
+  ]
+ },
+ {
+  "slug": "data-governance-quality-and-stewardship",
+  "topic": "Data governance, quality & stewardship",
+  "queries": [
+   "data analysis",
+   "database",
+   "server room"
+  ]
+ },
+ {
+  "slug": "data-protection-and-privacy-dpo",
+  "topic": "Data protection & privacy (DPO)",
+  "queries": [
+   "data privacy",
+   "padlock laptop",
+   "cyber security"
+  ]
+ },
+ {
+  "slug": "data-science-and-machine-learning-in-practice",
+  "topic": "Data science & machine learning in practice",
+  "queries": [
+   "machine learning",
+   "artificial intelligence",
+   "data visualization",
+   "computer code",
+   "data center",
+   "laptop programming"
+  ]
+ },
+ {
+  "slug": "data-analytics-and-business-intelligence",
+  "topic": "Data, Analytics & Business Intelligence",
+  "queries": [
+   "data analytics",
+   "business charts",
+   "dashboard"
+  ]
+ },
+ {
+  "slug": "digital-hr-and-process-automation",
+  "topic": "Digital HR & process automation",
+  "queries": [
+   "hr office",
+   "job interview",
+   "laptop office"
+  ]
+ },
+ {
+  "slug": "digital-meal-dashboards-and-data-quality",
+  "topic": "Digital MEAL, dashboards & data quality",
+  "queries": [
+   "data dashboard",
+   "field data tablet",
+   "monitoring evaluation"
+  ]
+ },
+ {
+  "slug": "digital-agritech-for-smallholders",
+  "topic": "Digital agritech for smallholders",
+  "queries": [
+   "farmer smartphone",
+   "drone agriculture",
+   "smart farming"
+  ]
+ },
+ {
+  "slug": "digital-financial-services-payments-and-fintech-risk",
+  "topic": "Digital financial services, payments & fintech risk",
+  "queries": [
+   "mobile payment",
+   "fintech",
+   "mobile money"
+  ]
+ },
+ {
+  "slug": "digital-fluency-and-workplace-tools",
+  "topic": "Digital fluency & workplace tools",
+  "queries": [
+   "laptop office work",
+   "computer training",
+   "office computer"
+  ]
+ },
+ {
+  "slug": "digital-marketing-and-brand",
+  "topic": "Digital marketing & brand",
+  "queries": [
+   "digital marketing",
+   "social media marketing",
+   "marketing analytics"
+  ]
+ },
+ {
+  "slug": "digital-transformation-and-erp",
+  "topic": "Digital transformation & ERP",
+  "queries": [
+   "digital transformation",
+   "enterprise software",
+   "business technology"
+  ]
+ },
+ {
+  "slug": "disaster-risk-resilience-and-emergency-management",
+  "topic": "Disaster risk, resilience & emergency management",
+  "queries": [
+   "flood disaster",
+   "emergency response",
+   "disaster relief"
+  ]
+ },
+ {
+  "slug": "donor-funded-project-and-grant-management",
+  "topic": "Donor-funded project & grant management",
+  "queries": [
+   "project meeting",
+   "development project",
+   "ngo meeting"
+  ]
+ },
+ {
+  "slug": "esg-strategy-reporting-and-assurance",
+  "topic": "ESG strategy, reporting & assurance",
+  "queries": [
+   "sustainability",
+   "green energy",
+   "solar farm"
+  ]
+ },
+ {
+  "slug": "economics-policy-and-public-sector-management",
+  "topic": "Economics, Policy & Public Sector Management",
+  "queries": [
+   "government building",
+   "parliament",
+   "city hall"
+  ]
+ },
+ {
+  "slug": "electronic-records-management-and-digital-archiving",
+  "topic": "Electronic records management & digital archiving",
+  "queries": [
+   "archive files",
+   "document archive",
+   "records room",
+   "library shelves",
+   "files folders",
+   "archives"
+  ]
+ },
+ {
+  "slug": "emotional-intelligence-and-psychological-safety",
+  "topic": "Emotional intelligence & psychological safety",
+  "queries": [
+   "team conversation",
+   "coaching session",
+   "office colleagues talking"
+  ]
+ },
+ {
+  "slug": "energy-water-climate-and-environment",
+  "topic": "Energy, Water, Climate & Environment",
+  "queries": [
+   "wind turbines",
+   "hydroelectric dam",
+   "solar panels",
+   "dam",
+   "solar panel",
+   "wind turbine"
+  ]
+ },
+ {
+  "slug": "energy-oil-and-gas-management",
+  "topic": "Energy, oil & gas management",
+  "queries": [
+   "oil refinery",
+   "oil rig",
+   "gas pipeline",
+   "refinery",
+   "oil platform",
+   "pipeline",
+   "petrol station"
+  ]
+ },
+ {
+  "slug": "engineering-design-cad-and-bim",
+  "topic": "Engineering design, CAD & BIM",
+  "queries": [
+   "engineering drawing",
+   "architect blueprint",
+   "cad design"
+  ]
+ },
+ {
+  "slug": "enterprise-content-governance-and-migration",
+  "topic": "Enterprise content governance & migration",
+  "queries": [
+   "document management",
+   "file folders",
+   "office documents"
+  ]
+ },
+ {
+  "slug": "enterprise-risk-management",
+  "topic": "Enterprise risk management",
+  "queries": [
+   "risk management",
+   "business strategy",
+   "chess strategy"
+  ]
+ },
+ {
+  "slug": "environmental-impact-assessment-and-management",
+  "topic": "Environmental impact assessment & management",
+  "queries": [
+   "environmental survey",
+   "river landscape",
+   "forest conservation",
+   "river",
+   "wetland",
+   "forest",
+   "nature reserve"
+  ]
+ },
+ {
+  "slug": "excel-and-spreadsheet-mastery",
+  "topic": "Excel & spreadsheet mastery",
+  "queries": [
+   "spreadsheet",
+   "excel spreadsheet",
+   "laptop spreadsheet"
+  ]
+ },
+ {
+  "slug": "executive-and-personal-assistant",
+  "topic": "Executive & personal assistant",
+  "queries": [
+   "executive assistant",
+   "office desk",
+   "calendar planning"
+  ]
+ },
+ {
+  "slug": "executive-leadership-programmes",
+  "topic": "Executive leadership programmes",
+  "queries": [
+   "executive meeting",
+   "leadership",
+   "business leader",
+   "business meeting",
+   "conference room",
+   "executives"
+  ]
+ },
+ {
+  "slug": "facilities-operations-and-maintenance",
+  "topic": "Facilities operations & maintenance",
+  "queries": [
+   "building maintenance",
+   "facility management",
+   "technician maintenance"
+  ]
+ },
+ {
+  "slug": "facilities-assets-and-property",
+  "topic": "Facilities, Assets & Property",
+  "queries": [
+   "office building",
+   "commercial building",
+   "real estate",
+   "skyscraper",
+   "building facade"
+  ]
+ },
+ {
+  "slug": "finance",
+  "topic": "Finance",
+  "queries": [
+   "finance",
+   "financial charts",
+   "calculator money"
+  ]
+ },
+ {
+  "slug": "finance-accounting-and-treasury",
+  "topic": "Finance, Accounting & Treasury",
+  "queries": [
+   "accounting",
+   "calculator finance",
+   "financial report"
+  ]
+ },
+ {
+  "slug": "financial-analysis-modelling-and-fpanda",
+  "topic": "Financial analysis, modelling & FP&A",
+  "queries": [
+   "financial analysis",
+   "financial charts",
+   "spreadsheet finance"
+  ]
+ },
+ {
+  "slug": "financial-management-for-ngos-and-donor-funded-projects",
+  "topic": "Financial management for NGOs & donor-funded projects",
+  "queries": [
+   "accounting",
+   "budget meeting",
+   "financial report"
+  ]
+ },
+ {
+  "slug": "fire-emergency-and-incident-preparedness",
+  "topic": "Fire, emergency & incident preparedness",
+  "queries": [
+   "fire extinguisher",
+   "firefighter",
+   "fire drill"
+  ]
+ },
+ {
+  "slug": "fleet-and-transport-management",
+  "topic": "Fleet & transport management",
+  "queries": [
+   "truck fleet",
+   "transport trucks",
+   "logistics trucks",
+   "trucks",
+   "bus",
+   "lorry",
+   "truck highway"
+  ]
+ },
+ {
+  "slug": "fraud-examination-and-forensic-accounting",
+  "topic": "Fraud examination & forensic accounting",
+  "queries": [
+   "magnifying glass documents",
+   "investigation",
+   "forensic accounting"
+  ]
+ },
+ {
+  "slug": "gis-and-geospatial-analysis",
+  "topic": "GIS & geospatial analysis",
+  "queries": [
+   "map",
+   "satellite map",
+   "gis map",
+   "satellite image",
+   "topographic map",
+   "surveyor"
+  ]
+ },
+ {
+  "slug": "gender-equality-and-social-inclusion",
+  "topic": "Gender equality & social inclusion",
+  "queries": [
+   "women meeting africa",
+   "women empowerment",
+   "community women"
+  ]
+ },
+ {
+  "slug": "generative-ai-at-work-and-ai-copilots",
+  "topic": "Generative AI at work & AI copilots",
+  "queries": [
+   "artificial intelligence",
+   "ai technology",
+   "robot"
+  ]
+ },
+ {
+  "slug": "global-logistics-freight-and-customs",
+  "topic": "Global logistics, freight & customs",
+  "queries": [
+   "container port",
+   "shipping containers",
+   "cargo ship"
+  ]
+ },
+ {
+  "slug": "governance-legal-and-contracts",
+  "topic": "Governance, Legal & Contracts",
+  "queries": [
+   "law books",
+   "gavel",
+   "signing contract"
+  ]
+ },
+ {
+  "slug": "governance-risk-and-compliance-grc-and-regtech",
+  "topic": "Governance, risk & compliance (GRC) & RegTech",
+  "queries": [
+   "compliance",
+   "business documents",
+   "boardroom"
+  ]
+ },
+ {
+  "slug": "hr-analytics-and-people-data",
+  "topic": "HR analytics & people data",
+  "queries": [
+   "human resources",
+   "people analytics",
+   "hr data"
+  ]
+ },
+ {
+  "slug": "hr-management-and-employee-relations",
+  "topic": "HR management & employee relations",
+  "queries": [
+   "job interview",
+   "human resources",
+   "office team"
+  ]
+ },
+ {
+  "slug": "health-systems-and-health-programme-management",
+  "topic": "Health Systems & Health Programme Management",
+  "queries": [
+   "hospital",
+   "health workers",
+   "clinic"
+  ]
+ },
+ {
+  "slug": "health-information-systems-dhis2-and-health-mande",
+  "topic": "Health information systems (DHIS2) & health M&E",
+  "queries": [
+   "health data",
+   "hospital records",
+   "health worker tablet",
+   "hospital computer",
+   "nurse computer",
+   "medical records"
+  ]
+ },
+ {
+  "slug": "health-systems-management-and-hospital-administration",
+  "topic": "Health systems management & hospital administration",
+  "queries": [
+   "hospital corridor",
+   "hospital",
+   "medical team"
+  ]
+ },
+ {
+  "slug": "health-safety-security-and-environment-hsse",
+  "topic": "Health, Safety, Security & Environment (HSSE)",
+  "queries": [
+   "safety helmet",
+   "workplace safety",
+   "construction safety"
+  ]
+ },
+ {
+  "slug": "human-resource",
+  "topic": "Human Resource",
+  "queries": [
+   "human resources",
+   "job interview",
+   "office team"
+  ]
+ },
+ {
+  "slug": "humanitarian-programme-management-and-access",
+  "topic": "Humanitarian programme management & access",
+  "queries": [
+   "humanitarian aid",
+   "refugee camp",
+   "aid workers",
+   "red cross",
+   "relief supplies"
+  ]
+ },
+ {
+  "slug": "humanitarian-social-protection-and-development",
+  "topic": "Humanitarian, Social Protection & Development",
+  "queries": [
+   "humanitarian aid",
+   "community africa",
+   "development project"
+  ]
+ },
+ {
+  "slug": "ifrs-and-financial-reporting",
+  "topic": "IFRS & financial reporting",
+  "queries": [
+   "financial report",
+   "accounting",
+   "balance sheet"
+  ]
+ },
+ {
+  "slug": "it-service-management",
+  "topic": "IT service management",
+  "queries": [
+   "it support",
+   "help desk",
+   "server room"
+  ]
+ },
+ {
+  "slug": "impact-evaluation-and-evidence",
+  "topic": "Impact evaluation & evidence",
+  "queries": [
+   "research data",
+   "survey research",
+   "data analysis",
+   "survey interview",
+   "researcher",
+   "statistics chart"
+  ]
+ },
+ {
+  "slug": "infrastructure-and-ppp-project-delivery",
+  "topic": "Infrastructure & PPP project delivery",
+  "queries": [
+   "construction site",
+   "bridge construction",
+   "road construction"
+  ]
+ },
+ {
+  "slug": "insurance-ifrs-17-microinsurance-parametric",
+  "topic": "Insurance (IFRS 17, microinsurance, parametric)",
+  "queries": [
+   "insurance",
+   "umbrella protection",
+   "insurance policy"
+  ]
+ },
+ {
+  "slug": "integrated-pest-management-and-food-safety",
+  "topic": "Integrated pest management & food safety",
+  "queries": [
+   "crop spraying",
+   "food safety",
+   "vegetable farm"
+  ]
+ },
+ {
+  "slug": "internal-audit-global-internal-audit-standards",
+  "topic": "Internal audit (Global Internal Audit Standards)",
+  "queries": [
+   "audit",
+   "auditor documents",
+   "accounting audit"
+  ]
+ },
+ {
+  "slug": "knowledge-management",
+  "topic": "Knowledge management",
+  "queries": [
+   "library",
+   "books knowledge",
+   "knowledge sharing"
+  ]
+ },
+ {
+  "slug": "leadership",
+  "topic": "Leadership",
+  "queries": [
+   "leadership",
+   "business leader",
+   "team leader"
+  ]
+ },
+ {
+  "slug": "leadership-management-and-strategy",
+  "topic": "Leadership, Management & Strategy",
+  "queries": [
+   "business strategy",
+   "leadership meeting",
+   "executive team",
+   "business meeting",
+   "team meeting",
+   "whiteboard meeting"
+  ]
+ },
+ {
+  "slug": "leading-regional-and-cross-border-teams",
+  "topic": "Leading regional and cross-border teams",
+  "queries": [
+   "international team",
+   "video conference",
+   "global business"
+  ]
+ },
+ {
+  "slug": "learning-and-development-corporate-academies",
+  "topic": "Learning & development, corporate academies",
+  "queries": [
+   "training workshop",
+   "classroom adults",
+   "corporate training"
+  ]
+ },
+ {
+  "slug": "legal-risk-for-ai-data-and-digital-services",
+  "topic": "Legal risk for AI, data and digital services",
+  "queries": [
+   "law technology",
+   "gavel laptop",
+   "legal documents",
+   "law books",
+   "courthouse",
+   "lawyer"
+  ]
+ },
+ {
+  "slug": "logistics-and-distribution",
+  "topic": "Logistics and Distribution",
+  "queries": [
+   "warehouse logistics",
+   "delivery trucks",
+   "forklift warehouse"
+  ]
+ },
+ {
+  "slug": "mande-fundamentals-and-results-based-management",
+  "topic": "M&E fundamentals & results-based management",
+  "queries": [
+   "monitoring evaluation",
+   "field survey",
+   "project review",
+   "survey",
+   "field work",
+   "clipboard"
+  ]
+ },
+ {
+  "slug": "maintenance-planning-and-asset-uptime",
+  "topic": "Maintenance planning & asset uptime",
+  "queries": [
+   "industrial maintenance",
+   "mechanic machinery",
+   "factory maintenance"
+  ]
+ },
+ {
+  "slug": "middle-management-and-team-leadership",
+  "topic": "Middle management & team leadership",
+  "queries": [
+   "team meeting",
+   "manager team",
+   "office meeting",
+   "office team",
+   "coworkers"
+  ]
+ },
+ {
+  "slug": "mining-governance-and-extractives",
+  "topic": "Mining governance & extractives",
+  "queries": [
+   "mining",
+   "open pit mine",
+   "mining site",
+   "mine",
+   "quarry",
+   "excavator"
+  ]
+ },
+ {
+  "slug": "monitoring-evaluation-and-learning-meal",
+  "topic": "Monitoring, Evaluation & Learning (MEAL)",
+  "queries": [
+   "monitoring evaluation",
+   "field data collection",
+   "community survey",
+   "survey",
+   "interview",
+   "clipboard",
+   "community meeting"
+  ]
+ },
+ {
+  "slug": "negotiation-and-conflict-resolution",
+  "topic": "Negotiation & conflict resolution",
+  "queries": [
+   "negotiation",
+   "business handshake",
+   "meeting discussion"
+  ]
+ },
+ {
+  "slug": "nutrition-and-community-health",
+  "topic": "Nutrition & community health",
+  "queries": [
+   "community health",
+   "nutrition",
+   "health clinic africa"
+  ]
+ },
+ {
+  "slug": "occupational-health-and-safety-fundamentals",
+  "topic": "Occupational health & safety fundamentals",
+  "queries": [
+   "workplace safety",
+   "safety helmet",
+   "safety equipment"
+  ]
+ },
+ {
+  "slug": "office-and-administrative-management",
+  "topic": "Office & administrative management",
+  "queries": [
+   "office",
+   "office administration",
+   "office desk"
+  ]
+ },
+ {
+  "slug": "official-statistics-and-data-for-policy",
+  "topic": "Official statistics & data for policy",
+  "queries": [
+   "statistics",
+   "census",
+   "data charts"
+  ]
+ },
+ {
+  "slug": "pmp-preparation",
+  "topic": "PMP preparation",
+  "queries": [
+   "project management",
+   "gantt chart",
+   "project planning",
+   "whiteboard planning",
+   "sticky notes",
+   "planning meeting"
+  ]
+ },
+ {
+  "slug": "pensions-investments-and-capital-markets",
+  "topic": "Pensions, investments & capital markets",
+  "queries": [
+   "stock market",
+   "investment",
+   "stock exchange",
+   "trading floor",
+   "coins"
+  ]
+ },
+ {
+  "slug": "people-hr-and-talent",
+  "topic": "People, HR & Talent",
+  "queries": [
+   "human resources",
+   "team office",
+   "job interview"
+  ]
+ },
+ {
+  "slug": "performance-reward-and-workforce-planning",
+  "topic": "Performance, reward & workforce planning",
+  "queries": [
+   "performance review",
+   "office meeting",
+   "business team"
+  ]
+ },
+ {
+  "slug": "post-harvest-management-and-traceability",
+  "topic": "Post-harvest management & traceability",
+  "queries": [
+   "grain storage",
+   "harvest",
+   "maize harvest"
+  ]
+ },
+ {
+  "slug": "pre-retirement-planning",
+  "topic": "Pre-retirement planning",
+  "queries": [
+   "retirement",
+   "senior couple",
+   "retirement planning"
+  ]
+ },
+ {
+  "slug": "procurement-analytics-and-spend-intelligence",
+  "topic": "Procurement analytics & spend intelligence",
+  "queries": [
+   "procurement",
+   "purchasing",
+   "spreadsheet analysis",
+   "spreadsheet",
+   "invoice",
+   "calculator"
+  ]
+ },
+ {
+  "slug": "procurement-supply-chain-and-logistics",
+  "topic": "Procurement, Supply Chain & Logistics",
+  "queries": [
+   "supply chain",
+   "warehouse",
+   "logistics",
+   "containers",
+   "forklift"
+  ]
+ },
+ {
+  "slug": "professional-skills-and-personal-effectiveness",
+  "topic": "Professional Skills & Personal Effectiveness",
+  "queries": [
+   "professional development",
+   "office work",
+   "notebook planning"
+  ]
+ },
+ {
+  "slug": "project-finance-appraisal-and-public-investment-management",
+  "topic": "Project finance, appraisal & public investment management",
+  "queries": [
+   "infrastructure project",
+   "construction finance",
+   "bridge construction",
+   "bridge",
+   "highway",
+   "construction"
+  ]
+ },
+ {
+  "slug": "project-risk-scheduling-and-controls",
+  "topic": "Project risk, scheduling & controls",
+  "queries": [
+   "project planning",
+   "gantt chart",
+   "construction planning",
+   "construction site",
+   "calendar",
+   "planning"
+  ]
+ },
+ {
+  "slug": "project-programme-and-portfolio-management",
+  "topic": "Project, Programme & Portfolio Management",
+  "queries": [
+   "project management",
+   "project meeting",
+   "planning board",
+   "whiteboard",
+   "team planning",
+   "meeting"
+  ]
+ },
+ {
+  "slug": "property-and-real-estate-management",
+  "topic": "Property & real estate management",
+  "queries": [
+   "real estate",
+   "apartment building",
+   "property",
+   "apartments",
+   "houses",
+   "building"
+  ]
+ },
+ {
+  "slug": "protocol-etiquette-and-event-management",
+  "topic": "Protocol, etiquette & event management",
+  "queries": [
+   "conference event",
+   "event hall",
+   "business event",
+   "conference",
+   "banquet",
+   "event venue"
+  ]
+ },
+ {
+  "slug": "public-financial-management-and-ipsas",
+  "topic": "Public financial management & IPSAS",
+  "queries": [
+   "government finance",
+   "budget",
+   "treasury",
+   "parliament building",
+   "treasury building",
+   "accounting"
+  ]
+ },
+ {
+  "slug": "public-health-programme-management",
+  "topic": "Public health programme management",
+  "queries": [
+   "public health",
+   "health workers",
+   "vaccination",
+   "health worker",
+   "clinic"
+  ]
+ },
+ {
+  "slug": "public-investment-management-and-fiscal-risk",
+  "topic": "Public investment management & fiscal risk",
+  "queries": [
+   "infrastructure",
+   "government building",
+   "road construction",
+   "railway",
+   "bridge"
+  ]
+ },
+ {
+  "slug": "public-procurement-and-contract-management",
+  "topic": "Public procurement & contract management",
+  "queries": [
+   "procurement",
+   "signing contract",
+   "tender documents"
+  ]
+ },
+ {
+  "slug": "public-sector-communications-and-pr",
+  "topic": "Public sector communications & PR",
+  "queries": [
+   "press conference",
+   "public relations",
+   "microphone speech",
+   "microphone",
+   "podium"
+  ]
+ },
+ {
+  "slug": "public-sector-governance-and-policy-development",
+  "topic": "Public sector governance & policy development",
+  "queries": [
+   "parliament",
+   "government building",
+   "policy meeting",
+   "council meeting"
+  ]
+ },
+ {
+  "slug": "public-sector-leadership",
+  "topic": "Public sector leadership",
+  "queries": [
+   "government meeting",
+   "leadership",
+   "conference",
+   "podium speech"
+  ]
+ },
+ {
+  "slug": "public-private-partnerships-cp3p-and-project-structuring",
+  "topic": "Public-private partnerships (CP3P) & project structuring",
+  "queries": [
+   "infrastructure",
+   "handshake partnership",
+   "highway construction",
+   "highway",
+   "airport",
+   "port"
+  ]
+ },
+ {
+  "slug": "public-sector-performance-and-service-delivery",
+  "topic": "Public-sector performance & service delivery",
+  "queries": [
+   "public service",
+   "government office",
+   "service counter",
+   "queue",
+   "service desk"
+  ]
+ },
+ {
+  "slug": "quality-assurance",
+  "topic": "Quality Assurance",
+  "queries": [
+   "quality control",
+   "inspection",
+   "quality checklist",
+   "checklist",
+   "laboratory"
+  ]
+ },
+ {
+  "slug": "quality-management-systems-iso-9001",
+  "topic": "Quality management systems (ISO 9001)",
+  "queries": [
+   "quality control",
+   "factory inspection",
+   "quality management"
+  ]
+ },
+ {
+  "slug": "real-estate-investment-and-housing-finance",
+  "topic": "Real estate investment & housing finance",
+  "queries": [
+   "housing",
+   "real estate",
+   "apartment building",
+   "houses",
+   "apartment",
+   "housing estate"
+  ]
+ },
+ {
+  "slug": "records-resilience-retention-and-recovery",
+  "topic": "Records resilience, retention & recovery",
+  "queries": [
+   "archive",
+   "records storage",
+   "file archive",
+   "archives",
+   "file storage",
+   "server room"
+  ]
+ },
+ {
+  "slug": "records-information-and-knowledge-management",
+  "topic": "Records, Information & Knowledge Management",
+  "queries": [
+   "archive",
+   "library",
+   "document files",
+   "archives",
+   "filing cabinet"
+  ]
+ },
+ {
+  "slug": "regional-and-multi-country-meal-systems",
+  "topic": "Regional and multi-country MEAL systems",
+  "queries": [
+   "africa map",
+   "regional meeting",
+   "monitoring evaluation",
+   "conference",
+   "survey"
+  ]
+ },
+ {
+  "slug": "regulatory-drafting-and-compliance-operations",
+  "topic": "Regulatory drafting & compliance operations",
+  "queries": [
+   "legal documents",
+   "law",
+   "writing documents"
+  ]
+ },
+ {
+  "slug": "renewable-energy-and-microgrids",
+  "topic": "Renewable energy & microgrids",
+  "queries": [
+   "solar panels",
+   "wind turbines",
+   "renewable energy",
+   "solar panel",
+   "wind turbine",
+   "solar farm"
+  ]
+ },
+ {
+  "slug": "resource-mobilisation-grants-and-proposal-writing",
+  "topic": "Resource mobilisation, grants & proposal writing",
+  "queries": [
+   "writing proposal",
+   "grant writing",
+   "laptop writing"
+  ]
+ },
+ {
+  "slug": "revenue-and-tax-administration",
+  "topic": "Revenue & tax administration",
+  "queries": [
+   "tax",
+   "tax documents",
+   "calculator tax",
+   "tax office",
+   "calculator",
+   "receipts"
+  ]
+ },
+ {
+  "slug": "risk-management",
+  "topic": "Risk Management",
+  "queries": [
+   "risk management",
+   "chess strategy",
+   "business risk"
+  ]
+ },
+ {
+  "slug": "sacco-and-microfinance-management",
+  "topic": "SACCO & microfinance management",
+  "queries": [
+   "microfinance",
+   "women savings group",
+   "mobile money"
+  ]
+ },
+ {
+  "slug": "safeguarding-psea-and-duty-of-care",
+  "topic": "Safeguarding, PSEA & duty of care",
+  "queries": [
+   "child protection",
+   "community safety",
+   "humanitarian workers",
+   "children school",
+   "community",
+   "aid workers"
+  ]
+ },
+ {
+  "slug": "safety-leadership-and-contractor-safety",
+  "topic": "Safety leadership & contractor safety",
+  "queries": [
+   "construction safety",
+   "safety helmet",
+   "site safety"
+  ]
+ },
+ {
+  "slug": "sales-and-business-development",
+  "topic": "Sales & business development",
+  "queries": [
+   "sales meeting",
+   "business handshake",
+   "sales presentation"
+  ]
+ },
+ {
+  "slug": "security-management-vip-protection-and-investigations",
+  "topic": "Security management, VIP protection & investigations",
+  "queries": [
+   "security guard",
+   "cctv",
+   "bodyguard"
+  ]
+ },
+ {
+  "slug": "sharepoint-microsoft-365-records-implementation",
+  "topic": "SharePoint / Microsoft 365 records implementation",
+  "queries": [
+   "office computer",
+   "cloud documents",
+   "laptop office"
+  ]
+ },
+ {
+  "slug": "skills-based-organisations-and-talent-marketplaces",
+  "topic": "Skills-based organisations & talent marketplaces",
+  "queries": [
+   "talent",
+   "job interview",
+   "team skills"
+  ]
+ },
+ {
+  "slug": "social-protection-systems-and-digital-registries",
+  "topic": "Social protection systems & digital registries",
+  "queries": [
+   "social protection",
+   "community africa",
+   "registration",
+   "community",
+   "elderly people"
+  ]
+ },
+ {
+  "slug": "software-engineering-and-low-code-automation",
+  "topic": "Software engineering & low-code automation",
+  "queries": [
+   "programming",
+   "software developer",
+   "code screen"
+  ]
+ },
+ {
+  "slug": "statistics-and-data-analysis-spss-stata-r-python",
+  "topic": "Statistics & data analysis (SPSS, Stata, R, Python)",
+  "queries": [
+   "statistics",
+   "data analysis",
+   "charts"
+  ]
+ },
+ {
+  "slug": "strategic-planning",
+  "topic": "Strategic Planning",
+  "queries": [
+   "strategic planning",
+   "business strategy",
+   "planning meeting",
+   "whiteboard",
+   "chess"
+  ]
+ },
+ {
+  "slug": "strategic-planning-and-performance-management",
+  "topic": "Strategic planning & performance management",
+  "queries": [
+   "strategic planning",
+   "performance",
+   "business meeting",
+   "meeting",
+   "whiteboard",
+   "chart"
+  ]
+ },
+ {
+  "slug": "strategic-sourcing-supplier-and-third-party-risk",
+  "topic": "Strategic sourcing, supplier & third-party risk",
+  "queries": [
+   "supplier meeting",
+   "procurement",
+   "factory supplier",
+   "factory",
+   "warehouse",
+   "handshake"
+  ]
+ },
+ {
+  "slug": "supply-chain",
+  "topic": "Supply Chain",
+  "queries": [
+   "supply chain",
+   "shipping containers",
+   "warehouse",
+   "container ship",
+   "trucks"
+  ]
+ },
+ {
+  "slug": "technology-ai-and-cybersecurity",
+  "topic": "Technology, AI & Cybersecurity",
+  "queries": [
+   "technology",
+   "artificial intelligence",
+   "cyber security"
+  ]
+ },
+ {
+  "slug": "time-productivity-and-hybrid-work",
+  "topic": "Time, productivity & hybrid work",
+  "queries": [
+   "productivity",
+   "remote work laptop",
+   "time management"
+  ]
+ },
+ {
+  "slug": "treasury-cash-and-debt-management",
+  "topic": "Treasury, cash & debt management",
+  "queries": [
+   "treasury",
+   "banknotes",
+   "finance",
+   "coins",
+   "bank"
+  ]
+ },
+ {
+  "slug": "voice-of-customer-systems",
+  "topic": "Voice-of-customer systems",
+  "queries": [
+   "customer feedback",
+   "customer service",
+   "survey",
+   "call center",
+   "customer",
+   "shop"
+  ]
+ },
+ {
+  "slug": "warehouse-stores-and-inventory-management",
+  "topic": "Warehouse, stores & inventory management",
+  "queries": [
+   "warehouse",
+   "inventory",
+   "warehouse shelves"
+  ]
+ },
+ {
+  "slug": "water-and-wastewater-treatment-and-utility-management",
+  "topic": "Water & wastewater treatment and utility management",
+  "queries": [
+   "water treatment",
+   "water plant",
+   "wastewater treatment"
+  ]
+ }
+]

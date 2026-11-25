@@ -6,7 +6,7 @@ import Courses from './pages/Courses.jsx'
 import Course from './pages/Course.jsx'
 import Book from './pages/Book.jsx'
 import { Category, City, Destinations, Calendar } from './pages/Listings.jsx'
-import { ForTeams, Advisory, About, Contact, Faq, Legal } from './pages/Info.jsx'
+import { ForTeams, Advisory, About, Contact, Faq, Legal, PhotoCredits } from './pages/Info.jsx'
 import Admin from './pages/Admin.jsx'
 import NotFound from './pages/NotFound.jsx'
 
@@ -43,6 +43,7 @@ export default function App() {
           <Route path="/faq" element={<Faq />} />
           <Route path="/privacy" element={<Legal kind="privacy" />} />
           <Route path="/terms" element={<Legal kind="terms" />} />
+          <Route path="/photo-credits" element={<PhotoCredits />} />
           <Route path="/admin" element={<Admin />} />
           <Route path="*" element={<NotFound />} />
         </Routes>

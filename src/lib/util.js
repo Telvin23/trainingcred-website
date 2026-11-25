@@ -22,7 +22,12 @@ export function dateRange(a, b) {
 
 export const money = (f) => f ? `${f.currency === 'KES' ? 'KSh' : f.currency} ${f.amount.toLocaleString('en-US')}` : 'Price on request'
 
-export const upcoming = (course) => course.sessions.filter((s) => s.start > TODAY)
+const UPCOMING = new WeakMap()
+export const upcoming = (course) => {
+  let u = UPCOMING.get(course)
+  if (!u) { u = course.sessions.filter((s) => s.start > TODAY); UPCOMING.set(course, u) }
+  return u
+}
 export const nextSession = (course, format) => upcoming(course).find((s) => !format || s.format === format)
 export const where = (s) => s.format === 'online' ? 'Live online' : `${cityBySlug(s.city)?.name}, ${cityBySlug(s.city)?.country}`
 export const fromFee = (course) => {
@@ -32,10 +37,12 @@ export const fromFee = (course) => {
 export const categoryName = (slug) => categoryBySlug(slug)?.name || ''
 
 // All upcoming sessions across courses, sorted by date
+let ALL_SESSIONS = null
 export function allSessions() {
+  if (ALL_SESSIONS) return ALL_SESSIONS
   const out = []
   for (const c of COURSES) for (const s of upcoming(c)) out.push({ ...s, course: c })
-  return out.sort((a, b) => (a.start < b.start ? -1 : a.start > b.start ? 1 : a.course.title.localeCompare(b.course.title)))
+  return (ALL_SESSIONS = out.sort((a, b) => (a.start < b.start ? -1 : a.start > b.start ? 1 : a.course.title < b.course.title ? -1 : a.course.title > b.course.title ? 1 : 0)))
 }
 
 export const slugify = (s) => String(s).toLowerCase().replace(/&/g, 'and').replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '')

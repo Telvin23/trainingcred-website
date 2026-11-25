@@ -5,15 +5,25 @@
 // USD 4,200 come from the live site; other classroom fees are estimates to confirm (see FEES below).
 import { cityBySlug } from './catalog.js'
 import WESKILL from './weskill-courses.json'
+import TC from './tc-index.json'
 
 // Course photos: drop a file named <course-slug>.jpg (or .png/.webp) into src/assets/courses/
 // and it is used automatically on that course's cards and page. Courses without a photo keep the
 // generated cover art for their focus area.
 const PHOTOS = import.meta.glob('../assets/courses/*.{jpg,jpeg,png,webp}', { eager: true, query: '?url', import: 'default' })
-const photoFor = (slug) => {
-  for (const [path, url] of Object.entries(PHOTOS)) if (path.split('/').pop().replace(/\.[a-z]+$/, '') === slug) return url
-  return null
-}
+const fileKey = (path) => path.split('/').pop().replace(/\.[a-z]+$/, '')
+const PHOTO_BY_SLUG = Object.fromEntries(Object.entries(PHOTOS).map(([p, u]) => [fileKey(p), u]))
+const photoFor = (slug) => PHOTO_BY_SLUG[slug] || null
+
+// Topic photos (shared library): src/assets/topics/<topic-slug>.jpg, or several per topic as
+// <topic-slug>--1.jpg, <topic-slug>--2.jpg ... Courses imported from trainingcred.com without their
+// own photo use the photo of their topic (picked by course so neighbours differ), then the focus-area cover.
+const TOPIC_PHOTOS = import.meta.glob('../assets/topics/*.{jpg,jpeg,png,webp}', { eager: true, query: '?url', import: 'default' })
+const BY_TOPIC = {}
+for (const [p, u] of Object.entries(TOPIC_PHOTOS)) { const k = fileKey(p).split('--')[0]; (BY_TOPIC[k] = BY_TOPIC[k] || []).push(u) }
+export const topicSlug = (t) => String(t).toLowerCase().replace(/&/g, 'and').replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '')
+const hash = (s) => { let h = 0; for (let i = 0; i < s.length; i++) h = (h * 31 + s.charCodeAt(i)) >>> 0; return h }
+const topicPhoto = (topic, slug) => { const list = BY_TOPIC[topicSlug(topic)]; return list ? list[hash(slug) % list.length] : null }
 
 const C = (slug, title, category, summary, outcomes, audience, modules, opts = {}) => ({
   slug, title, category, summary, outcomes, audience,
@@ -359,16 +369,16 @@ const FEES = {
 }
 const PREMIUM = new Set(['dubai', 'cairo'])
 
-function sessionsFor(course, idx) {
+function sessionsFor(course, idx, sparse = false) {
   const out = []
   if (course.firstClassroom) out.push({ format: 'classroom', city: course.classroomCities[0], start: course.firstClassroom })
   MONDAYS.forEach((mon, w) => {
     const start = iso(mon)
     if (start === course.firstClassroom) return
-    // live online roughly every second week
-    if ((w + idx) % 2 === 0) out.push({ format: 'online', city: null, start })
-    // classroom roughly every third week, rotating cities
-    if ((w + idx) % 3 === 1) {
+    // live online roughly every second week (imported courses: every fourth)
+    if ((w + idx) % (sparse ? 4 : 2) === 0) out.push({ format: 'online', city: null, start })
+    // classroom roughly every third week, rotating cities (imported courses: every sixth)
+    if ((w + idx) % (sparse ? 6 : 3) === 1) {
       const city = course.classroomCities[(w + idx) % course.classroomCities.length]
       out.push({ format: 'classroom', city, start })
     }
@@ -394,5 +404,39 @@ function sessionsFor(course, idx) {
 
 // Courses merged from WeSkill Training Institute (weskill-courses.json). Fees and dates follow the Trainingcred rules above.
 const ALL = [...RAW, ...WESKILL.map((w) => C(w.slug, w.title, w.category, w.summary, w.outcomes, w.audience, w.modules, { cities: w.cities }))]
-export const COURSES = ALL.map((c, i) => ({ ...c, image: photoFor(c.slug), sessions: sessionsFor(c, i) }))
-export const courseBySlug = (s) => COURSES.find((c) => c.slug === s)
+
+// Courses imported from trainingcred.com (tc-index.json, built by the import script). Only the list fields
+// live in the app; outlines, outcomes and audience load from /course-data/<slug>.json on the course page.
+const KE_CITIES = ['nairobi', 'mombasa', 'naivasha', 'kisumu']
+const INT_CITIES = ['kigali', 'kampala', 'zanzibar', 'dubai', 'accra', 'lagos', 'johannesburg', 'cairo']
+// A topic with no photo yet borrows one from another topic in the same focus area, so every course has a picture.
+const BY_CATEGORY = {}
+for (const [, , cat, t] of TC.courses) {
+  const list = BY_TOPIC[topicSlug(TC.topics[t])]
+  if (list) for (const u of list) { const s = (BY_CATEGORY[cat] = BY_CATEGORY[cat] || new Set()); s.add(u) }
+}
+const categoryPhoto = (cat, slug) => { const list = BY_CATEGORY[cat] ? [...BY_CATEGORY[cat]] : null; return list && list.length ? list[hash(slug) % list.length] : null }
+const IMPORTED = TC.courses.map(([slug, title, category, t, long]) => {
+  const h = hash(slug)
+  return {
+    slug, title, category, summary: '', topic: TC.topics[t], outcomes: [], audience: [], modules: [],
+    durations: long ? [10] : [5, 10], popular: false, imported: true,
+    classroomCities: [KE_CITIES[h % 4], INT_CITIES[(h >>> 3) % 8], INT_CITIES[(h >>> 7) % 8]].filter((c, i, a) => a.indexOf(c) === i),
+    firstClassroom: null,
+  }
+})
+
+// sessions are worked out the first time something asks for them (4,000+ courses)
+const withSessions = (c, i, sparse) => {
+  let cache
+  return Object.defineProperty(c, 'sessions', {
+    enumerable: true,
+    get() { return cache || (cache = sessionsFor(c, i, sparse)) },
+  })
+}
+export const COURSES = [
+  ...ALL.map((c, i) => withSessions({ ...c, image: photoFor(c.slug) }, i, false)),
+  ...IMPORTED.map((c, i) => withSessions({ ...c, image: photoFor(c.slug) || topicPhoto(c.topic, c.slug) || categoryPhoto(c.category, c.slug) }, ALL.length + i, true)),
+]
+const BY_SLUG = new Map(COURSES.map((c) => [c.slug, c]))
+export const courseBySlug = (s) => BY_SLUG.get(s)

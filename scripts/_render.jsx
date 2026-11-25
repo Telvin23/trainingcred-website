@@ -12,7 +12,13 @@ const dist = join(process.cwd(), 'dist')
 const template = readFileSync(join(dist, 'index.html'), 'utf8')
 const routes = allRoutes()
 let n = 0
+const detailDir = join(process.cwd(), 'public', 'course-data')
+const emptyShell = template.replace(/<title>[\s\S]*?<\/title>/, `<title>${SITE.name}</title>`).replace('<!--head-->', '<meta name="robots" content="noindex" />')
 for (const r of routes) {
+  if (r.shell) { writeFileSync(join(dist, r.path.slice(1) + '.html'), emptyShell); n++; continue }
+  globalThis.__COURSE_DETAIL__ = {}
+  const m = r.path.match(/^\/courses\/([^/]+)$/)
+  if (m) { try { globalThis.__COURSE_DETAIL__[m[1]] = JSON.parse(readFileSync(join(detailDir, m[1] + '.json'), 'utf8')) } catch { /* a course written in courses.js */ } }
   const collector = {}
   const html = renderToString(
     <HeadContext.Provider value={collector}>

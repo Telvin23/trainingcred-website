@@ -15,9 +15,14 @@ export const CATEGORIES = [
   { slug: 'leadership-management', tint: ['#0E7490', '#0B3557'], name: 'Leadership, Management & Strategy', icon: 'Compass', intro: 'Executive and cross-border leadership, governance, culture and corporate social responsibility.' },
   { slug: 'people-hr-talent', tint: ['#115E59', '#0B5A86'], name: 'People, HR & Personal Effectiveness', icon: 'Users', intro: 'Talent development, communication, presentation, motivation and goal setting.' },
   { slug: 'public-sector-law-governance', tint: ['#0B5A86', '#0E8F7E'], name: 'Public Sector, Law & Governance', icon: 'Scale', intro: 'Commercial law, public communications, corporate governance and board competence.' },
-  { slug: 'ict-digital-ai', tint: ['#0B3557', '#0E8F7E'], name: 'ICT, Data, Digital & AI', icon: 'Cpu', intro: 'AI and knowledge systems, blockchain, ERP, data protection and productivity software.' },
+  { slug: 'ict-digital-ai', tint: ['#0B3557', '#0E8F7E'], name: 'ICT, Digital, AI & Cybersecurity', icon: 'Cpu', intro: 'AI and knowledge systems, blockchain, ERP, data protection and productivity software.' },
   { slug: 'hospitality-tourism-travel', tint: ['#0E7490', '#0B3557'], name: 'Hospitality, Tourism & Travel', icon: 'Plane', intro: 'Front office, housekeeping, online travel distribution and corporate travel management.' },
   { slug: 'sales-marketing-customer', tint: ['#115E59', '#0B5A86'], name: 'Sales, Marketing & Customer Experience', icon: 'TrendingUp', intro: 'Customer experience, sales closing techniques and commercial skills.' },
+  { slug: 'data-analytics-bi', tint: ['#0B5A86', '#0E8F7E'], name: 'Data, Analytics & Business Intelligence', icon: 'BarChart3', intro: 'Statistics, data analysis, dashboards, GIS and business intelligence for decision makers.' },
+  { slug: 'humanitarian-development', tint: ['#115E59', '#0B3557'], name: 'Humanitarian, Social Protection & Development', icon: 'HeartHandshake', intro: 'Humanitarian programme management, social protection, resilience and development practice.' },
+  { slug: 'audit-risk-compliance', tint: ['#0B3557', '#0E7490'], name: 'Audit, Risk, Compliance & Financial Crime', icon: 'ShieldAlert', intro: 'Internal audit, enterprise risk, compliance, fraud and anti-money laundering.' },
+  { slug: 'economics-policy-public-sector', tint: ['#0E7490', '#0B5A86'], name: 'Economics, Policy & Public Sector Management', icon: 'Landmark', intro: 'Public policy, public financial management, economics and public sector reform.' },
+  { slug: 'records-knowledge-management', tint: ['#0B5A86', '#115E59'], name: 'Records, Information & Knowledge Management', icon: 'Archive', intro: 'Records and archives, information governance and knowledge management.' },
 ]
 
 // region decides the currency shown: KE cities in KSh, the rest in USD.
