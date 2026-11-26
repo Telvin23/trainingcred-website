@@ -36,7 +36,7 @@ export function Wordmark({ small, light }) {
       <LogoMark size={small ? 38 : 44} className="h-9 w-9 flex-none sm:h-11 sm:w-11 drop-shadow-[0_8px_18px_rgba(245,158,11,.28)] transition-transform duration-300 group-hover/logo:-rotate-3" />
       <span className="flex flex-col leading-[1.1]">
         <span className={`whitespace-nowrap font-serif ${small ? 'text-[15px]' : 'text-[15px] min-[400px]:text-[17px] sm:text-[19px]'}`}><b className="font-bold">WeSkill</b> <span className="font-normal">Training Institute</span></span>
-        <span className="whitespace-nowrap text-[9.5px] font-medium italic opacity-75 min-[400px]:text-[10.5px] sm:text-[11px]">{SITE.tagline}</span>
+        <span className={`whitespace-nowrap text-[9.5px] font-semibold italic min-[400px]:text-[10.5px] sm:text-[11px] ${light ? 'text-[#FBBF24]' : 'text-brand'}`}>{SITE.tagline}</span>
       </span>
     </span>
   )
@@ -143,13 +143,13 @@ export function Header() {
       {/* utility bar (design D) */}
       <div className="relative z-[51] bg-[#0B1120] text-[13px] text-[#CBD5E1]">
         <div className="wrap flex flex-wrap items-center justify-between gap-x-4 gap-y-1 py-1 sm:py-1.5">
-          <span className="hidden sm:inline">{SITE.cpd.provider ? `CPD Certification Service provider no. ${SITE.cpd.provider}` : SITE.tagline}</span>
+          <span className="hidden font-semibold text-[#FBBF24] sm:inline">{SITE.cpd.provider ? `CPD Certification Service provider no. ${SITE.cpd.provider}` : SITE.tagline}</span>
           <span className="flex w-full items-center justify-between gap-x-5 sm:w-auto sm:justify-end"><a href={SITE.phoneHref} className="inline-flex min-h-8 items-center gap-1.5 text-[#CBD5E1] no-underline hover:text-white"><Phone size={13} aria-hidden="true" />{SITE.phone}</a><a href={`mailto:${SITE.email}`} className="inline-flex min-h-8 items-center gap-1.5 text-[#CBD5E1] no-underline hover:text-white"><Mail size={13} aria-hidden="true" /><span className="sm:hidden">Email us</span><span className="hidden sm:inline">{SITE.email}</span></a></span>
         </div>
       </div>
       <header className="sticky top-0 z-50 px-3 pt-3 sm:px-4" onMouseLeave={() => setMenu(null)}>
-        <div className={`relative mx-auto flex max-w-[1280px] items-center gap-3 rounded-full py-2 pl-3 pr-2 transition-all duration-300 sm:pl-5 ${scrolled || menu ? 'glass-strong !bg-solid/75' : 'glass'}`}>
-          <Link to="/" className="no-underline" aria-label={`${SITE.name} home`}><Wordmark /></Link>
+        <div className={`relative mx-auto flex max-w-[1280px] min-[1800px]:max-w-[1440px] items-center gap-3 rounded-full py-2 pl-3 pr-2 transition-all duration-300 sm:pl-5 ${scrolled || menu ? 'glass-strong !bg-solid/75' : 'glass'}`}>
+          <Link to="/" className="flex-none no-underline" aria-label={`${SITE.name} home`}><Wordmark /></Link>
           <nav aria-label="Main" className="ml-4 hidden flex-1 items-center gap-0.5 xl:flex">
             {tab('courses', 'Courses')}
             {tab('formats', 'Formats')}
@@ -158,10 +158,10 @@ export function Header() {
             {plain('/advisory', 'Advisory')}
             {plain('/calendar', 'Calendar')}
           </nav>
-          <div className="ml-auto flex items-center gap-1.5">
+          <div className="ml-auto flex flex-none items-center gap-1.5">
             <Link to="/courses" aria-label="Search courses" className="flex h-11 w-11 items-center justify-center rounded-full text-fg transition hover:bg-surface-2"><Search size={19} aria-hidden="true" /></Link>
             <ThemeToggle className="hidden sm:flex" />
-            <Link to="/for-teams#quote" className="btn-amber btn-sm hidden min-[1700px]:inline-flex">Team quote</Link>
+            <Link to="/for-teams#quote" className="btn-amber btn-sm hidden min-[1800px]:inline-flex">Team quote</Link>
             <Link to="/courses" className="btn-primary btn-sm hidden md:inline-flex">Find a course</Link>
             <button type="button" className="flex h-11 w-11 items-center justify-center rounded-full text-fg hover:bg-surface-2 xl:hidden" aria-label="Open menu" aria-expanded={drawer} onClick={() => setDrawer(true)}><Menu size={22} aria-hidden="true" /></button>
           </div>
